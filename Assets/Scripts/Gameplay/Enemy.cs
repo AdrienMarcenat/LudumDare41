@@ -1,66 +1,67 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
+using UnityEditorInternal;
 
 public class Enemy : MonoBehaviour
 {
-	[SerializeField] protected int type;
-	[SerializeField] protected float playerDamage;
-	[SerializeField] protected AudioClip sound;
-	[SerializeField] protected float hitColorTime;
+	[SerializeField] protected int m_Type;
+	[SerializeField] protected float m_PlayerDamageOnCollision;
+	[SerializeField] protected AudioClip m_Sound;
+	[SerializeField] protected float m_HitColorTime;
 
-	protected Transform target;
-	protected Health health;
-	protected Animator animator;
-	protected SpriteRenderer sprite;
-	protected Color initialColor;
-
-	public delegate void SimpleEvent ();
+	protected Transform m_Target;
+	protected Health m_Health;
+	protected Animator m_Animator;
+	protected SpriteRenderer m_Sprite;
+	protected Color m_InitialColor;
 
 	protected void Awake ()
 	{
-		animator = GetComponent<Animator> ();
-		health = GetComponent<Health> ();
-		sprite = GetComponent<SpriteRenderer> ();
-		target = GameObject.FindGameObjectWithTag ("Player").transform;
-		initialColor = sprite.color;
+		m_Animator = GetComponent<Animator> ();
+		m_Health = GetComponent<Health> ();
+		m_Sprite = GetComponentInChildren<SpriteRenderer> ();
+		m_Target = GameObject.FindGameObjectWithTag ("Player").transform;
+		m_InitialColor = m_Sprite.color;
 	}
 
 	void OnEnable ()
 	{
-		health.Damage += Damage;
-		health.GameOver += GameOver;
+		m_Health.Damage += Damage;
+		m_Health.GameOver += GameOver;
 	}
 
 	void OnDisable ()
 	{
-		health.Damage -= Damage;
-		health.GameOver -= GameOver;
+		m_Health.Damage -= Damage;
+		m_Health.GameOver -= GameOver;
 	}
 
-	private void Damage (float damage, int weaponType)
+	private void Damage (float damage)
 	{
-		StartCoroutine (HitRoutine (damage, weaponType));
+		StartCoroutine (HitRoutine (damage));
 	}
 
-	IEnumerator HitRoutine (float damage, int weaponType)
+	IEnumerator HitRoutine (float damage)
 	{
-		sprite.color = Color.Lerp (Color.blue, Color.red, damage);
-		yield return new WaitForSeconds (hitColorTime);
-		sprite.color = initialColor;
+		m_Sprite.color = Color.Lerp (Color.blue, Color.red, damage);
+		yield return new WaitForSeconds (m_HitColorTime);
+		m_Sprite.color = m_InitialColor;
 	}
 
 	private void GameOver ()
 	{
-		animator.SetTrigger ("isDying");
+		m_Animator.SetTrigger ("isDying");
 		GetComponent<BoxCollider2D> ().enabled = false;
 		Destroy (gameObject, 1);
 	}
 
 	private void OnCollisionStay2D (Collision2D other)
 	{
-		if (other.gameObject.tag == "Player") {
+		if (other.gameObject.tag == "Player")
+		{
 			Health playerHealth = other.gameObject.GetComponent<Health> ();
-			playerHealth.LoseHealth (playerDamage, 0);
+			playerHealth.LoseHealth (m_PlayerDamageOnCollision);
 		}
 	}
 }

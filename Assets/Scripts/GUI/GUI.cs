@@ -16,9 +16,12 @@ public class GUI : MonoBehaviour
 
 	void Awake ()
 	{	
-		if (instance == null) {
+		if (instance == null)
+		{
 			instance = this;
-		} else {
+		}
+		else
+		{
 			Debug.LogError ("GUI already instanciated, the new one will be destroyed");
 			Destroy (this);
 		}
@@ -39,29 +42,23 @@ public class GUI : MonoBehaviour
 		}
 	}
 
-	void Start()
+	void Start ()
 	{
 		SetCommand ("plz go right");
-		SetHealth (0.1f);
 	}
 
-	public void SetCommand(string command)
+	public void SetCommand (string command)
 	{
 		commandBar.SetText (command);
 	}
 
-	public void SetHealth(float fraction)
-	{
-		healthBar.fraction = fraction;
-	}
-
-	public void AddKey(char key)
+	public void AddKey (char key)
 	{
 		keyPanel.Add (key);
 	}
 
-	public void RemoveKey(char key)
+	public void RemoveKey (char key)
 	{
 		keyPanel.Remove (key);
-	}		
+	}
 }

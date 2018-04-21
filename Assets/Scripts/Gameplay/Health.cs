@@ -3,34 +3,36 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-	[SerializeField] protected float totalHealth;
-	protected float currentHealth;
-	private bool enable;
-	private float damageModifier;
+	[SerializeField] protected float m_TotalHealth;
+	protected float m_CurrentHealth;
+	private bool m_Enable;
+	private float m_DamageModifier;
 
-	public delegate void SimpleEvent();
+	public delegate void SimpleEvent ();
+
 	public event SimpleEvent GameOver;
 	public event SimpleEvent SimpleDamage;
 
-	public delegate void DamageAction(float damage, int weaponType);
+	public delegate void DamageAction (float damage);
+
 	public event DamageAction Damage;
 
-	protected void Start()
+	protected void Start ()
 	{
-		currentHealth = totalHealth;
-		enable = true;
-		damageModifier = 1.0f;
+		m_CurrentHealth = m_TotalHealth;
+		m_Enable = true;
+		m_DamageModifier = 1.0f;
 	}
 
-	public void LoseHealth(float damage, int weaponType)
+	public void LoseHealth (float damage)
 	{
-		if (!enable)
+		if (!m_Enable)
 			return;
 		
-		if(Damage != null)
-			Damage (damage, weaponType);
+		if (Damage != null)
+			Damage (damage);
 
-		currentHealth = Mathf.Max(0, currentHealth - damageModifier*damage);
+		m_CurrentHealth = Mathf.Max (0, m_CurrentHealth - m_DamageModifier * damage);
 
 		if (SimpleDamage != null)
 			SimpleDamage ();
@@ -38,35 +40,35 @@ public class Health : MonoBehaviour
 		CheckIfGameOver ();
 	}
 
-	public float GetCurrentHealth()
+	public float GetCurrentHealth ()
 	{
-		return currentHealth;
+		return m_CurrentHealth;
 	}
 
-	public float GetTotalHealth()
+	public float GetTotalHealth ()
 	{
-		return totalHealth;
+		return m_TotalHealth;
 	}
 
-	public void Heal()
+	public void Heal ()
 	{
-		currentHealth = totalHealth;
+		m_CurrentHealth = m_TotalHealth;
 	}
 
 	private void CheckIfGameOver ()
 	{
-		if (currentHealth <= 0 && GameOver != null)
-			GameOver();
+		if (m_CurrentHealth <= 0 && GameOver != null)
+			GameOver ();
 	}
 
-	public void Enable(bool enable)
+	public void Enable (bool enable)
 	{
-		this.enable = enable;
+		this.m_Enable = enable;
 	}
 
-	public void SetDamageModifier(float modifier)
+	public void SetDamageModifier (float modifier)
 	{
-		damageModifier = modifier;
+		m_DamageModifier = modifier;
 	}
 }
 

@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 		if (other.tag == targetTag)
 		{
 			Health targetHealth = other.GetComponent<Health> ();
-			targetHealth.LoseHealth (damage, weaponType);
+			targetHealth.LoseHealth (damage);
 
 			Destroy (gameObject, penetration);
 		}

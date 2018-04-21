@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 public class PlayerNormalState : FSMState
 {
-	private Health health;
-	private MovingObject body;
+	private Health m_Health;
+	private MovingObject m_Body;
 	private WeaponManager m_WeaponManager;
 
 	private UnityAction m_ActionMoveLeft;
@@ -18,8 +18,8 @@ public class PlayerNormalState : FSMState
 		ID = (int)PlayerStates.ID.Normal;
 		base.Awake ();
 	
-		health = GetComponent<Health> ();
-		body = GetComponent<MovingObject> ();
+		m_Health = GetComponent<Health> ();
+		m_Body = GetComponent<MovingObject> ();
 		m_WeaponManager = GetComponent<WeaponManager> ();
 
 		m_ActionMoveLeft = new UnityAction (MoveLeft);
@@ -46,19 +46,19 @@ public class PlayerNormalState : FSMState
 
 	private void MoveLeft ()
 	{
-		body.Move (-1, 0);
+		m_Body.Move (-1, 0);
 		Debug.Log ("move left");
 	}
 
 	private void MoveRight ()
 	{
-		body.Move (1, 0);
+		m_Body.Move (1, 0);
 		Debug.Log ("move right");
 	}
 
 	private void MoveStop ()
 	{
-		body.Move (0, 0);
+		m_Body.Move (0, 0);
 		Debug.Log ("move stop");
 	}
 

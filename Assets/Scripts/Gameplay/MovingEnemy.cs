@@ -18,8 +18,8 @@ public class MovingEnemy : Enemy
 
 	private void MoveEnemy ()
 	{
-		float horizontal = target.transform.position.x - transform.position.x;
-		float vertical = target.transform.position.y - transform.position.y;
+		float horizontal = m_Target.transform.position.x - transform.position.x;
+		float vertical = m_Target.transform.position.y - transform.position.y;
 
 		body.Move (horizontal, vertical);
 	}
