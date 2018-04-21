@@ -2,6 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct FireCommand
+{
+	public float number;
+	public float sizeModifier;
+	public Vector3 target;
+
+	public FireCommand (float number, float sizeModifier, Vector3 target)
+	{
+		this.number = number;
+		this.sizeModifier = sizeModifier;
+		this.target = target;
+	}
+}
+
 public class Weapon : MonoBehaviour
 {
 	[SerializeField] int type;
@@ -13,13 +27,13 @@ public class Weapon : MonoBehaviour
 	[SerializeField] GameObject bulletPrefab;
 	[SerializeField] AudioClip fireSound;
 
-	private List<float> m_FireCommands;
+	private List<FireCommand> m_FireCommands;
 	private float m_FireDelay;
 	private float m_FireCommandNumber;
 
 	void Start ()
 	{
-		m_FireCommands = new List<float> ();
+		m_FireCommands = new List<FireCommand> ();
 		currentAmmo = totalAmmo;
 		m_FireDelay = m_FireRate;
 	}
@@ -43,11 +57,11 @@ public class Weapon : MonoBehaviour
 		currentAmmo = Mathf.Clamp (currentAmmo, 0, totalAmmo);
 	}
 
-	public void Fire (float numberModifier, float sizeModifier)
+	public void Fire (float numberModifier, float sizeModifier, Vector3 target)
 	{
 		for (int i = 0; i < numberModifier; i++)
 		{
-			m_FireCommands.Add (sizeModifier);
+			m_FireCommands.Add (new FireCommand (numberModifier, sizeModifier, target));
 		}
 	}
 
@@ -62,13 +76,19 @@ public class Weapon : MonoBehaviour
 		SetAmmo (-1);
 		SoundManager.PlayMultiple (fireSound);
 
-		// The bullet is a child of the current room so it will be deactivated when the player leave the room
+		FireCommand command = m_FireCommands [0];
+		Vector3 fireDirection = command.target.normalized;
+
 		GameObject bullet = Instantiate (bulletPrefab);
 		bullet.transform.position = transform.position;
-		bullet.transform.localScale *= m_FireCommands [0];
-		bullet.GetComponent<Rigidbody2D> ().velocity = ammoVelocity * Vector3.up;
+		bullet.transform.localScale *= command.sizeModifier;
+		bullet.GetComponent<Rigidbody2D> ().velocity = ammoVelocity * fireDirection;
 
-		m_FireCommands.RemoveAt (0);
+		command.number--;
+		if (command.number == 0)
+		{
+			m_FireCommands.RemoveAt (0);
+		}
 	}
 
 	public void Reload ()
