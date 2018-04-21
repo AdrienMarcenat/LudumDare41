@@ -5,6 +5,7 @@ using System.Collections;
 public class TextInputParser : MonoBehaviour
 {
 	[SerializeField] private InputField m_InputField;
+	[SerializeField] private LetterInventory m_LetterInventory;
 
 	void Awake ()
 	{
@@ -13,8 +14,21 @@ public class TextInputParser : MonoBehaviour
 
 	void Start ()
 	{
+		m_InputField.onValidateInput += delegate(string input, int charIndex, char addedChar)
+		{
+			return FilterChar (addedChar);
+		};
 		m_InputField.Select ();
 		m_InputField.ActivateInputField ();
+	}
+
+	private char FilterChar (char inputChar)
+	{
+		if (!m_LetterInventory.IsLetterOwned (inputChar))
+		{
+			inputChar = '\0';
+		}
+		return inputChar;
 	}
 
 	void AcceptStringInput (string userInput)

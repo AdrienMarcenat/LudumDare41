@@ -19,7 +19,6 @@ public class Bullet : MonoBehaviour
 
 	private void OnTriggerEnter2D (Collider2D other)
 	{
-		Debug.Log ("bullet");
 		if (other.tag == targetTag)
 		{
 			Health targetHealth = other.GetComponent<Health> ();
