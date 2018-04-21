@@ -9,7 +9,7 @@ public class WeaponManager : MonoBehaviour
 	void Start ()
 	{
 		m_Weapons = new List<Weapon> ();
-		foreach (Weapon w in GetComponents<Weapon> ())
+		foreach (Weapon w in GetComponentsInChildren<Weapon> ())
 		{
 			m_Weapons.Add (w);
 		}
@@ -19,11 +19,11 @@ public class WeaponManager : MonoBehaviour
 		});
 	}
 
-	public void Fire (int weaponType)
+	public void Fire (int weaponType, float numberModifier, float sizeModifier)
 	{
 		if (weaponType < m_Weapons.Count)
 		{
-			m_Weapons [weaponType].Fire ();
+			m_Weapons [weaponType].Fire (numberModifier, sizeModifier);
 		}
 		else
 		{

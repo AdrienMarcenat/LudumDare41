@@ -1,0 +1,4 @@
+tiny:0.25
+small:0.5
+big:1
+huge:2

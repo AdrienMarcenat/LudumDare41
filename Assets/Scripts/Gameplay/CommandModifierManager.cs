@@ -16,9 +16,9 @@ public struct CommandModifier
 
 	public static CommandModifier operator + (CommandModifier l, CommandModifier r)
 	{
-		l.sizeModifier += r.sizeModifier;
+		l.sizeModifier *= r.sizeModifier == 0 ? 1 : r.sizeModifier;
 		l.numberModifier += r.numberModifier;
-		l.speedModifier += r.speedModifier;
+		l.speedModifier *= r.speedModifier == 0 ? 1 : r.speedModifier;
 
 		return l;
 	}
@@ -32,7 +32,7 @@ public class CommandModifierManager : Singleton<CommandModifierManager>
 
 	public CommandModifier GetModifiers (string[] words)
 	{
-		CommandModifier result = new CommandModifier (0, 0, 0);
+		CommandModifier result = new CommandModifier (1, 1, 1);
 		foreach (string word in words)
 		{
 			result += new CommandModifier (m_SizeModifiers.GetModifier (word),
