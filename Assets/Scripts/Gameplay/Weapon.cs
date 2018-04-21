@@ -85,6 +85,8 @@ public class Weapon : MonoBehaviour
 		bullet.transform.position = transform.position;
 		bullet.transform.localScale *= command.sizeModifier;
 		bullet.GetComponent<Rigidbody2D> ().velocity = ammoVelocity * fireDirection;
+		bullet.GetComponentInChildren<SpriteRenderer> ().transform.rotation = new Quaternion (0, 0, Vector2.SignedAngle (Vector2.up, fireDirection), 0);
+		Debug.Log (bullet.GetComponentInChildren<SpriteRenderer> ().transform.rotation);
 
 		command.Decrease ();
 		if (command.number == 0)
