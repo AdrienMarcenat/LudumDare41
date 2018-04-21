@@ -47,25 +47,21 @@ public class PlayerNormalState : FSMState
 	private void MoveLeft ()
 	{
 		m_Body.Move (-1, 0);
-		Debug.Log ("move left");
 	}
 
 	private void MoveRight ()
 	{
 		m_Body.Move (1, 0);
-		Debug.Log ("move right");
 	}
 
 	private void MoveStop ()
 	{
 		m_Body.Move (0, 0);
-		Debug.Log ("move stop");
 	}
 
 	private void Fire ()
 	{
 		m_WeaponManager.Fire (0);
-		Debug.Log ("Fire");
 	}
 
 	private void GameOver ()

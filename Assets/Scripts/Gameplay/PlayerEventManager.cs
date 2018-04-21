@@ -8,10 +8,13 @@ public class PlayerEventManager : MonoBehaviour
 	public static string MoveRight = "MoveRight";
 	public static string MoveStop = "MoveStop";
 	public static string Fire = "Fire";
+	public static string LetterPick = "LetterPick";
+
+	private LetterInventory m_LetterInventory;
 
 	void Start ()
 	{
-		
+		m_LetterInventory = GetComponent<LetterInventory> ();
 	}
 
 	protected void Update ()
@@ -22,7 +25,12 @@ public class PlayerEventManager : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
-		
+		if (other.tag == "Letter")
+		{
+			m_LetterInventory.AddLetter (other.gameObject.GetComponent<LetterItem> ().letter);
+			Destroy (other.gameObject);
+			EventManager.TriggerEvent (LetterPick);
+		}
 	}
 }
 
