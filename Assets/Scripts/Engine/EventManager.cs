@@ -3,22 +3,29 @@ using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
 
+using Listener = UnityEngine.Events.UnityAction<CommandModifier>;
+
+public class Command : UnityEvent<CommandModifier>
+{
+	
+}
+
 public class EventManager : Singleton<EventManager>
 {
-	private Dictionary <string, UnityEvent> m_EventDictionary;
+	private Dictionary <string, Command> m_EventDictionary;
 
 	void Awake ()
 	{
 		base.Awake ();
 		if (m_EventDictionary == null)
 		{
-			m_EventDictionary = new Dictionary<string, UnityEvent> ();
+			m_EventDictionary = new Dictionary<string, Command> ();
 		}
 	}
 
-	public static void Register (string eventName, UnityAction listener)
+	public static void Register (string eventName, Listener listener)
 	{
-		UnityEvent e = null;
+		Command e = null;
 		eventName = eventName.ToLower ();
 		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
 		{
@@ -26,20 +33,20 @@ public class EventManager : Singleton<EventManager>
 		}
 		else
 		{
-			e = new UnityEvent ();
+			e = new Command ();
 			e.AddListener (listener);
 			instance.m_EventDictionary.Add (eventName, e);
 		}
 	}
 
-	public static void Unregister (string eventName, UnityAction listener)
+	public static void Unregister (string eventName, Listener listener)
 	{
 		if (instance.m_EventDictionary == null)
 		{
 			return;
 		}
 			
-		UnityEvent e = null;
+		Command e = null;
 		eventName = eventName.ToLower ();
 		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
 		{
@@ -47,21 +54,20 @@ public class EventManager : Singleton<EventManager>
 		}
 	}
 
-	public static void TriggerEvent (string eventName)
+	public static void TriggerEvent (string eventName, CommandModifier modifier)
 	{
-		UnityEvent e = null;
+		Command e = null;
 		eventName = eventName.ToLower ();
 		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
 		{
-			e.Invoke ();
+			e.Invoke (modifier);
 		}
 	}
 
-	public static UnityEvent FindEvent (string eventName)
+	public static Command RegisterEvent (string eventName)
 	{
-		UnityEvent e = null;
-		eventName = eventName.ToLower ();
-		instance.m_EventDictionary.TryGetValue (eventName, out e);
+		Command e = new Command ();
+		instance.m_EventDictionary.Add (eventName, e);
 		return e;
 	}
 }

@@ -8,10 +8,10 @@ public class PlayerNormalState : FSMState
 	private MovingObject m_Body;
 	private WeaponManager m_WeaponManager;
 
-	private UnityAction m_ActionMoveLeft;
-	private UnityAction m_ActionMoveRight;
-	private UnityAction m_ActionMoveStopt;
-	private UnityAction m_ActionFire;
+	private UnityAction<CommandModifier> m_ActionMoveLeft;
+	private UnityAction<CommandModifier> m_ActionMoveRight;
+	private UnityAction<CommandModifier> m_ActionMoveStopt;
+	private UnityAction<CommandModifier> m_ActionFire;
 
 	protected override void Awake ()
 	{
@@ -22,10 +22,10 @@ public class PlayerNormalState : FSMState
 		m_Body = GetComponent<MovingObject> ();
 		m_WeaponManager = GetComponent<WeaponManager> ();
 
-		m_ActionMoveLeft = new UnityAction (MoveLeft);
-		m_ActionMoveRight = new UnityAction (MoveRight);
-		m_ActionMoveStopt = new UnityAction (MoveStop);
-		m_ActionFire = new UnityAction (Fire);
+		m_ActionMoveLeft = new UnityAction<CommandModifier> (MoveLeft);
+		m_ActionMoveRight = new UnityAction<CommandModifier> (MoveRight);
+		m_ActionMoveStopt = new UnityAction<CommandModifier> (MoveStop);
+		m_ActionFire = new UnityAction<CommandModifier> (Fire);
 	}
 
 	public override void Enter ()
@@ -44,28 +44,30 @@ public class PlayerNormalState : FSMState
 		EventManager.Unregister (PlayerEventManager.Fire, m_ActionFire);
 	}
 
-	private void MoveLeft ()
+	private void MoveLeft (CommandModifier modifier)
 	{
 		m_Body.Move (-1, 0);
-		Debug.Log ("move left");
 	}
 
-	private void MoveRight ()
+	private void MoveRight (CommandModifier modifier)
 	{
 		m_Body.Move (1, 0);
-		Debug.Log ("move right");
 	}
 
-	private void MoveStop ()
+	private void MoveStop (CommandModifier modifier)
 	{
 		m_Body.Move (0, 0);
-		Debug.Log ("move stop");
 	}
 
-	private void Fire ()
+	private void Fire (CommandModifier modifier)
 	{
-		m_WeaponManager.Fire (0);
-		Debug.Log ("Fire");
+		if (modifier.numberModifier > 0)
+		{
+			for (int i = 0; i < modifier.numberModifier; i++)
+			{
+				m_WeaponManager.Fire (0);
+			}
+		}
 	}
 
 	private void GameOver ()
