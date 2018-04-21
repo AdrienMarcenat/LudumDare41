@@ -6,6 +6,8 @@ public class PlayerEventManager : MonoBehaviour
 {
 	public static string MoveLeft = "MoveLeft";
 	public static string MoveRight = "MoveRight";
+	public static string MoveStop = "MoveStop";
+	public static string Fire = "Fire";
 
 	void Start ()
 	{

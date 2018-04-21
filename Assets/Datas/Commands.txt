@@ -1,2 +1,5 @@
 "Left":MoveLeft
 "Right":MoveRight
+"stop":MoveStop
+"fire":Fire
+"laser":Laser
