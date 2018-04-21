@@ -9,12 +9,22 @@ public class TextToInputMap : Singleton<TextToInputMap>
 	private Dictionary<string, UnityEvent> m_TextToInputMap;
 	[SerializeField] private string m_FileName;
 
-	void Start ()
+	void Awake ()
 	{
+		base.Awake ();
 		m_TextToInputMap = new Dictionary<string, UnityEvent> ();
 	}
 
-	public void FillCommands ()
+	public void TriggerFillCommands ()
+	{
+		FillCommands ();
+		foreach (string key in m_TextToInputMap.Keys)
+		{
+			Debug.Log (key);
+		}
+	}
+
+	private void FillCommands ()
 	{
 		char[] separators = { ':' };
 		#if UNITY_EDITOR

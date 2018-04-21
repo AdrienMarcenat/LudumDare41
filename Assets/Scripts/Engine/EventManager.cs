@@ -7,8 +7,9 @@ public class EventManager : Singleton<EventManager>
 {
 	private Dictionary <string, UnityEvent> m_EventDictionary;
 
-	void Init ()
+	void Awake ()
 	{
+		base.Awake ();
 		if (m_EventDictionary == null)
 		{
 			m_EventDictionary = new Dictionary<string, UnityEvent> ();
@@ -18,6 +19,7 @@ public class EventManager : Singleton<EventManager>
 	public static void Register (string eventName, UnityAction listener)
 	{
 		UnityEvent e = null;
+		eventName = eventName.ToLower ();
 		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
 		{
 			e.AddListener (listener);
@@ -38,6 +40,7 @@ public class EventManager : Singleton<EventManager>
 		}
 			
 		UnityEvent e = null;
+		eventName = eventName.ToLower ();
 		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
 		{
 			e.RemoveListener (listener);
@@ -47,6 +50,7 @@ public class EventManager : Singleton<EventManager>
 	public static void TriggerEvent (string eventName)
 	{
 		UnityEvent e = null;
+		eventName = eventName.ToLower ();
 		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
 		{
 			e.Invoke ();
@@ -56,6 +60,7 @@ public class EventManager : Singleton<EventManager>
 	public static UnityEvent FindEvent (string eventName)
 	{
 		UnityEvent e = null;
+		eventName = eventName.ToLower ();
 		instance.m_EventDictionary.TryGetValue (eventName, out e);
 		return e;
 	}

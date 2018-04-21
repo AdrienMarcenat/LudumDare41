@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 public class PlayerNormalState : FSMState
 {
-	private PlayerEventManager playerEventManager;
 	private Health health;
 	private MovingObject body;
 
@@ -16,7 +15,6 @@ public class PlayerNormalState : FSMState
 		ID = (int)PlayerStates.ID.Normal;
 		base.Awake ();
 	
-		playerEventManager = GetComponent<PlayerEventManager> ();
 		health = GetComponent<Health> ();
 		body = GetComponent<MovingObject> ();
 
@@ -38,13 +36,13 @@ public class PlayerNormalState : FSMState
 
 	private void MoveLeft ()
 	{
-		body.Move (1, 0);
+		body.Move (-1, 0);
 		Debug.Log ("move left");
 	}
 
 	private void MoveRight ()
 	{
-		body.Move (-1, 0);
+		body.Move (1, 0);
 		Debug.Log ("move right");
 	}
 
