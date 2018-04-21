@@ -9,7 +9,7 @@ public class WeaponManager : MonoBehaviour
 	void Start ()
 	{
 		m_Weapons = new List<Weapon> ();
-		foreach (Weapon w in GetComponents<Weapon> ())
+		foreach (Weapon w in GetComponentsInChildren<Weapon> ())
 		{
 			m_Weapons.Add (w);
 		}

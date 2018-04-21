@@ -16,9 +16,9 @@ public struct CommandModifier
 
 	public static CommandModifier operator + (CommandModifier l, CommandModifier r)
 	{
-		l.sizeModifier += r.sizeModifier;
+		l.sizeModifier *= r.sizeModifier == 0 ? 1 : r.sizeModifier;
 		l.numberModifier += r.numberModifier;
-		l.speedModifier += r.speedModifier;
+		l.speedModifier *= r.speedModifier == 0 ? 1 : r.speedModifier;
 
 		return l;
 	}
