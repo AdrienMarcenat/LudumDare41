@@ -8,6 +8,7 @@ public class PlayerEventManager : MonoBehaviour
 	public static string MoveRight = "MoveRight";
 	public static string MoveStop = "MoveStop";
 	public static string Fire = "Fire";
+	public static string Laser = "Laser";
 
 	private LetterInventory m_LetterInventory;
 

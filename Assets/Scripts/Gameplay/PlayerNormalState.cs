@@ -12,6 +12,7 @@ public class PlayerNormalState : FSMState
 	private UnityAction<CommandModifier> m_ActionMoveRight;
 	private UnityAction<CommandModifier> m_ActionMoveStopt;
 	private UnityAction<CommandModifier> m_ActionFire;
+	private UnityAction<CommandModifier> m_ActionLaser;
 
 	protected override void Awake ()
 	{
@@ -26,6 +27,7 @@ public class PlayerNormalState : FSMState
 		m_ActionMoveRight = new UnityAction<CommandModifier> (MoveRight);
 		m_ActionMoveStopt = new UnityAction<CommandModifier> (MoveStop);
 		m_ActionFire = new UnityAction<CommandModifier> (Fire);
+		m_ActionLaser = new UnityAction<CommandModifier> (Laser);
 	}
 
 	public override void Enter ()
@@ -34,6 +36,7 @@ public class PlayerNormalState : FSMState
 		EventManager.Register (PlayerEventManager.MoveRight, m_ActionMoveRight);
 		EventManager.Register (PlayerEventManager.MoveStop, m_ActionMoveStopt);
 		EventManager.Register (PlayerEventManager.Fire, m_ActionFire);
+		EventManager.Register (PlayerEventManager.Laser, m_ActionLaser);
 	}
 
 	public override void Exit ()
@@ -42,6 +45,7 @@ public class PlayerNormalState : FSMState
 		EventManager.Unregister (PlayerEventManager.MoveRight, m_ActionMoveRight);
 		EventManager.Unregister (PlayerEventManager.MoveStop, m_ActionMoveStopt);
 		EventManager.Unregister (PlayerEventManager.Fire, m_ActionFire);
+		EventManager.Unregister (PlayerEventManager.Laser, m_ActionLaser);
 	}
 
 	private void MoveLeft (CommandModifier modifier)
@@ -62,6 +66,11 @@ public class PlayerNormalState : FSMState
 	private void Fire (CommandModifier modifier)
 	{
 		m_WeaponManager.Fire (0, modifier.numberModifier, modifier.sizeModifier, Vector3.up);
+	}
+
+	private void Laser (CommandModifier modifier)
+	{
+		m_WeaponManager.Fire (1, modifier.numberModifier, modifier.sizeModifier, Vector3.up);
 	}
 
 	private void GameOver ()

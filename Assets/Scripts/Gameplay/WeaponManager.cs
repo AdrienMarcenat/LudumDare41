@@ -15,7 +15,7 @@ public class WeaponManager : MonoBehaviour
 		}
 		m_Weapons.Sort (delegate(Weapon a, Weapon b)
 		{
-			return a.GetWeaponType () < b.GetWeaponType () ? 1 : 0;
+			return a.GetWeaponType () <= b.GetWeaponType () ? 0 : 1;
 		});
 	}
 
