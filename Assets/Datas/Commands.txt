@@ -1,0 +1,2 @@
+"Left":MoveLeft
+"Right":MoveRight

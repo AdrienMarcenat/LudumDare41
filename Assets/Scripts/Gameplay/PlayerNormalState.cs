@@ -1,45 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class PlayerNormalState : FSMState
 {
-	private PlayerEventManager playerEventManager;
 	private Health health;
 	private MovingObject body;
+
+	private UnityAction m_ActionMoveLeft;
+	private UnityAction m_ActionMoveRight;
 
 	protected override void Awake ()
 	{
 		ID = (int)PlayerStates.ID.Normal;
 		base.Awake ();
 	
-		playerEventManager = GetComponent<PlayerEventManager> ();
 		health = GetComponent<Health> ();
 		body = GetComponent<MovingObject> ();
+
+		m_ActionMoveLeft = new UnityAction (MoveLeft);
+		m_ActionMoveRight = new UnityAction (MoveRight);
 	}
 
 	public override void Enter ()
 	{
-		playerEventManager.Move += MovePlayer;
-		playerEventManager.HealthPack += health.Heal;
-		health.SimpleDamage += Damage;
-		health.GameOver += GameOver;
+		EventManager.Register (PlayerEventManager.MoveLeft, m_ActionMoveLeft);
+		EventManager.Register (PlayerEventManager.MoveRight, m_ActionMoveRight);
 	}
 
 	public override void Exit ()
 	{
-		playerEventManager.Move -= MovePlayer;
-		playerEventManager.HealthPack -= health.Heal;
-		health.SimpleDamage -= Damage;
-		health.GameOver -= GameOver;
+		EventManager.Unregister (PlayerEventManager.MoveLeft, m_ActionMoveLeft);
+		EventManager.Unregister (PlayerEventManager.MoveRight, m_ActionMoveRight);
 	}
 
-	private void MovePlayer (float x, float y)
+	private void MoveLeft ()
 	{
-		body.Move (x, y);
+		body.Move (-1, 0);
+		Debug.Log ("move left");
+	}
 
-		Vector3 direction = (Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position).normalized;
-		Quaternion rotation = Quaternion.Euler (0, 0, Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg + 90);
-		transform.rotation = rotation;
+	private void MoveRight ()
+	{
+		body.Move (1, 0);
+		Debug.Log ("move right");
 	}
 
 	private void GameOver ()
