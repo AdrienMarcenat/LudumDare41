@@ -1,3 +1,4 @@
 [now]
 00:00.000 spawn Key
 00:01.650 spawn Key
+00:10.000 spawn Enemy_XL

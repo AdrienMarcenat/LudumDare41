@@ -5,12 +5,13 @@ using UnityEngine;
 public class RessourceManager : Singleton<RessourceManager>
 {
 
-    public GameObject LoadPrefab(string name){
-        GameObject prefab = (GameObject)Resources.Load("Paterns/"+name, typeof(GameObject));
-        if (!prefab)
-        {
-            Debug.LogWarning("Prefab " + name + " could not be loaded");
-        }                
-        return prefab;
-    }
+	public GameObject LoadPrefab (string name)
+	{
+		GameObject prefab = (GameObject)Resources.Load ("Pattern/" + name, typeof(GameObject));
+		if (!prefab)
+		{
+			Debug.LogWarning ("Prefab " + name + " could not be loaded");
+		}                
+		return prefab;
+	}
 }
