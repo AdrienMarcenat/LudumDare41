@@ -32,7 +32,7 @@ public class CommandModifierManager : Singleton<CommandModifierManager>
 
 	public CommandModifier GetModifiers (string[] words)
 	{
-		CommandModifier result = new CommandModifier (0, 0, 0);
+		CommandModifier result = new CommandModifier (1, 1, 1);
 		foreach (string word in words)
 		{
 			result += new CommandModifier (m_SizeModifiers.GetModifier (word),

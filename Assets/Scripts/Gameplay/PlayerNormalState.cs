@@ -61,13 +61,7 @@ public class PlayerNormalState : FSMState
 
 	private void Fire (CommandModifier modifier)
 	{
-		if (modifier.numberModifier > 0)
-		{
-			for (int i = 0; i < modifier.numberModifier; i++)
-			{
-				m_WeaponManager.Fire (0);
-			}
-		}
+		m_WeaponManager.Fire (0, modifier.numberModifier, modifier.sizeModifier);
 	}
 
 	private void GameOver ()

@@ -19,11 +19,11 @@ public class WeaponManager : MonoBehaviour
 		});
 	}
 
-	public void Fire (int weaponType)
+	public void Fire (int weaponType, float numberModifier, float sizeModifier)
 	{
 		if (weaponType < m_Weapons.Count)
 		{
-			m_Weapons [weaponType].Fire ();
+			m_Weapons [weaponType].Fire (numberModifier, sizeModifier);
 		}
 		else
 		{

@@ -11,7 +11,39 @@ public class LetterInventory : MonoBehaviour
 
 	void Start ()
 	{
-		m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'r', 'i', 'g', 'h' };
+		//m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'r', 'i', 'g', 'h' };
+		m_Letters = new List<char> () {
+			'a',
+			'b',
+			'c',
+			'd',
+			'e',
+			'f',
+			'g',
+			'h',
+			'i',
+			'j',
+			'k',
+			'l',
+			'm',
+			'n',
+			'o',
+			'p',
+			'q',
+			'r',
+			's',
+			't',
+			'u',
+			'v',
+			'w',
+			'x',
+			'y',
+			'z',
+			' ',
+			'0',
+			'1',
+			'2'
+		};
 	}
 
 	public bool IsLetterOwned (char letter)

@@ -38,7 +38,10 @@ public class TextInputParser : MonoBehaviour
 		userInput = userInput.ToLower ();
 
 		string[] words = userInput.Split (m_Separators);
-		TextToInputMap.instance.FireCommand (userInput, m_CommandModifierManager.GetModifiers (words));
+		if (userInput != "")
+		{
+			TextToInputMap.instance.FireCommand (words [words.Length - 1], m_CommandModifierManager.GetModifiers (words));
+		}
 
 		ResetInput ();
 	}
