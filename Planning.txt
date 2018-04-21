@@ -1,0 +1,47 @@
+Code
+* Command system (letter filter, combo)
+* Dialog system
+* Enemy pattern
+* Enemy AI
+* Boss AI
+* Level Scripting
+* Implement all Commands
+* Implements all weapon
+* Menu, UI
+* Item system
+
+Level Design
+* A tutorial
+* A first level
+* A second level, tougher
+
+Music
+* One music per level
+* One mucic per boss
+* A menu music
+* A gameover jingle
+* An end of level sucess
+
+Sound effect
+* One sound per weapon
+* A destruction sound when enemies / player die
+* A jingle for incoming transimission (crew / enemy)
+* A jingle for item pick
+
+Story
+* One dialog per commands
+* 3 or 4 dialogs for failed command
+* One dialog per boss
+* Tuto dialogs
+
+Graphism
+* One sprite per enemy
+* One big sprite per boss
+* An explosion
+* One sprite per speaker (player, crew, bosses)
+* A player ship sprite
+* One sprite per weapon
+* One sprite per bullet
+* Letter sprites
+* One background per level
+* Some UI stuff (if time)
