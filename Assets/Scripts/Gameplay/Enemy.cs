@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
 		m_Animator = GetComponent<Animator> ();
 		m_Health = GetComponent<Health> ();
 		m_Sprite = GetComponentInChildren<SpriteRenderer> ();
-		m_Target = GameObject.FindGameObjectWithTag ("Player").transform;
 		m_InitialColor = m_Sprite.color;
 	}
 
@@ -63,5 +62,10 @@ public class Enemy : MonoBehaviour
 			Health playerHealth = other.gameObject.GetComponent<Health> ();
 			playerHealth.LoseHealth (m_PlayerDamageOnCollision);
 		}
+	}
+
+	public void SetTarget (Transform target)
+	{
+		m_Target = target;
 	}
 }
