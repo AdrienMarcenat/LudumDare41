@@ -14,20 +14,25 @@ public class LevelGenerator : MonoBehaviour
 
 	void Awake ()
 	{
-		m_sequenceId = 0;
-		m_orderId = 0;
+        Reset();
+        //this.ParseFile("Assets/Datas/TestLevel.txt");
 	}
+
+    public void Reset(){
+        m_sequenceId = 0;
+        m_orderId = 0;
+    }
 
 	void Update ()
 	{
 		m_currentTime += Time.deltaTime;
-		if (m_sequenceId > m_orderSequences.Count)
+		if (m_sequenceId >= m_orderSequences.Count)
 		{
 			return;
 		}
 		LevelSequence currentSequence = m_orderSequences [m_sequenceId];
 		float latestTime;
-		while (m_orderId < currentSequence.orders) {
+		while (m_orderId < currentSequence.orders.Count) {
 			LevelOrder currentOrder = currentSequence.orders [m_orderId];
 			if (currentOrder.when > m_currentTime) {
 				break;

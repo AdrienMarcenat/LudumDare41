@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct LevelSequence
+public class LevelSequence
 {
 
 	public enum LevelSequenceStart
@@ -15,6 +15,17 @@ public struct LevelSequence
 	public LevelSequenceStart start = LevelSequenceStart.ERROR;
     public List<LevelOrder> orders = new List<LevelOrder>();
 
+    static public LevelSequenceStart Parse(string type)
+    {
+        switch (type.ToLower())
+        {
+            case("[now]"):
+                return LevelSequenceStart.NOW;
+            case("[done]"):
+                return LevelSequenceStart.WHEN_DONE;
+        }
+        return LevelSequenceStart.ERROR;
+    }
 }
 
 public enum LevelOrderType
@@ -34,34 +45,40 @@ public abstract class LevelOrder
 	}
 	public float when;
 
-	public string ToString(){
+	public override string ToString(){
 		return orderType.ToString () + ":" + when.ToString ();
 	}
 }
 
 public class SpawnLevelOrder : LevelOrder
 {
-	public LevelOrderType orderType = LevelOrderType.SPAWN;
-	public List<GameObject> entities;
-    public List<int> entitiesQuantity;
+    public List<GameObject> entities = new List<GameObject>();
+    public List<int> entitiesQuantity = new List<int>();
+
+    public SpawnLevelOrder()
+    {
+        orderType = LevelOrderType.SPAWN;
+    }
 
     public SpawnLevelOrder(string[] args)
     {
         for (int k = 0; k < args.Length; k++)
         {
-            string[] things = args[k].Split("*");
+            string[] things = args[k].Split('*');
             string prefab;
             int num = 1;
             if (things.Length > 1)
             {
-                num = (int)things[0];
+                num = int.Parse(things[0]);
                 prefab = things[1];
             }
             else
             {
                 prefab = things[0];
             }
-            entities.Add(LevelGeneratorParserer.GetPrefab(prefab));
+            GameObject entity = RessourceManager.instance.LoadPrefab(prefab);
+            entity = (GameObject)entity;
+            entities.Add(entity);
             entitiesQuantity.Add(num);
         }
     }
@@ -69,18 +86,27 @@ public class SpawnLevelOrder : LevelOrder
 
 public class MusicLevelOrder : LevelOrder
 {
-	public LevelOrderType orderType = LevelOrderType.MUSIC;
 	public string music; //TODO
+    public MusicLevelOrder()
+    {
+        orderType = LevelOrderType.MUSIC;
+    }
 }
 
 public class TalkLevelOrder : LevelOrder
 {
-    public LevelOrderType orderType = LevelOrderType.MUSIC;
     public string face; //TODO
     public string text; //TODO
+    public TalkLevelOrder()
+    {
+        orderType = LevelOrderType.TALK;
+    }
 }
 
 public class EndLevelOrder : LevelOrder
 {
-	public LevelOrderType orderType = LevelOrderType.END_LEVEL;
+    public EndLevelOrder()
+    {
+        orderType = LevelOrderType.END_LEVEL;
+    }
 }

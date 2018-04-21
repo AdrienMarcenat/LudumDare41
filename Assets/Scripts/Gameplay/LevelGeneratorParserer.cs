@@ -20,24 +20,32 @@ public static class LevelGeneratorParserer {
                 {
                     continue;
                 }
-                LevelSequence.LevelSequenceStart type = MakeLevelSequence(words[0]);
+                LevelSequence.LevelSequenceStart type = LevelSequence.Parse(words[0]);
                 //New sequence
                 if(type!=LevelSequence.LevelSequenceStart.ERROR)
                 {
-                    if(currentSequence.orders.Count>0 && currentSequence.start){
+                    if(currentSequence.orders.Count>0 && currentSequence.start !=LevelSequence.LevelSequenceStart.ERROR)
+                    {
                         sequences.Add(currentSequence);
                     }
                     currentSequence = new LevelSequence();
                     currentSequence.start = type;
+                    continue;
                 }
                 //New order
                 LevelOrder order = MakeLevelOrder(words);
+                currentSequence.orders.Add(order);
 
             }
-            catch
+            catch(Exception e)
             {
                 Debug.LogWarning("Couldn't read line \"" + line + "\" of file \"" + file + "\"");
+                Debug.LogWarning(e.Message);
             }
+        }
+        if(currentSequence.orders.Count>0 && currentSequence.start !=LevelSequence.LevelSequenceStart.ERROR)
+        {
+            sequences.Add(currentSequence);
         }
     }
 
@@ -52,13 +60,8 @@ public static class LevelGeneratorParserer {
         return result;
     }
 
-    static protected LevelSequence.LevelSequenceStart MakeLevelSequence(string type)
-    {
-        return LevelSequence.LevelSequenceStart.ERROR;
-    }
-
-    static protected LevelOrder MakeLevelOrder(string[] args){
-        System.DateTime time = System.DateTime.Parse(args[0], "mm:ss.fff");
+    static private LevelOrder MakeLevelOrder(string[] args){
+        System.DateTime time = System.DateTime.ParseExact(args[0], "mm:ss.fff", null);
         float floatTime = time.Millisecond;
         switch (args[1].ToLower())
         {
@@ -78,9 +81,5 @@ public static class LevelGeneratorParserer {
                 break;
         }
         return null;
-    }
-        
-    static public GameObject GetPrefab(string name){
-        return (GameObject)Resources.Load("Prefabs/"+name, typeof(GameObject));
     }
 }
