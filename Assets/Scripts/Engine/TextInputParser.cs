@@ -1,19 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TextInputParser : MonoBehaviour
 {
+	[SerializeField] private InputField m_InputField;
 
-	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
-	
+		m_InputField.onEndEdit.AddListener (AcceptStringInput);
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+	void AcceptStringInput (string userInput)
 	{
-	
+		userInput = userInput.ToLower ();
+		Debug.Log (userInput);
+
+		TextToInputMap.instance.FireCommand (userInput);
+
+		ResetInput ();
 	}
+
+	void ResetInput ()
+	{
+		m_InputField.ActivateInputField ();
+		m_InputField.text = null;
+	}
+
 }
-

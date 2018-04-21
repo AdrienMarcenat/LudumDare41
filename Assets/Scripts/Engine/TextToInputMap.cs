@@ -33,14 +33,15 @@ public class TextToInputMap : Singleton<TextToInputMap>
 				Debug.Log ("Invalid number of data line " + i + " excpeting 2, got " + datas.Length);
 				return;
 			}
-			string eventName = datas [1];
+			string command = datas [0].ToLower ();
+			string eventName = datas [1].ToLower ();
 			UnityEvent e = EventManager.FindEvent (eventName);
 			if (e == null)
 			{
 				Debug.Log (eventName + " is not a valid event name, are you missing an entry in the event Dictionnary ?");
 				return;
 			}
-			AddEntry (datas [0], e);
+			AddEntry (command, e);
 		}
 	}
 
@@ -49,11 +50,13 @@ public class TextToInputMap : Singleton<TextToInputMap>
 		m_TextToInputMap.Add (command, e);
 	}
 
-	private UnityEvent FindCommand (string command)
+	public void FireCommand (string command)
 	{
 		UnityEvent e = null;
-		m_TextToInputMap.TryGetValue ('"' + command + '"', out e);
-		return e;
+		if (m_TextToInputMap.TryGetValue ('"' + command + '"', out e))
+		{
+			e.Invoke ();
+		}
 	}
 }
 
