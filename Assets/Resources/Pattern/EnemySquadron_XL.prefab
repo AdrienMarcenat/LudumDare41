@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4480823640568222}
   - component: {fileID: 114535120033013032}
-  - component: {fileID: 114666117446167762}
+  - component: {fileID: 114659304394345206}
   - component: {fileID: 114440241312566538}
   - component: {fileID: 114123964611169972}
   - component: {fileID: 114557944607528176}
@@ -117,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1972134799105462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4480823640568222}
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef66f499fa21d7478938f4bb65bafd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114666117446167762
+--- !u!114 &114659304394345206
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -290,14 +290,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1964893780443024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c84e5117aa5954489c6c738e6f10a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 13c9902483bdd98488c7f53f73562e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AimedPrecision: 1
   m_FireSalveNumber: 1
   m_FireRate: 1
   m_SizeModifier: 1
-  m_Target: {fileID: 4314662101019984}
+  m_ShootDirection: {fileID: 4314662101019984}
 --- !u!114 &114685426487561680
 MonoBehaviour:
   m_ObjectHideFlags: 1

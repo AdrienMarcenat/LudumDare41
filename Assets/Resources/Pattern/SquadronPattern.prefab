@@ -80,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605587743195746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4465059800082928}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpawningLocation: {fileID: 4289276471095958}
-  m_Target: {fileID: 4075530858987296}
+  m_ShootDirection: {fileID: 4075530858987296}
   m_EnemyPrefabs:
   - {fileID: 1132010923604032, guid: f8cb1ef9fec1ae846a5f8838dd2b1080, type: 2}
   - {fileID: 1132010923604032, guid: f8cb1ef9fec1ae846a5f8838dd2b1080, type: 2}

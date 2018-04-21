@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4596319363603684}
   - component: {fileID: 114911834615326986}
-  - component: {fileID: 114091421008149780}
+  - component: {fileID: 114623414608469302}
   - component: {fileID: 114243377748313512}
   - component: {fileID: 114049819272603120}
   - component: {fileID: 114744721524352396}
@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1899892313958188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4596319363603684}
@@ -223,22 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothSpeed: 200
---- !u!114 &114091421008149780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1324412750502576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c84e5117aa5954489c6c738e6f10a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AimedPrecision: 1
-  m_FireSalveNumber: 1
-  m_FireRate: 1
-  m_SizeModifier: 1
-  m_Target: {fileID: 4757134865557576}
 --- !u!114 &114243377748313512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +247,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HealthBar: {fileID: 212553399496774756}
+--- !u!114 &114623414608469302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1324412750502576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4dc9fe03ebd754e8c06e83a32a1a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AimedPrecision: 1
+  m_FireSalveNumber: 4
+  m_FireRate: 5
+  m_SizeModifier: 3
+  m_ShootDirection: {fileID: 0}
 --- !u!114 &114744721524352396
 MonoBehaviour:
   m_ObjectHideFlags: 1

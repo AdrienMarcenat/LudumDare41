@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Security.Cryptography.X509Certificates;
 
 public class EnemyAI : MonoBehaviour
 {
-	[SerializeField] private float m_AimedPrecision;
-	[SerializeField] private float m_FireSalveNumber;
-	[SerializeField] private float m_FireRate;
-	[SerializeField] private float m_SizeModifier;
-	[SerializeField] private Transform m_Target;
+	[SerializeField] protected float m_AimedPrecision;
+	[SerializeField] protected float m_FireSalveNumber;
+	[SerializeField] protected float m_FireRate;
+	[SerializeField] protected float m_SizeModifier;
+	[SerializeField] protected Transform m_ShootDirection;
 
-	private WeaponManager m_WeaponManager;
-	private float m_FireDelay;
+	protected WeaponManager m_WeaponManager;
+	protected float m_FireDelay;
+
+	protected virtual void Fire ()
+	{
+		
+	}
 
 	void Start ()
 	{
@@ -27,14 +31,14 @@ public class EnemyAI : MonoBehaviour
 		}
 		else
 		{
-			m_WeaponManager.Fire (0, m_FireSalveNumber, m_SizeModifier, m_Target.position - transform.position);
+			Fire ();
 			m_FireDelay = 0;
 		}
 	}
 
-	public void SetTarget (Transform target)
+	public void SetShootDirection (Transform shootDirection)
 	{
-		m_Target = target;
+		m_ShootDirection = shootDirection;
 	}
 }
 
