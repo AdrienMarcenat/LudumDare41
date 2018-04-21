@@ -11,51 +11,41 @@ public class PlayerSoundManager : MonoBehaviour
 	[SerializeField] AudioClip healSound;
 	[SerializeField] AudioClip switchGunSound;
 
-	void Awake()
+	void Awake ()
 	{
-		playerEventManager = GetComponent<PlayerEventManager>();
+		playerEventManager = GetComponent<PlayerEventManager> ();
 		playerHealth = GetComponent<Health> ();
 	}
 
-	void OnEnable()
+	void OnEnable ()
 	{
-		playerEventManager.SwitchGun  += SwitchGun;
-		playerEventManager.AmmoPack   += Reload;
-		playerEventManager.HealthPack += Heal;
-		playerEventManager.WeaponPick += SwitchGun;
-		playerHealth.SimpleDamage     += Damage;
 	}
 
-	void OnDisable()
+	void OnDisable ()
 	{
-		playerEventManager.SwitchGun  -= SwitchGun;
-		playerEventManager.AmmoPack   -= Reload;
-		playerEventManager.HealthPack -= Heal;
-		playerEventManager.WeaponPick -= SwitchGun;
-		playerHealth.SimpleDamage     -= Damage;
 	}
 
-	private void Reload()
+	private void Reload ()
 	{
 		SoundManager.PlayMultiple (reloadSound);
 	}
 
-	private void SwitchGun()
+	private void SwitchGun ()
 	{
 		SoundManager.PlayMultiple (switchGunSound);
 	}
 
-	private void SwitchGun(GameObject newWeapon)
+	private void SwitchGun (GameObject newWeapon)
 	{
 		SoundManager.PlayMultiple (switchGunSound);
 	}
 
-	private void Heal()
+	private void Heal ()
 	{
 		SoundManager.PlayMultiple (healSound);
 	}
 
-	private void Damage()
+	private void Damage ()
 	{
 		SoundManager.PlayMultiple (damageSound);
 	}
