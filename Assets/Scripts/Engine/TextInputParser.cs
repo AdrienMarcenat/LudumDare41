@@ -11,6 +11,12 @@ public class TextInputParser : MonoBehaviour
 		m_InputField.onEndEdit.AddListener (AcceptStringInput);
 	}
 
+	void Start ()
+	{
+		m_InputField.Select ();
+		m_InputField.ActivateInputField ();
+	}
+
 	void AcceptStringInput (string userInput)
 	{
 		userInput = userInput.ToLower ();
