@@ -9,19 +9,11 @@ public class TextToInputMap : Singleton<TextToInputMap>
 	private Dictionary<string, UnityEvent> m_TextToInputMap;
 	[SerializeField] private string m_FileName;
 
-	void Awake ()
+	void Start ()
 	{
 		base.Awake ();
 		m_TextToInputMap = new Dictionary<string, UnityEvent> ();
-	}
-
-	public void TriggerFillCommands ()
-	{
 		FillCommands ();
-		foreach (string key in m_TextToInputMap.Keys)
-		{
-			Debug.Log (key);
-		}
 	}
 
 	private void FillCommands ()
@@ -45,12 +37,7 @@ public class TextToInputMap : Singleton<TextToInputMap>
 			}
 			string command = datas [0].ToLower ();
 			string eventName = datas [1].ToLower ();
-			UnityEvent e = EventManager.FindEvent (eventName);
-			if (e == null)
-			{
-				Debug.Log (eventName + " is not a valid event name, are you missing an entry in the event Dictionnary ?");
-				return;
-			}
+			UnityEvent e = EventManager.RegisterEvent (eventName);
 			AddEntry (command, e);
 		}
 	}

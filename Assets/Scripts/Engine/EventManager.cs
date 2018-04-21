@@ -57,11 +57,10 @@ public class EventManager : Singleton<EventManager>
 		}
 	}
 
-	public static UnityEvent FindEvent (string eventName)
+	public static UnityEvent RegisterEvent (string eventName)
 	{
-		UnityEvent e = null;
-		eventName = eventName.ToLower ();
-		instance.m_EventDictionary.TryGetValue (eventName, out e);
+		UnityEvent e = new UnityEvent ();
+		instance.m_EventDictionary.Add (eventName, e);
 		return e;
 	}
 }
