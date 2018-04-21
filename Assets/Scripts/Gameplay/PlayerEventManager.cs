@@ -8,7 +8,6 @@ public class PlayerEventManager : MonoBehaviour
 	public static string MoveRight = "MoveRight";
 	public static string MoveStop = "MoveStop";
 	public static string Fire = "Fire";
-	public static string LetterPick = "LetterPick";
 
 	private LetterInventory m_LetterInventory;
 
@@ -29,7 +28,6 @@ public class PlayerEventManager : MonoBehaviour
 		{
 			m_LetterInventory.AddLetter (other.gameObject.GetComponent<LetterItem> ().letter);
 			Destroy (other.gameObject);
-			EventManager.TriggerEvent (LetterPick);
 		}
 	}
 }

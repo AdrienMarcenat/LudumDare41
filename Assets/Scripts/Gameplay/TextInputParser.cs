@@ -6,6 +6,8 @@ public class TextInputParser : MonoBehaviour
 {
 	[SerializeField] private InputField m_InputField;
 	[SerializeField] private LetterInventory m_LetterInventory;
+	[SerializeField] private CommandModifierManager m_CommandModifierManager;
+	private char[] m_Separators = { ' ' };
 
 	void Awake ()
 	{
@@ -35,7 +37,8 @@ public class TextInputParser : MonoBehaviour
 	{
 		userInput = userInput.ToLower ();
 
-		TextToInputMap.instance.FireCommand (userInput);
+		string[] words = userInput.Split (m_Separators);
+		TextToInputMap.instance.FireCommand (userInput, m_CommandModifierManager.GetModifiers (words));
 
 		ResetInput ();
 	}

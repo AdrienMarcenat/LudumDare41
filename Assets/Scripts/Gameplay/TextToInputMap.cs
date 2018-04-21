@@ -6,13 +6,13 @@ using System.IO;
 
 public class TextToInputMap : Singleton<TextToInputMap>
 {
-	private Dictionary<string, UnityEvent> m_TextToInputMap;
+	private Dictionary<string, Command> m_TextToInputMap;
 	[SerializeField] private string m_FileName;
 
 	void Start ()
 	{
 		base.Awake ();
-		m_TextToInputMap = new Dictionary<string, UnityEvent> ();
+		m_TextToInputMap = new Dictionary<string, Command> ();
 		FillCommands ();
 	}
 
@@ -32,27 +32,27 @@ public class TextToInputMap : Singleton<TextToInputMap>
 			// If there is an error in print a debug message
 			if (datas.Length != 2)
 			{
-				Debug.Log ("Invalid number of data line " + i + " excpeting 2, got " + datas.Length);
+				Debug.Log ("Invalid number of data line " + i + " expecting 2, got " + datas.Length);
 				return;
 			}
 			string command = datas [0].ToLower ();
 			string eventName = datas [1].ToLower ();
-			UnityEvent e = EventManager.RegisterEvent (eventName);
+			Command e = EventManager.RegisterEvent (eventName);
 			AddEntry (command, e);
 		}
 	}
 
-	private void AddEntry (string command, UnityEvent e)
+	private void AddEntry (string command, Command e)
 	{
 		m_TextToInputMap.Add (command, e);
 	}
 
-	public void FireCommand (string command)
+	public void FireCommand (string command, CommandModifier modifier)
 	{
-		UnityEvent e = null;
+		Command e = null;
 		if (m_TextToInputMap.TryGetValue ('"' + command + '"', out e))
 		{
-			e.Invoke ();
+			e.Invoke (modifier);
 		}
 	}
 }
