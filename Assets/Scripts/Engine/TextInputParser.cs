@@ -20,7 +20,6 @@ public class TextInputParser : MonoBehaviour
 	void AcceptStringInput (string userInput)
 	{
 		userInput = userInput.ToLower ();
-		Debug.Log (userInput);
 
 		TextToInputMap.instance.FireCommand (userInput);
 

@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
 
 	private void GameOver ()
 	{
-		m_Animator.SetTrigger ("isDying");
+		//m_Animator.SetTrigger ("isDying");
 		GetComponent<BoxCollider2D> ().enabled = false;
 		Destroy (gameObject, 1);
 	}

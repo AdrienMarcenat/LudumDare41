@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
 
 		if (SimpleDamage != null)
 			SimpleDamage ();
-		
+
 		CheckIfGameOver ();
 	}
 
@@ -58,7 +58,9 @@ public class Health : MonoBehaviour
 	private void CheckIfGameOver ()
 	{
 		if (m_CurrentHealth <= 0 && GameOver != null)
+		{
 			GameOver ();
+		}
 	}
 
 	public void Enable (bool enable)
