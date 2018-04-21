@@ -65,7 +65,6 @@ public static class LevelGeneratorParserer
 	{
 		System.DateTime time = System.DateTime.ParseExact (args [0], "mm:ss.fff", null);
 		float floatTime = time.Minute * 60 + time.Second + 0.001f * time.Millisecond;
-		Debug.Log (floatTime);
 		switch (args [1].ToLower ())
 		{
 		case("spawn"):

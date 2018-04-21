@@ -3,6 +3,7 @@ using System.Collections;
 using NUnit.Framework;
 using System;
 using UnityEngine.Analytics;
+using System.IO;
 
 public class EnemyPath : Enemy
 {
@@ -16,10 +17,15 @@ public class EnemyPath : Enemy
 		m_Progress += Time.deltaTime / m_Duration;
 		if (m_Progress > 1f)
 		{
-			m_Progress = 1f;
+			Destroy (gameObject);
 		}
 		Vector2 position = m_Path.GetPoint (m_Progress);
 		transform.localPosition = position;
+	}
+
+	public void SetPath (BezierCurve path)
+	{
+		m_Path = path;
 	}
 }
 

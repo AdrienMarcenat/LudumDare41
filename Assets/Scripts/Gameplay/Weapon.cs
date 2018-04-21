@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct FireCommand
+public class FireCommand
 {
 	public float number;
 	public float sizeModifier;
@@ -13,6 +13,11 @@ public struct FireCommand
 		this.number = number;
 		this.sizeModifier = sizeModifier;
 		this.target = target;
+	}
+
+	public void Decrease ()
+	{
+		number--;
 	}
 }
 
@@ -59,10 +64,7 @@ public class Weapon : MonoBehaviour
 
 	public void Fire (float numberModifier, float sizeModifier, Vector3 target)
 	{
-		for (int i = 0; i < numberModifier; i++)
-		{
-			m_FireCommands.Add (new FireCommand (numberModifier, sizeModifier, target));
-		}
+		m_FireCommands.Add (new FireCommand (numberModifier, sizeModifier, target));
 	}
 
 	private void FireInternal ()
@@ -84,7 +86,7 @@ public class Weapon : MonoBehaviour
 		bullet.transform.localScale *= command.sizeModifier;
 		bullet.GetComponent<Rigidbody2D> ().velocity = ammoVelocity * fireDirection;
 
-		command.number--;
+		command.Decrease ();
 		if (command.number == 0)
 		{
 			m_FireCommands.RemoveAt (0);
