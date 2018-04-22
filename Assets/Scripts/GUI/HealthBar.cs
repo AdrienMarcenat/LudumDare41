@@ -21,6 +21,11 @@ public class HealthBar : MonoBehaviour
 		SetFraction (m_Health.GetCurrentHealth () / m_Health.GetTotalHealth ());
 	}
 
+    public void SetHealth(Health health)
+    {
+        m_Health = health;
+    }
+
 	protected void UpdateFraction ()
 	{
 		if (m_fraction > 1)
