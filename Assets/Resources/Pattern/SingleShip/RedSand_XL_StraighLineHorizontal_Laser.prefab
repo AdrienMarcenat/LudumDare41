@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4328298078433788}
   - component: {fileID: 114747897476463800}
   m_Layer: 8
-  m_Name: RedSand_XL_PlayerAiming_StraighLineHorizontal_Laser
+  m_Name: RedSand_XL_StraighLineHorizontal_Laser
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
