@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-	[SerializeField] float damage;
-	[SerializeField] float range;
-	[SerializeField] float penetration;
-	[SerializeField] int weaponType;
-	[SerializeField] string targetTag;
+	[SerializeField] private float damage;
+	[SerializeField] private float range;
+	[SerializeField] private float penetration;
+	[SerializeField] private int weaponType;
+	[SerializeField] private string targetTag;
+	[SerializeField] private bool m_FollowShooter;
 
 	void Update ()
 	{
@@ -22,7 +23,10 @@ public class Bullet : MonoBehaviour
 		if (other.tag == targetTag)
 		{
 			Health targetHealth = other.GetComponent<Health> ();
-			targetHealth.LoseHealth (damage);
+			if (targetHealth)
+			{
+				targetHealth.LoseHealth (damage);
+			}
 
 			Destroy (gameObject, penetration);
 		}
@@ -31,5 +35,10 @@ public class Bullet : MonoBehaviour
 	void OnDisable ()
 	{
 		Destroy (this.gameObject);
+	}
+
+	public bool IsFollowingShooter ()
+	{
+		return m_FollowShooter;
 	}
 }
