@@ -12,17 +12,17 @@ public class Key : MonoBehaviour {
 		get
 		{
 			return m_character;
-		}
-		set
-		{
-			m_character = value;
+        }
+        set
+        {
+            m_character = value;
             //UpdateChar();
-		}
-	}
+        }
+    }
 
     private void Start()
     {
         int charIndex = LetterInventory.ms_AllLetters.IndexOf (character);
-        m_letterSprite.sprite = RessourceManager.instance.LoadSprite ("chars_spaced", charIndex);
+        m_letterSprite.sprite = RessourceManager.instance.LoadSprite ("Game/Item/chars_spaced", charIndex);
     }
 }

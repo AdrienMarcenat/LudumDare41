@@ -2,29 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GUI : MonoBehaviour
+public class GUI : Singleton<GUI>
 {
-	public GUI instance
-	{
-		get;
-		private set;
-	}
-
 	private HealthBar healthBar;
     public KeyPanel keyPanel { get; private set;}
 	private CommandBar commandBar;
 
-	void Awake ()
+	override protected void Awake ()
 	{	
-		if (instance == null)
-		{
-			instance = this;
-		}
-		else
-		{
-			Debug.LogError ("GUI already instanciated, the new one will be destroyed");
-			Destroy (this);
-		}
+        base.Awake();
 		healthBar = GetComponentInChildren<HealthBar> ();
 		if (!healthBar)
 		{

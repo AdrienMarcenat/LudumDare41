@@ -13,7 +13,7 @@ public class RessourceManager : Singleton<RessourceManager>
 		return prefab;
 	}
 
-	public Sprite LoadSprite (string name, int index)
+	public Sprite LoadSprite (string name, int index = 0)
 	{
 		Sprite[] sprite = Resources.LoadAll<Sprite> ("Sprites/" + name);
 		if (index >= sprite.Length) {
