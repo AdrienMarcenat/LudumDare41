@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 112759174}
   - component: {fileID: 112759173}
   - component: {fileID: 112759172}
-  - component: {fileID: 112759171}
   m_Layer: 0
   m_Name: StartDialogue
   m_TagString: Untagged
@@ -364,24 +363,6 @@ RectTransform:
   m_AnchoredPosition: {x: 271, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &112759171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 112759169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fccf70acebc0184f93295813dc30a6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Dialogue:
-    m_Name: Bob
-    m_Sentences:
-    - Hello, wold !
-    - My name is Bob....
-    - You can also call me Bob of Bob
-    - Nice to meet you, my friend. Time to slay some ships into outer space !
 --- !u!114 &112759172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,17 +402,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 112759171}
+      - m_Target: {fileID: 312299907}
         m_MethodName: TriggerDialogue
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Bob
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &112759173

@@ -2,28 +2,29 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
-	public Text m_DialogeText;
-	public Text m_NameText;
-	public Animator m_Animator;
+	[SerializeField] private Text m_DialogeText;
+	[SerializeField] private Text m_NameText;
+	[SerializeField] private Animator m_Animator;
 
-	private Queue<string> m_Sentences;
+	private Queue<Dialogue.Sentence> m_Sentences;
+	private static string dialogueFileName = "Datas/Dialogues.txt";
 
 	void Start ()
 	{
-		m_Sentences = new Queue<string> ();
+		m_Sentences = new Queue<Dialogue.Sentence> ();
 	}
 
 	public void StartDialogue (Dialogue dialogue)
 	{
 		m_Animator.SetBool ("IsOpen", true);
-		m_NameText.text = dialogue.m_Name;
 
 		m_Sentences.Clear ();
 
-		foreach (string sentence in dialogue.m_Sentences)
+		foreach (Dialogue.Sentence sentence in dialogue.sentences)
 		{
 			m_Sentences.Enqueue (sentence);
 		}
@@ -39,7 +40,9 @@ public class DialogueManager : Singleton<DialogueManager>
 			return;
 		}
 		StopAllCoroutines ();
-		StartCoroutine (TypeSentence (m_Sentences.Dequeue ()));
+		Dialogue.Sentence sentence = m_Sentences.Dequeue ();
+		m_NameText.text = sentence.name;
+		StartCoroutine (TypeSentence (sentence.sentence));
 	}
 
 	IEnumerator TypeSentence (string sentence)
@@ -55,6 +58,54 @@ public class DialogueManager : Singleton<DialogueManager>
 	public void EndDialogue ()
 	{
 		m_Animator.SetBool ("IsOpen", false);
+	}
+
+	public void TriggerDialogue (string tag)
+	{
+		Dialogue dialogue = new Dialogue ();
+
+		char[] separators = { ':' };
+		string filename = dialogueFileName;
+		#if UNITY_EDITOR
+		filename = "Assets/" + dialogueFileName;
+		#endif
+
+		string[] lines = File.ReadAllLines (filename);
+
+		int dialogueBeginning = 0;
+		int dialogueEnd = 0;
+		for (int i = 0; i < lines.Length; i++)
+		{
+			string[] datas = lines [i].Split (separators);
+
+			// If ther is a single word it is a dialog tag
+			if (datas.Length == 1 && datas [0] == tag)
+			{
+				dialogueBeginning = i + 2;
+			}
+			// We then seek for the a ] that signals the end of the dialogue
+			if (dialogueBeginning > 0 && datas.Length == 1 && datas [0] == "]")
+			{
+				dialogueEnd = i;
+			}
+		}
+		if (dialogueBeginning == 0)
+		{
+			Debug.Log ("Could not find dialogue with tag " + tag);
+		}
+
+		for (int i = dialogueBeginning; i < dialogueEnd; i++)
+		{
+			string[] datas = lines [i].Split (separators);
+			if (datas.Length != 2)
+			{
+				Debug.Log ("Invalid number of data line " + i + " expecting 2, got " + datas.Length);
+				return;
+			}
+			dialogue.sentences.Add (new Dialogue.Sentence (datas [0], datas [1]));
+		}
+
+		StartDialogue (dialogue);
 	}
 }
 

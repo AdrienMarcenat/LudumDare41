@@ -1,0 +1,6 @@
+
+Bob
+[
+	Bob:"Hello, world !"
+	Linda:"Hello, Bob !"
+]
