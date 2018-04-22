@@ -26,9 +26,24 @@ public struct CommandModifier
 
 public class CommandModifierManager : Singleton<CommandModifierManager>
 {
-	[SerializeField] private CommandModifierDictionnary m_SizeModifiers;
-	[SerializeField] private CommandModifierDictionnary m_NumberModifiers;
-	[SerializeField] private CommandModifierDictionnary m_SpeedModifiers;
+	[SerializeField] private string m_SizeModifiersFilename;
+	[SerializeField] private string m_NumberModifiersFilename;
+	[SerializeField] private string m_SpeedModifiersFilename;
+
+	private static CommandModifierDictionnary m_SizeModifiers;
+	private static CommandModifierDictionnary m_NumberModifiers;
+	private static CommandModifierDictionnary m_SpeedModifiers;
+
+	void Start ()
+	{
+		m_SizeModifiers = new CommandModifierDictionnary ();
+		m_NumberModifiers = new CommandModifierDictionnary ();
+		m_SpeedModifiers = new CommandModifierDictionnary ();
+
+		m_SizeModifiers.FillModifier (m_SizeModifiersFilename);
+		m_NumberModifiers.FillModifier (m_NumberModifiersFilename);
+		m_SpeedModifiers.FillModifier (m_SpeedModifiersFilename);
+	}
 
 	public CommandModifier GetModifiers (string[] words)
 	{

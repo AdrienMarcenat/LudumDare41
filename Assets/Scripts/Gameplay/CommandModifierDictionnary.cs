@@ -4,27 +4,20 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 
-public class CommandModifierDictionnary : MonoBehaviour
+public class CommandModifierDictionnary
 {
 	private Dictionary<string, float> m_Modifiers;
 
-	[SerializeField] private string m_FileName;
-
-	void Start ()
-	{
-		FillModifier ();
-	}
-
-	public void FillModifier ()
+	public void FillModifier (string filename)
 	{
 		m_Modifiers = new Dictionary<string, float> ();
 
 		char[] separators = { ':' };
 		#if UNITY_EDITOR
-		m_FileName = "Assets/" + m_FileName;
+		filename = "Assets/" + filename;
 		#endif
 
-		string[] lines = File.ReadAllLines (m_FileName);
+		string[] lines = File.ReadAllLines (filename);
 
 		for (int i = 0; i < lines.Length; i++)
 		{
