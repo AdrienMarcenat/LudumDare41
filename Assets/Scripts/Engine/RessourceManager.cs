@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RessourceManager : Singleton<RessourceManager>
 {
-
 	public GameObject LoadPrefab (string name)
 	{
 		GameObject prefab = (GameObject)Resources.Load ("Pattern/" + name, typeof(GameObject));
@@ -13,5 +12,15 @@ public class RessourceManager : Singleton<RessourceManager>
 			Debug.LogWarning ("Prefab " + name + " could not be loaded");
 		}                
 		return prefab;
+	}
+
+	public Sprite LoadSprite (string name, int index)
+	{
+		Sprite[] sprite = Resources.LoadAll<Sprite> ("Sprites/Game/" + name);
+		if (index >= sprite.Length)
+		{
+			Debug.LogWarning ("Sprite " + name + " could not be loaded");
+		}                
+		return sprite [index];
 	}
 }
