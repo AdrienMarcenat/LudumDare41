@@ -35,8 +35,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4320936777063710}
-  - component: {fileID: 114197989492267880}
-  - component: {fileID: 114744808842222492}
+  - component: {fileID: 114097033770193516}
+  - component: {fileID: 114728092660089824}
   - component: {fileID: 114600896682423304}
   - component: {fileID: 114657804874573582}
   - component: {fileID: 114411555595476116}
@@ -103,9 +103,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221333907985800}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalPosition: {x: -600, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4422841023611098}
   - {fileID: 4365685476801552}
@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1160575589837166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 225, y: 626, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4320936777063710}
@@ -211,7 +211,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 150, y: 150}
   m_EdgeRadius: 0
---- !u!114 &114197989492267880
+--- !u!114 &114097033770193516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -219,13 +219,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221333907985800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f599e2c2cd545404aa3bdce776b91e33, type: 3}
+  m_Script: {fileID: 11500000, guid: f4f476f1a72181e45af65e24ab93df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Type: 0
   m_PlayerDamageOnCollision: 10
   m_Sound: {fileID: 0}
   m_HitColorTime: 1
+  m_Path: {fileID: 0}
+  m_Duration: 20
 --- !u!114 &114411555595476116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothSpeed: 200
---- !u!114 &114744808842222492
+--- !u!114 &114728092660089824
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -288,14 +290,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221333907985800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f4dc9fe03ebd754e8c06e83a32a1a5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 13c9902483bdd98488c7f53f73562e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AimedPrecision: 1
-  m_FireSalveNumber: 4
+  m_FireSalveNumber: 1
   m_FireRate: 5
-  m_SizeModifier: 3
-  m_ShootDirection: {fileID: 0}
+  m_SizeModifier: 1
+  m_ShootDirection: {fileID: 4850077321939744}
 --- !u!114 &114993075044011682
 MonoBehaviour:
   m_ObjectHideFlags: 1

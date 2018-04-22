@@ -82,10 +82,13 @@ public class Weapon : MonoBehaviour
 		Vector3 fireDirection = command.target.normalized;
 
 		GameObject bullet = Instantiate (bulletPrefab);
-		bullet.transform.position = transform.position;
 		if (bullet.GetComponent<Bullet> ().IsFollowingShooter ())
 		{
-			bullet.transform.parent = transform;
+			bullet.transform.SetParent (transform, false);
+		}
+		else
+		{
+			bullet.transform.position = transform.position;
 		}
 		bullet.transform.localScale *= command.sizeModifier;
 		bullet.GetComponent<Rigidbody2D> ().velocity = ammoVelocity * fireDirection;

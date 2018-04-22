@@ -158,6 +158,6 @@ MonoBehaviour:
   m_SpawningLocation: {fileID: 4382124399750818}
   m_ShootDirection: {fileID: 4267911224226808}
   m_EnemyPrefabs:
-  - {fileID: 1964893780443024, guid: fec7782c79f87ba44bbc2c2a3a8682aa, type: 2}
+  - {fileID: 1221333907985800, guid: 370293eeae1d47844b0e78d328e3cdce, type: 2}
   m_EnemySpawningDelay: 2
   m_Curve: {fileID: 114215241321101870}
