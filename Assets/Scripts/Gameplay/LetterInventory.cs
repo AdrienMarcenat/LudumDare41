@@ -52,7 +52,7 @@ public class LetterInventory : MonoBehaviour
 	{
 		//m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'r', 'i', 'g', 'h' };
 		m_Letters = ms_AllLetters;
-        GUI.instance.keyPanel.SetKeysAvailable(m_Letters);
+		GUI.instance.keyPanel.SetKeysAvailable (m_Letters);
 	}
 
 	public bool IsLetterOwned (char letter)
@@ -63,13 +63,13 @@ public class LetterInventory : MonoBehaviour
 	public void AddLetter (char letter)
 	{
 		m_Letters.Add (letter);
-        GUI.instance.keyPanel.SetAvailable(letter, true);
+		GUI.instance.keyPanel.SetAvailable (letter, true);
 	}
 
 	public void RemoveLetter (char letter)
 	{
 		m_Letters.Remove (letter);
-        GUI.instance.keyPanel.SetAvailable(letter, false);
+		GUI.instance.keyPanel.SetAvailable (letter, false);
 	}
 }
 

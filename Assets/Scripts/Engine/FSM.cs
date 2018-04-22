@@ -42,9 +42,8 @@ public class FSM : MonoBehaviour
 
 	public void Update ()
 	{
-		foreach (FSMState state in stateStack)
-		{
-			if (state.Update ())
+		foreach (FSMState state in stateStack) {
+			if (state.StateUpdate ())
 				break;
 		}
 		ApplyPendingChanges ();
@@ -80,13 +79,13 @@ public class FSM : MonoBehaviour
 
 	private void ApplyPendingChanges ()
 	{
-		foreach (PendingChange change in pendingList.ToArray())
-		{
-			switch (change.action)
-			{
+		foreach (PendingChange change in pendingList) {
+			Debug.Log (change.action);
+			switch (change.action) {
 			case Action.Push:
 				FSMState pushState = FindState (change.stateID);
 				pushState.Enter ();
+				Debug.Log (change.stateID);
 				stateStack.Push (pushState);
 				break;
 			case Action.Pop:
@@ -94,6 +93,10 @@ public class FSM : MonoBehaviour
 				popState.Exit ();
 				break;
 			case Action.Clear:
+				while (!IsEmpty ()) {
+					FSMState state = stateStack.Pop ();
+					state.Exit ();
+				}
 				stateStack.Clear ();
 				break;
 			}

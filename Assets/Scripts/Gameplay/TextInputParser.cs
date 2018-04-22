@@ -16,8 +16,7 @@ public class TextInputParser : MonoBehaviour
 
 	void Start ()
 	{
-		m_InputField.onValidateInput += delegate(string input, int charIndex, char addedChar)
-		{
+		m_InputField.onValidateInput += delegate(string input, int charIndex, char addedChar) {
 			return FilterChar (addedChar);
 		};
 		m_InputField.Select ();
@@ -26,8 +25,7 @@ public class TextInputParser : MonoBehaviour
 
 	private char FilterChar (char inputChar)
 	{
-		if (!m_LetterInventory.IsLetterOwned (inputChar))
-		{
+		if (!m_LetterInventory.IsLetterOwned (inputChar) || GameFlowPauseState.pause) {
 			inputChar = '\0';
 		}
 		return inputChar;
@@ -38,8 +36,7 @@ public class TextInputParser : MonoBehaviour
 		userInput = userInput.ToLower ();
 
 		string[] words = userInput.Split (m_Separators);
-		if (userInput != "")
-		{
+		if (userInput != "") {
 			TextToInputMap.instance.FireCommand (words [words.Length - 1], m_CommandModifierManager.GetModifiers (words));
 		}
 

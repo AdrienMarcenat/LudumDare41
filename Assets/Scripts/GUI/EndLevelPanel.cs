@@ -5,33 +5,24 @@ public class EndLevelPanel : MonoBehaviour
 {
 	[SerializeField] GameObject endLevelPanel;
 
-	void Start()
+	void Start ()
 	{
-		endLevelPanel.SetActive(false);
+		endLevelPanel.SetActive (false);
 	}
 
 	void OnEnable ()
 	{
-		EndLevelTrigger.EndLevel += EndLevel;
-		GameManager.ChangeScene  += ChangeScene;
+		GameFlowEndLevelState.EndLevel += EndLevel;
 	}
 
 	void OnDisable ()
 	{
-		EndLevelTrigger.EndLevel -= EndLevel;
-		GameManager.ChangeScene  -= ChangeScene;
+		GameFlowEndLevelState.EndLevel -= EndLevel;
 	}
 
-	private void EndLevel ()
+	void EndLevel (bool pause)
 	{
-		GameManager.pause = true;
-		Time.timeScale = 0f;
-		endLevelPanel.SetActive(true);
-	}
-
-	private void ChangeScene()
-	{
-		endLevelPanel.SetActive(false);
+		endLevelPanel.SetActive (pause);
 	}
 }
 

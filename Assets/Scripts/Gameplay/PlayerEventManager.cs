@@ -19,14 +19,11 @@ public class PlayerEventManager : MonoBehaviour
 
 	protected void Update ()
 	{
-		if (GameManager.pause)
-			return;
 	}
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
-		if (other.tag == "Letter")
-		{
+		if (other.tag == "Letter") {
 			m_LetterInventory.AddLetter (other.gameObject.GetComponent<LetterItem> ().letter);
 			Destroy (other.gameObject);
 		}

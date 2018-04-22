@@ -5,34 +5,29 @@ using UnityEngine;
 public class GUI : Singleton<GUI>
 {
 	private HealthBar healthBar;
-    public KeyPanel keyPanel { get; private set;}
+
+	public KeyPanel keyPanel { get; private set; }
+
 	private CommandBar commandBar;
     public DialogGUI dialog;
 
 	override protected void Awake ()
 	{	
-        base.Awake();
+		base.Awake ();
 		healthBar = GetComponentInChildren<HealthBar> ();
-		if (!healthBar)
-		{
+		if (!healthBar) {
 			Debug.LogWarning ("HealthBar not found in GUI");
 		}
 		keyPanel = GetComponentInChildren<KeyPanel> ();
-		if (!keyPanel)
-		{
+		if (!keyPanel) {
 			Debug.LogWarning ("KeyPanel not found in GUI");
 		}
 		commandBar = GetComponentInChildren<CommandBar> ();
-		if (!keyPanel)
-		{
+		if (!keyPanel) {
 			Debug.LogWarning ("CommandBar not found in GUI");
 		}
-        GetComponent<Canvas>().worldCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-	}
-
-	void Start ()
-	{
-        healthBar.SetHealth(GameObject.FindGameObjectWithTag("Player").GetComponent<Health>());
+		GetComponent<Canvas> ().worldCamera = GameObject.FindWithTag ("MainCamera").GetComponent<Camera> ();
+		healthBar.SetHealth (GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ());
 	}
 
 	public void SetCommand (string command)

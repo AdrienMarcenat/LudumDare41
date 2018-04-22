@@ -5,44 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-	public static bool pause;
-
 	public delegate void SimpleEvent ();
 
-	public static event SimpleEvent Pause;
 	public static event SimpleEvent ChangeScene;
 
-	void Start ()
-	{
-		Reset ();
-	}
-
-	public static void PauseEvent ()
-	{
-		pause = !pause;
-		Time.timeScale = 1.0f - Time.timeScale;
-		if (Pause != null)
-			Pause ();
-	}
+	public int currentLevel = 1;
+	public int nextState = 0;
 
 	public static void LoadScene (int index)
 	{
-		instance.Reset ();
 		if (ChangeScene != null)
 			ChangeScene ();
 		SceneManager.LoadScene (index);
 	}
 
-	void Update ()
+	public static void LoadLevel ()
 	{
-		if (Input.GetButtonDown ("Escape")) {
-			PauseEvent ();
-		}
-	}
-
-	private void Reset ()
-	{
-		pause = false;
-		Time.timeScale = 1.0f;
+		LoadScene (instance.currentLevel);
 	}
 }
