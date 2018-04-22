@@ -71,8 +71,7 @@ public static class LevelGeneratorParserer
 			return new SpawnLevelOrder (args.SubArray (2), floatTime);
 
 		case("talk"):
-                //TODO
-			break;
+			return new TalkLevelOrder (args [2], floatTime);
 
 		case("music"):
                 //TODO

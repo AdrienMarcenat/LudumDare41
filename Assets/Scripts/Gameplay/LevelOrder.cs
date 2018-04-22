@@ -104,12 +104,11 @@ public class MusicLevelOrder : LevelOrder
 
 public class TalkLevelOrder : LevelOrder
 {
-	public string face;
-	//TODO
-	public string text;
-	//TODO
-	public TalkLevelOrder ()
+	public string tag;
+
+	public TalkLevelOrder (string tag, float time) : base (time)
 	{
+		this.tag = tag;
 		orderType = LevelOrderType.TALK;
 	}
 }

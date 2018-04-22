@@ -65,7 +65,8 @@ public class LevelGenerator : MonoBehaviour
 			Debug.Log ("MUSIC!!!");
 			break;
 		case(LevelOrderType.TALK):
-			Debug.Log ("WE ARE TALKING !!!");
+			TalkLevelOrder talkLevelOrder = (TalkLevelOrder)order;
+			DialogueManager.instance.TriggerDialogue (talkLevelOrder.tag);
 			break;
 		case(LevelOrderType.END_LEVEL):
 			Debug.Log ("END LEVEL!!!");
