@@ -11,7 +11,7 @@ public class PlayerGameOverState : FSMState
 
 	public override void Enter ()
 	{
-		GameManager.LoadScene (0);	
+		
 	}
 
 	public override void Exit ()

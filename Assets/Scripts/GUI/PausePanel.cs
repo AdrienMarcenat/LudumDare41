@@ -5,26 +5,24 @@ public class PausePanel : MonoBehaviour
 {
 	[SerializeField] GameObject pausePanel;
 
-	void Start()
+	void Start ()
 	{
 		pausePanel.SetActive (false);
 	}
 
 	void OnEnable ()
 	{
-		GameManager.Pause += Pause;
-		GameManager.ChangeScene += Pause;
+		GameFlowPauseState.Pause += Pause;
 	}
 
 	void OnDisable ()
 	{
-		GameManager.Pause -= Pause;
-		GameManager.ChangeScene -= Pause;
+		GameFlowPauseState.Pause -= Pause;
 	}
 
-	void Pause ()
+	void Pause (bool pause)
 	{
-		pausePanel.SetActive (GameManager.pause);
+		pausePanel.SetActive (pause);
 	}
 }
 

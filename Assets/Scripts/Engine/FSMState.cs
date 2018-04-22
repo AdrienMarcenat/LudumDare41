@@ -6,31 +6,40 @@ public abstract class FSMState : MonoBehaviour
 	protected FSM fsm;
 	protected int ID;
 
-	protected virtual void Awake()
+	protected virtual void Awake ()
 	{
-		fsm = GetComponent<FSM>();
+		fsm = GetComponent<FSM> ();
 	}
 
-	protected virtual void Start()
+	protected virtual void Start ()
 	{
 		fsm.RegisterState (ID, this);
 	}
 
-	public virtual void Enter () {}
-	public virtual bool Update () { return false; }
-	public virtual void Exit () {}
+	public virtual void Enter ()
+	{
+	}
 
-	protected void requestStackPush(int stateID)
+	public virtual bool StateUpdate ()
+	{
+		return false;
+	}
+
+	public virtual void Exit ()
+	{
+	}
+
+	protected void requestStackPush (int stateID)
 	{
 		fsm.PushState (stateID);
 	}
 
-	protected void requestStackPop()
+	protected void requestStackPop ()
 	{
 		fsm.PopState ();
 	}
 
-	protected void requestStateClear()
+	protected void requestStateClear ()
 	{
 		fsm.ClearStates ();
 	}

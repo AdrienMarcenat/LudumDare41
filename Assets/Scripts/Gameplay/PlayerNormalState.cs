@@ -56,12 +56,12 @@ public class PlayerNormalState : FSMState
 
 	private void MoveLeft (CommandModifier modifier)
 	{
-		m_Body.Move (-1, 0);
+		m_Body.Move (-1 * modifier.speedModifier, 0);
 	}
 
 	private void MoveRight (CommandModifier modifier)
 	{
-		m_Body.Move (1, 0);
+		m_Body.Move (1 * modifier.speedModifier, 0);
 	}
 
 	private void MoveStop (CommandModifier modifier)
