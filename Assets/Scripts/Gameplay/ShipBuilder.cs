@@ -194,7 +194,6 @@ public class ShipBuilder : MonoBehaviour
 			return;
 		}
 		foreach (GameObject weapon in weapons) {
-			Debug.Log (gameObject.name);
 			Instantiate (weapon, transform);
 		}
 		if (!GetComponent<WeaponManager> ()) {
