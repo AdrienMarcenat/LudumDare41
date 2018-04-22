@@ -40,6 +40,7 @@ public class GUI : MonoBehaviour
 		{
 			Debug.LogWarning ("CommandBar not found in GUI");
 		}
+        GetComponent<Canvas>().worldCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
 	}
 
 	void Start ()
