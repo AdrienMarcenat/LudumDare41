@@ -16,7 +16,7 @@ public class FSM : MonoBehaviour
 		public Action action;
 		public int stateID;
 
-		public PendingChange(Action a, int ID = 0)
+		public PendingChange (Action a, int ID = 0)
 		{
 			action = a;
 			stateID = ID;
@@ -28,21 +28,21 @@ public class FSM : MonoBehaviour
 	private Hashtable factories;
 
 
-	protected virtual void Awake()
+	protected virtual void Awake ()
 	{
 		stateStack = new Stack<FSMState> ();
 		pendingList = new List<PendingChange> ();
 		factories = new Hashtable ();
 	}
 
-	public void RegisterState(int stateID, FSMState state)
+	public void RegisterState (int stateID, FSMState state)
 	{
-		factories.Add(stateID, state);
+		factories.Add (stateID, state);
 	}
 
-	public void Update()
+	public void Update ()
 	{
-		foreach(FSMState state in stateStack)
+		foreach (FSMState state in stateStack)
 		{
 			if (state.Update ())
 				break;
@@ -50,54 +50,55 @@ public class FSM : MonoBehaviour
 		ApplyPendingChanges ();
 	}
 
-	public void PushState(int stateID)
+
+	public void PushState (int stateID)
 	{
-		pendingList.Add(new PendingChange(Action.Push, stateID));
+		pendingList.Add (new PendingChange (Action.Push, stateID));
 	}
 
-	public void PopState()
+	public void PopState ()
 	{
-		if (IsEmpty())
+		if (IsEmpty ())
 			return;
-		pendingList.Add(new PendingChange(Action.Pop));
+		pendingList.Add (new PendingChange (Action.Pop));
 	}
 
-	public void ClearStates()
+	public void ClearStates ()
 	{
-		pendingList.Add(new PendingChange(Action.Clear));
+		pendingList.Add (new PendingChange (Action.Clear));
 	}
 
-	public bool IsEmpty()
+	public bool IsEmpty ()
 	{
 		return stateStack.Count == 0;
 	}
 
-	private FSMState FindState(int stateID)
+	private FSMState FindState (int stateID)
 	{
-		return (FSMState) factories [stateID];
+		return (FSMState)factories [stateID];
 	}
 
-	private void ApplyPendingChanges()
+	private void ApplyPendingChanges ()
 	{
-		foreach (PendingChange change in pendingList)
+		foreach (PendingChange change in pendingList.ToArray())
 		{
 			switch (change.action)
 			{
 			case Action.Push:
 				FSMState pushState = FindState (change.stateID);
 				pushState.Enter ();
-				stateStack.Push(pushState);
+				stateStack.Push (pushState);
 				break;
 			case Action.Pop:
 				FSMState popState = stateStack.Pop ();
-				popState.Exit();
+				popState.Exit ();
 				break;
 			case Action.Clear:
 				stateStack.Clear ();
 				break;
 			}
 		}
-		pendingList.Clear();
+		pendingList.Clear ();
 	}
 }
 

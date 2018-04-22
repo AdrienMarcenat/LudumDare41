@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerGameOverState : FSMState
 {
-	protected override void Awake()
+	protected override void Awake ()
 	{
 		ID = (int)PlayerStates.ID.GameOver;
 		base.Awake ();
@@ -11,7 +11,7 @@ public class PlayerGameOverState : FSMState
 
 	public override void Enter ()
 	{
-		GameManager.LoadScene (1);	
+		GameManager.LoadScene (0);	
 	}
 
 	public override void Exit ()

@@ -3,41 +3,41 @@ using System.Collections;
 
 public class PlayerInvicibleState : FSMState
 {
-	private Health health;
-	private SpriteRenderer sprite;
-	[SerializeField] float invulnerabilityFrames;
-	[SerializeField] float blinkingRate;
-	private float invulnerabilityFramesDelay;
+	private Health m_Health;
+	private SpriteRenderer m_Sprite;
+	[SerializeField] float m_InvulnerabilitySeconds;
+	[SerializeField] float m_BlinkingRate;
+	private float m_InvulnerabilitySecondsDelay;
 
-	protected override void Awake()
+	protected override void Awake ()
 	{
 		ID = (int)PlayerStates.ID.Invincible;
 		base.Awake ();
 
-		health = GetComponent<Health> ();
-		sprite = GetComponent<SpriteRenderer> ();
+		m_Health = GetComponent<Health> ();
+		m_Sprite = GetComponentInChildren<SpriteRenderer> ();
 	}
 
 	public override void Enter ()
 	{
-		health.Enable(false);
-		StartCoroutine (InvulnerabilityRoutine());
+		m_Health.Enable (false);
+		StartCoroutine (InvulnerabilityRoutine ());
 	}
 
 	public override void Exit ()
 	{
-		sprite.enabled = true;
-		health.Enable(true);
+		m_Sprite.enabled = true;
+		m_Health.Enable (true);
 	}
 
-	IEnumerator InvulnerabilityRoutine()
+	IEnumerator InvulnerabilityRoutine ()
 	{
-		invulnerabilityFramesDelay = invulnerabilityFrames;
-		while (invulnerabilityFramesDelay > 0) 
+		m_InvulnerabilitySecondsDelay = m_InvulnerabilitySeconds;
+		while (m_InvulnerabilitySecondsDelay > 0)
 		{
-			invulnerabilityFramesDelay -= Time.deltaTime + blinkingRate;
-			sprite.enabled = !sprite.enabled;
-			yield return new WaitForSeconds (blinkingRate);
+			m_InvulnerabilitySecondsDelay -= Time.deltaTime + m_BlinkingRate;
+			m_Sprite.enabled = !m_Sprite.enabled;
+			yield return new WaitForSeconds (m_BlinkingRate);
 		}
 		requestStackPop ();
 	}

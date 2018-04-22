@@ -37,6 +37,9 @@ public class PlayerNormalState : FSMState
 		EventManager.Register (PlayerEventManager.MoveStop, m_ActionMoveStopt);
 		EventManager.Register (PlayerEventManager.Fire, m_ActionFire);
 		EventManager.Register (PlayerEventManager.Laser, m_ActionLaser);
+
+		m_Health.SimpleDamage += Damage;
+		m_Health.GameOver += GameOver;
 	}
 
 	public override void Exit ()
@@ -46,6 +49,9 @@ public class PlayerNormalState : FSMState
 		EventManager.Unregister (PlayerEventManager.MoveStop, m_ActionMoveStopt);
 		EventManager.Unregister (PlayerEventManager.Fire, m_ActionFire);
 		EventManager.Unregister (PlayerEventManager.Laser, m_ActionLaser);
+
+		m_Health.SimpleDamage -= Damage;
+		m_Health.GameOver -= GameOver;
 	}
 
 	private void MoveLeft (CommandModifier modifier)
