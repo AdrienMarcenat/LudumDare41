@@ -20,29 +20,26 @@ public class EnemyAI : MonoBehaviour
 	void Start ()
 	{
 		m_WeaponManager = GetComponent<WeaponManager> ();
-		m_FireDelay = m_FireRate;
+		m_FireDelay = 0;
 	}
 
 	void Update ()
 	{
-		if (m_FireDelay < m_FireRate)
-		{
+		if (m_FireDelay < m_FireRate) {
 			m_FireDelay += Time.deltaTime;
-		}
-		else
-		{
+		} else {
 			Fire ();
 			m_FireDelay = 0;
 		}
 	}
 
-    public void SetFireParameters(float rate, float salveNumber, float sizeModifier, float precision)
-    {
-        m_FireRate = rate;
-        m_FireSalveNumber = salveNumber;
-        m_SizeModifier = sizeModifier;
-        m_AimedPrecision = precision;
-    }
+	public void SetFireParameters (float rate, float salveNumber, float sizeModifier, float precision)
+	{
+		m_FireRate = rate;
+		m_FireSalveNumber = salveNumber;
+		m_SizeModifier = sizeModifier;
+		m_AimedPrecision = precision;
+	}
 
 	public void SetShootDirection (Transform shootDirection)
 	{

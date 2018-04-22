@@ -18,11 +18,10 @@ public class Enemy : MonoBehaviour
 
 	protected void Awake ()
 	{
-        ShipBuilder builder = GetComponent<ShipBuilder>();
-        if (builder)
-        {
-            builder.Build();
-        }
+		ShipBuilder builder = GetComponent<ShipBuilder> ();
+		if (builder) {
+			builder.Build ();
+		}
 		m_Animator = GetComponent<Animator> ();
 		m_Health = GetComponent<Health> ();
 		m_Sprite = GetComponentInChildren<SpriteRenderer> ();
@@ -60,29 +59,28 @@ public class Enemy : MonoBehaviour
 		Destroy (gameObject, 1);
 	}
 
-	private void OnCollisionStay2D (Collision2D other)
+	private void OnTriggerStay2D (Collider2D other)
 	{
-		if (other.gameObject.tag == "Player")
-		{
+		if (other.gameObject.tag == "Player") {
 			Health playerHealth = other.gameObject.GetComponent<Health> ();
 			playerHealth.LoseHealth (m_PlayerDamageOnCollision);
 		}
 	}
 
-    public void SetDamageOnCollision(float damage)
-    {
-        m_PlayerDamageOnCollision = damage;
-    }
+	public void SetDamageOnCollision (float damage)
+	{
+		m_PlayerDamageOnCollision = damage;
+	}
 
-    public void SetHitColorTime(float time)
-    {
-        m_HitColorTime = time;
-    }
+	public void SetHitColorTime (float time)
+	{
+		m_HitColorTime = time;
+	}
 
-    public void SetHitSound(AudioClip sound)
-    {
-        m_Sound = sound;
-    }
+	public void SetHitSound (AudioClip sound)
+	{
+		m_Sound = sound;
+	}
 
 	public void SetTarget (Transform target)
 	{
