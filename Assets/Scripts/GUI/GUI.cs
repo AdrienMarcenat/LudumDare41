@@ -9,6 +9,7 @@ public class GUI : Singleton<GUI>
 	public KeyPanel keyPanel { get; private set; }
 
 	private CommandBar commandBar;
+    public DialogGUI dialog;
 
 	override protected void Awake ()
 	{	

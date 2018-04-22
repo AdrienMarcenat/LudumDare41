@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class Dialogue
+public class Dialog
 {
 	public struct Sentence
 	{
@@ -19,7 +19,7 @@ public class Dialogue
 
 	public List<Sentence> sentences;
 
-	public Dialogue ()
+	public Dialog ()
 	{
 		sentences = new List<Sentence> ();
 	}
