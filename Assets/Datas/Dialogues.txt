@@ -4,3 +4,275 @@ Bob
 	Bob:"Hello, world !"
 	Linda:"Hello, Bob !"
 ]
+
+WrongCommandLinda1
+[
+	Linda:"Commander, could you repeat your... command... or whatever it was?"
+]
+
+WrongCommandLinda2
+[
+	Linda:"Commander, I believe you may be using the wrong language."
+]
+
+WrongCommandLinda3
+[
+	Linda:"... I beg your pardon Commander, but did you really try to say something coherent?"
+]
+
+WrongCommandLinda4
+[
+	Linda:"If I may, I think you might want to try that again but with your mouth opened."
+]
+
+WrongCommandLinda5
+[
+	Linda:"Pardon me Commander, but what you ordered wasn't comprehensible."
+]
+
+WrongCommandCarl1
+[
+	Carl:"Errrg... Sorry Captain, I didn't get that."
+]
+
+WrongCommandCarl2
+[
+	Carl:"What did you just say?..."
+]
+
+WrongCommandCarl3
+[
+	Carl:"I hope that wasn't an insult Captain! Haha!... Could you repeat?..."
+]
+
+WrongCommandCarl4
+[
+	Carl:"That sounded just like a flammethrower!"
+]
+
+WrongCommandCarl5
+[
+	Carl:"Hahaha! Excellent joke Captain!..............."
+]
+
+WrongCommandBob1
+[
+	Bob:"Are you okay Boss? You sounded like a dying cow."
+]
+
+WrongCommandBob2
+[
+	Bob:"Oy, was that you trying to pronounce my lastname?"
+]
+
+WrongCommandBob3
+[
+	Bob:"Sorry Boss, I didn't get a word you said!"
+]
+
+WrongCommandBob4
+[
+	Bob:"<i>ZzzzZzz...</i> GUACAMOLE!!!... Sorry Boss, you were saying?"
+]
+
+WrongCommandBob5
+[
+	Bob:"... Why do the strangest command always fall on me?"
+]
+
+WrongCommandTom1
+[
+	Tom:"Was that a pickup line?"
+]
+
+WrongCommandTom2
+[
+	Tom:"Sorry Cap', but I don't think yar rambles mean anything."
+]
+
+WrongCommandTom3
+[
+	Tom:"Ya sound even more broken then the engines!"
+]
+
+WrongCommandTom4
+[
+	Tom:"Sorry Captain, I couldn't hear. What were ya saying?"
+]
+
+WrongCommandTom5
+[
+	Tom:"Ya gotta speak more clearly Cap', ya're impossible to understand."
+]
+
+WrongCommandCindy1
+[
+	Cindy:"I'm confused Leader, was that supposed to mean something?"
+]
+
+WrongCommandCindy2
+[
+	Cindy:"Sorry Leader, could you try saying that again?"
+]
+
+WrongCommandCindy3
+[
+	Cindy:"Oh sorry, I though you were just cleaning your throat."
+]
+
+WrongCommandCindy4
+[
+	Cindy:"Is that a chant for some ancien spell?"
+]
+
+WrongCommandCindy5
+[
+	Cindy:"Are you high Leader? Or did you make those sounds on purpose?"
+]
+
+
+
+Hit1
+[
+	Ship:"<i>Outch</i>"
+]
+
+Hit2
+[
+	Ship:"<i>Clonk</i>"
+]
+
+Hit3
+[
+	Tom:"Cap'! We've been hit!"
+]
+
+Hit4
+[
+	Tom:"The engine has been hit Cap'!"
+]
+
+Hit5
+[
+	Tom:"There's a breach in chamber 9!"
+]
+
+Hit6
+[
+	Bob:"Ah! I've drop the paperclips!"
+]
+
+Hit7
+[
+	Carl:"Show me the gunner that hit us!"
+]
+
+Hit8
+[
+	Cindy:"Well, we didn't avoid this one."
+]
+
+Hit9
+[
+	Bob:"<i>ZzzzzZzZzz...</i> Huh?... What was that?"
+]
+
+
+
+LowHealth1
+[
+	Tom:"Cap'! Cap'! I don't think the machines will hold much longer!"
+]
+
+LowHealth2
+[
+	Linda:"It has (almost) been a pleasure to serve under you Commander."
+]
+
+LowHealth3
+[
+	Bob:"I'm too young to die!"
+]
+
+LowHealth4
+[
+	Bob:"Please don't blow up... Please don't blow up... Please don't blow up..."
+]
+
+LowHealth5
+[
+	Cindy:"In case we don't make it out of this alive, I just wanted you to know..."
+	Cindy:"...it was me that ate Bob's guacamole."
+]
+
+
+
+CommandCindy1
+[
+	Cindy:"Roger Leader!"
+]
+
+CommandCindy2
+[
+	Cindy:"Roger!"
+]
+
+CommandCindy3
+[
+	Cindy:"Ok Leader!"
+]
+
+CommandCindy4
+[
+	Cindy:"Ok!"
+]
+
+CommandMoveRight1
+[
+	Cindy:"Ok Leader, going right!..."
+]
+
+CommandMoveRight2
+[
+	Cindy:"Roger Leader, going to the right!..."
+]
+
+CommandMoveLeft1
+[
+	Cindy:"Ok Leader, going left!..."
+]
+
+CommandMoveLeft2
+[
+	Cindy:"Roger Leader, going to the left!..."
+]
+
+CommandMoveFast1
+[
+	Cindy:"Yes!!! Let's warm up those engines!"
+]
+
+CommandMoveFast2
+[
+	Tom:"Yes!!! Let's warm up those engines!"
+]
+
+CommandMoveTooFast1
+[
+	Cindy:"We can't be going too fast or Tom's going to be mad. That's the fastest."
+]
+
+CommandMoveTooFast2
+[
+	Cindy:"You sound like you want to go fast hu? Well, me too!"
+]
+
+CommandMoveTooFast3
+[
+	Tom:"Ya're planning on melting the machines are ya? That's the best I can give ya."
+]
+
+CommandMoveTooFast4
+[
+	Bob:"<i>*Bam*</i> Ay! We're so fast I fell."
+]
