@@ -167,6 +167,10 @@ public class ShipBuilder : MonoBehaviour
 
 	protected void SetupAim ()
 	{
+		if (weapons.Length == 0) {
+			return;
+		}
+
 		EnemyAI aiming = GetComponent<EnemyAI> ();
 		if (!aiming) {
 			if (playerAim) {
@@ -175,7 +179,7 @@ public class ShipBuilder : MonoBehaviour
 				aiming = gameObject.AddComponent<EnemyFixedAiming> ();
 			}
 		}
-		aiming.SetFireParameters (fireRate, salveNumber, sizeModifier, precision);
+		aiming.SetFireParameters (weapons [0].GetComponent<Weapon> ().GetWeaponType (), fireRate, salveNumber, sizeModifier, precision);
 
 		if (target) {
 			aiming.SetShootDirection (target);
@@ -186,14 +190,15 @@ public class ShipBuilder : MonoBehaviour
 
 	protected void SetupWeapons ()
 	{
-		if (!GetComponent<WeaponManager> ()) {
-			gameObject.AddComponent<WeaponManager> ();
-		}
-		if (weapons.Length == 0) {
+		if (weapons.Length == 0 || GetComponent<WeaponManager> ()) {
 			return;
 		}
 		foreach (GameObject weapon in weapons) {
+			Debug.Log (gameObject.name);
 			Instantiate (weapon, transform);
+		}
+		if (!GetComponent<WeaponManager> ()) {
+			gameObject.AddComponent<WeaponManager> ();
 		}
 	}
 }

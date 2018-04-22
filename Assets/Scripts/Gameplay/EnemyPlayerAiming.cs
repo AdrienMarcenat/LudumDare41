@@ -10,9 +10,9 @@ public class EnemyPlayerAiming : EnemyAI
 		m_Target = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 
-	protected override void Fire ()
+	protected override void Fire (int weaponType)
 	{
-		m_WeaponManager.Fire (0, m_FireSalveNumber, m_SizeModifier, m_Target.position - transform.position);
+		m_WeaponManager.Fire (weaponType, m_FireSalveNumber, m_SizeModifier, m_Target.position - transform.position);
 	}
 }
 
