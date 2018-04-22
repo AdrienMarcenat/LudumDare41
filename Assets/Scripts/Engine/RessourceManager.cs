@@ -15,7 +15,7 @@ public class RessourceManager : Singleton<RessourceManager>
 
 	public Sprite LoadSprite (string name, int index)
 	{
-		Sprite[] sprite = Resources.LoadAll<Sprite> ("Sprites/Game/Item/" + name);
+		Sprite[] sprite = Resources.LoadAll<Sprite> ("Sprites/" + name);
 		if (index >= sprite.Length) {
 			Debug.LogWarning ("Sprite " + name + " could not be loaded");
 		}                

@@ -15,7 +15,7 @@ public class LetterItem : MonoBehaviour
 	void Start ()
 	{
 		int charIndex = LetterInventory.ms_AllLetters.IndexOf (letter);
-		m_LetterSprite.sprite = RessourceManager.instance.LoadSprite ("chars_spaced", charIndex);
+		m_LetterSprite.sprite = RessourceManager.instance.LoadSprite ("Game/Item/chars_spaced", charIndex);
 		m_Target = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 

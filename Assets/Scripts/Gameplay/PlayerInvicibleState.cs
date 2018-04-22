@@ -4,9 +4,9 @@ using System.Collections;
 public class PlayerInvicibleState : FSMState
 {
 	private Health m_Health;
-	private SpriteRenderer m_Sprite;
-	[SerializeField] float m_InvulnerabilitySeconds;
-	[SerializeField] float m_BlinkingRate;
+	[SerializeField] private SpriteRenderer m_Sprite;
+	[SerializeField] private float m_InvulnerabilitySeconds;
+	[SerializeField] private float m_BlinkingRate;
 	private float m_InvulnerabilitySecondsDelay;
 
 	protected override void Awake ()
@@ -15,13 +15,17 @@ public class PlayerInvicibleState : FSMState
 		base.Awake ();
 
 		m_Health = GetComponent<Health> ();
-		m_Sprite = GetComponentInChildren<SpriteRenderer> ();
 	}
 
 	public override void Enter ()
 	{
-		m_Health.Enable (false);
-		StartCoroutine (InvulnerabilityRoutine ());
+		// If we already are in invicible state, pop this state
+		if (!m_Sprite.enabled) {
+			requestStackPop ();
+		} else {
+			m_Health.Enable (false);
+			StartCoroutine (InvulnerabilityRoutine ());
+		}
 	}
 
 	public override void Exit ()
@@ -33,8 +37,7 @@ public class PlayerInvicibleState : FSMState
 	IEnumerator InvulnerabilityRoutine ()
 	{
 		m_InvulnerabilitySecondsDelay = m_InvulnerabilitySeconds;
-		while (m_InvulnerabilitySecondsDelay > 0)
-		{
+		while (m_InvulnerabilitySecondsDelay > 0) {
 			m_InvulnerabilitySecondsDelay -= Time.deltaTime + m_BlinkingRate;
 			m_Sprite.enabled = !m_Sprite.enabled;
 			yield return new WaitForSeconds (m_BlinkingRate);

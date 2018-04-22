@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1905719695011340}
+  m_IsPrefabParent: 1
+--- !u!1 &1905719695011340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4144815714628780}
+  - component: {fileID: 114371305163388660}
+  m_Layer: 8
+  m_Name: RedSand_L_PlayerAiming_BottomLeft_Missile
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4144815714628780
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905719695011340}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 2000, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &114371305163388660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905719695011340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f586bd554151a174b99cb6fc8f1ef44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 3
+  sprite: {fileID: 21300000, guid: fd82eafeaef394943902046e8abeb2ce, type: 3}
+  health: 200
+  dommageOnCollision: 40
+  playerAim: 1
+  fireRate: 3
+  target: {fileID: 0}
+  precision: 0
+  salveNumber: 1
+  sizeModifier: 2
+  pathPrefab: {fileID: 1191829360718228, guid: e2c5fb063fd81914ba2970f4c11c3b7a, type: 2}
+  duration: 15
+  weapons:
+  - {fileID: 1320771062688852, guid: d1dfc97f50b1ee442914d94588c21057, type: 2}
+  onHitColorTime: 2
+  onHitSound: {fileID: 0}
