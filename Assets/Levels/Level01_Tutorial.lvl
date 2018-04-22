@@ -1,2 +1,17 @@
 [now]
-00:05.000 endgame
+00:10.000 spawn SingleShip/RedSand_S_PlayerAiming_StraighLine_NormalFire
+00:15.000 spawn SingleShip/RedSand_S_PlayerAiming_Horizontal_NormalFire
+00:30.000 spawn Squadron/Squadron_Horizontal_S_Missile
+00:45.000 spawn SingleShip/RedSand_S_PlayerAiming_StraighLine_NormalFire
+00:45.000 spawn SingleShip/RedSand_L_PlayerAiming_BottomRight_Missile
+00:50.000 spawn Squadron/Squadron_Horizontal_S_Missile
+01:00.000 spawn Squadron/Squadron_LeftArc_S_missile
+01:10.000 spawn Squadron/Squadron_RightArc_S_missile
+01:30.000 spawn SingleShip/RedSand_XL_UpArcHorizontal_Laser
+01:45.000 spawn SingleShip/RedSand_L_PlayerAiming_BottomLeft_Missile
+01:55.000 spawn SingleShip/RedSand_L_PlayerAiming_BottomRight_Missile
+02:00.000 spawn SingleShip/RedSand_XL_PlayerAiming_TopRight_Missile
+02:00.000 spawn SingleShip/RedSand_XL_PlayerAiming_TopLeft_Missile
+02:20.000 spawn Squadron/Squadron_Horizontal_S_Missile
+02:50.000 spawn Squadron/Squadron_UpArc_XL_Laser
+03:18.000 endgame

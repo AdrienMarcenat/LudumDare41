@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4491208659498372}
   - component: {fileID: 114082336673776698}
   m_Layer: 8
-  m_Name: RedSand_XL_PlayerAiming_UpArcHorizontal_Laser
+  m_Name: RedSand_XL_UpArcHorizontal_Laser
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
