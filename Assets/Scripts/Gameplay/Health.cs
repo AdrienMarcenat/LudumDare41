@@ -24,6 +24,12 @@ public class Health : MonoBehaviour
 		m_DamageModifier = 1.0f;
 	}
 
+    public void SetHealth(float value)
+    {
+        m_TotalHealth = value;
+        m_CurrentHealth = value;
+    }
+
 	public void LoseHealth (float damage)
 	{
 		if (!m_Enable)

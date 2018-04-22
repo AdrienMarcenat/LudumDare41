@@ -36,6 +36,14 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
+    public void SetFireParameters(float rate, float salveNumber, float sizeModifier, float precision)
+    {
+        m_FireRate = rate;
+        m_FireSalveNumber = salveNumber;
+        m_SizeModifier = sizeModifier;
+        m_AimedPrecision = precision;
+    }
+
 	public void SetShootDirection (Transform shootDirection)
 	{
 		m_ShootDirection = shootDirection;

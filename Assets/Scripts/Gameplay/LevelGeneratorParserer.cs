@@ -78,8 +78,7 @@ public static class LevelGeneratorParserer
 			break;
 
 		case("endgame"):
-                //TODO
-			break;
+            return new EndLevelOrder (floatTime);
 		}
 		return null;
 	}

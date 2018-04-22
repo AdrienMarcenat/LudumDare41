@@ -1,0 +1,5 @@
+[now]
+00:05.000 spawn SquadronPattern
+00:05.000 talk Bob
+00:10.000 spawn Enemy_XL
+00:15.000 spawn SquadronPattern_XL

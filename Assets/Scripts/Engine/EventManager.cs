@@ -14,7 +14,7 @@ public class EventManager : Singleton<EventManager>
 {
 	private Dictionary <string, Command> m_EventDictionary;
 
-	void Awake ()
+    override protected void Awake ()
 	{
 		base.Awake ();
 		if (m_EventDictionary == null)

@@ -32,8 +32,16 @@ public class PatternEnemySpawner : MonoBehaviour
 		{
 			m_Delay = 0;
 			GameObject enemy = Instantiate (m_EnemyPrefabs [currentIndex]);
-			enemy.GetComponent<EnemyAI> ().SetShootDirection (m_ShootDirection);
-			enemy.GetComponent<EnemyPath> ().SetPath (m_Curve);
+            if (m_ShootDirection)
+            {
+                EnemyAI ai = enemy.GetComponent<EnemyAI>();
+                ai.SetShootDirection(m_ShootDirection);
+            }
+            if (m_Curve)
+            {  
+                EnemyPath path = enemy.GetComponent<EnemyPath>();
+                path.SetPath(m_Curve);
+            }
 			enemy.transform.position = m_SpawningLocation.position;
 			currentIndex++;
 		}

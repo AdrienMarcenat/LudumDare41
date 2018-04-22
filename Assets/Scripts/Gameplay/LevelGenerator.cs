@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        this.ParseFile("Assets/Datas/TestLevel.txt");
+        this.ParseFile("Assets/Levels/Level01_Tutorial.lvl");
     }
 
 	public void Reset ()

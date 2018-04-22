@@ -27,5 +27,10 @@ public class EnemyPath : Enemy
 	{
 		m_Path = path;
 	}
+
+    public void SetDuration(float duration)
+    {
+        m_Duration = duration;
+    }
 }
 

@@ -96,7 +96,7 @@ public class MusicLevelOrder : LevelOrder
 {
 	public string music;
 	//TODO
-	public MusicLevelOrder ()
+    public MusicLevelOrder (string music, float time) : base (time)
 	{
 		orderType = LevelOrderType.MUSIC;
 	}
@@ -115,7 +115,7 @@ public class TalkLevelOrder : LevelOrder
 
 public class EndLevelOrder : LevelOrder
 {
-	public EndLevelOrder ()
+    public EndLevelOrder (float time) : base (time)
 	{
 		orderType = LevelOrderType.END_LEVEL;
 	}

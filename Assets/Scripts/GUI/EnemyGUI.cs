@@ -4,33 +4,48 @@ using System.Collections;
 public class EnemyGUI : MonoBehaviour
 {
 	private Health m_Health;
+    protected Health health
+    {
+        get
+        {
+            if (m_Health == null)
+            {
+                m_Health = GetComponentInParent<Health>();
+            }
+            return m_Health;
+        }
+        set
+        {
+            m_Health = value;
+        }
+    }
 
 	[SerializeField] SpriteRenderer m_HealthBar;
 
-	void Awake ()
-	{
-		m_Health = GetComponentInParent<Health> ();
-	}
+    public void SetRenderer(SpriteRenderer renderer)
+    {
+        m_HealthBar = renderer;
+    }
 
 	void OnEnable ()
 	{
-		m_Health.SimpleDamage += UpdateUI;
+        health.SimpleDamage += UpdateUI;
 	}
 
 	void OnDisable ()
 	{
-		m_Health.SimpleDamage -= UpdateUI;
+        health.SimpleDamage -= UpdateUI;
 	}
 
 	private void HealthBarEnable ()
 	{
-		m_HealthBar.enabled = true;
+        health.enabled = true;
 	}
 
 	private void UpdateUI ()
 	{
-		float currentHealth = m_Health.GetCurrentHealth ();
-		float totalHealth = m_Health.GetTotalHealth ();
+        float currentHealth = health.GetCurrentHealth ();
+        float totalHealth = health.GetTotalHealth ();
 
 		Vector3 scale = m_HealthBar.transform.localScale;
 		m_HealthBar.transform.localScale = new Vector3 (currentHealth / totalHealth, scale.y, scale.z);
