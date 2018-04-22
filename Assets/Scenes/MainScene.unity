@@ -3733,16 +3733,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 114465014959866296, guid: da90e1995bf38064189ff66b66dcbd85,
-        type: 2}
-      propertyPath: duration
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465014959866296, guid: da90e1995bf38064189ff66b66dcbd85,
-        type: 2}
-      propertyPath: playerAim
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da90e1995bf38064189ff66b66dcbd85, type: 2}
   m_IsPrefabParent: 0

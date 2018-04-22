@@ -4,30 +4,26 @@ using System.Collections.Generic;
 
 public class WeaponManager : MonoBehaviour
 {
-	private List<Weapon> m_Weapons;
+	private Dictionary<int,Weapon> m_Weapons;
 
 	void Start ()
 	{
-		m_Weapons = new List<Weapon> ();
+        m_Weapons = new Dictionary<int,Weapon> ();
 		foreach (Weapon w in GetComponentsInChildren<Weapon> ())
 		{
-			m_Weapons.Add (w);
+            m_Weapons.Add (w.GetWeaponType(),w);
 		}
-		m_Weapons.Sort (delegate(Weapon a, Weapon b)
-		{
-			return a.GetWeaponType ().CompareTo (b.GetWeaponType ());
-		});
 	}
 
 	public void Fire (int weaponType, float numberModifier, float sizeModifier, Vector3 target)
 	{
-		if (weaponType < m_Weapons.Count)
+        if (m_Weapons.ContainsKey(weaponType))
 		{
-			m_Weapons [weaponType].Fire (numberModifier, sizeModifier, target);
+			m_Weapons[weaponType].Fire (numberModifier, sizeModifier, target);
 		}
 		else
 		{
-			Debug.Log ("Wrong weapon Type");	
+            Debug.Log("Wrong weapon Type");
 		}
 	}
 }
