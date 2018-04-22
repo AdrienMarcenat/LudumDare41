@@ -15,8 +15,12 @@ public class LevelGenerator : MonoBehaviour
 	void Awake ()
 	{
 		Reset ();
-		this.ParseFile ("Assets/Datas/TestLevel.txt");
 	}
+
+    void Start()
+    {
+        this.ParseFile("Assets/Datas/TestLevel.txt");
+    }
 
 	public void Reset ()
 	{

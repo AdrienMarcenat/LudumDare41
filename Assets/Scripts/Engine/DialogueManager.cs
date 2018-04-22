@@ -20,6 +20,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
 	public void StartDialogue (Dialogue dialogue)
 	{
+        return;
 		m_Animator.SetBool ("IsOpen", true);
 
 		m_Sentences.Clear ();
