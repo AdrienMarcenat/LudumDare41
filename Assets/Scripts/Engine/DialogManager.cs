@@ -4,27 +4,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-public class DialogueManager : Singleton<DialogueManager>
+public class DialogManager : Singleton<DialogManager>
 {
-	[SerializeField] private Text m_DialogeText;
+	[SerializeField] private Text m_DialogText;
 	[SerializeField] private Text m_NameText;
-	[SerializeField] private Animator m_Animator;
+    [SerializeField] private DialogGUI m_DialogGUI;
 
-	private Queue<Dialogue.Sentence> m_Sentences;
+	private Queue<Dialog.Sentence> m_Sentences;
 	private static string dialogueFileName = "Datas/Dialogues.txt";
 
 	void Start ()
 	{
-		m_Sentences = new Queue<Dialogue.Sentence> ();
+		m_Sentences = new Queue<Dialog.Sentence> ();
 	}
 
-	public void StartDialogue (Dialogue dialogue)
+	public void StartDialogue (Dialog dialogue)
 	{
-		m_Animator.SetBool ("IsOpen", true);
+        m_DialogGUI.Open(2);
 
 		m_Sentences.Clear ();
 
-		foreach (Dialogue.Sentence sentence in dialogue.sentences)
+		foreach (Dialog.Sentence sentence in dialogue.sentences)
 		{
 			m_Sentences.Enqueue (sentence);
 		}
@@ -40,29 +40,29 @@ public class DialogueManager : Singleton<DialogueManager>
 			return;
 		}
 		StopAllCoroutines ();
-		Dialogue.Sentence sentence = m_Sentences.Dequeue ();
+		Dialog.Sentence sentence = m_Sentences.Dequeue ();
 		m_NameText.text = sentence.name;
 		StartCoroutine (TypeSentence (sentence.sentence));
 	}
 
 	IEnumerator TypeSentence (string sentence)
 	{
-		m_DialogeText.text = "";
+        m_DialogText.text = "";
 		foreach (char letter in sentence.ToCharArray())
 		{
-			m_DialogeText.text += letter;
+			m_DialogText.text += letter;
 			yield return null;
 		}
 	}
 
 	public void EndDialogue ()
 	{
-		m_Animator.SetBool ("IsOpen", false);
+        m_DialogGUI.Close();
 	}
 
 	public void TriggerDialogue (string tag)
 	{
-		Dialogue dialogue = new Dialogue ();
+		Dialog dialogue = new Dialog ();
 
 		char[] separators = { ':' };
 		string filename = dialogueFileName;
@@ -102,7 +102,7 @@ public class DialogueManager : Singleton<DialogueManager>
 				Debug.Log ("Invalid number of data line " + i + " expecting 2, got " + datas.Length);
 				return;
 			}
-			dialogue.sentences.Add (new Dialogue.Sentence (datas [0], datas [1]));
+			dialogue.sentences.Add (new Dialog.Sentence (datas [0], datas [1]));
 		}
 
 		StartDialogue (dialogue);

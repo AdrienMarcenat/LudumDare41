@@ -90,7 +90,7 @@ public class LevelGenerator : MonoBehaviour
 			break;
 		case(LevelOrderType.TALK):
 			TalkLevelOrder talkLevelOrder = (TalkLevelOrder)order;
-			DialogueManager.instance.TriggerDialogue (talkLevelOrder.tag);
+			DialogManager.instance.TriggerDialogue (talkLevelOrder.tag);
 			break;
 		case(LevelOrderType.END_LEVEL):
 			Debug.Log ("END LEVEL!!!");

@@ -7,6 +7,7 @@ public class GUI : Singleton<GUI>
 	private HealthBar healthBar;
     public KeyPanel keyPanel { get; private set;}
 	private CommandBar commandBar;
+    public DialogGUI dialog;
 
 	override protected void Awake ()
 	{	
