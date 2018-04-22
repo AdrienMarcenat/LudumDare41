@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-
+    public bool done = true;
+    protected bool started = false;
 	protected float m_startTime;
 	protected float m_currentTime;
 
@@ -28,26 +29,45 @@ public class LevelGenerator : MonoBehaviour
 		m_orderId = 0;
 	}
 
+    protected float latestTime;
+
 	void Update ()
 	{
 		m_currentTime += Time.deltaTime;
-		if (m_sequenceId >= m_orderSequences.Count)
-		{
-			return;
-		}
-		LevelSequence currentSequence = m_orderSequences [m_sequenceId];
-		float latestTime;
-		while (m_orderId < currentSequence.orders.Count)
-		{
-			LevelOrder currentOrder = currentSequence.orders [m_orderId];
-			if (currentOrder.when > m_currentTime)
-			{
-				break;
-			}
-			latestTime = currentOrder.when;
-			ExecuteOrder (currentOrder);
-			m_orderId++;
-		}
+        while (m_sequenceId < m_orderSequences.Count)
+        {
+            LevelSequence currentSequence = m_orderSequences[m_sequenceId];
+            if (!started)
+            {
+                if (currentSequence.start == LevelSequence.LevelSequenceStart.WHEN_DONE)
+                {
+                    if (!done)
+                    {
+                        return;
+                    }
+                    m_currentTime = Time.deltaTime;
+                }
+                else
+                {
+                    m_currentTime -= latestTime;
+                    latestTime = 0;
+                }
+                started = true;
+            }
+            while (m_orderId < currentSequence.orders.Count)
+            {
+                LevelOrder currentOrder = currentSequence.orders[m_orderId];
+                if (currentOrder.when > m_currentTime)
+                {
+                    return;
+                }
+                latestTime = currentOrder.when;
+                ExecuteOrder(currentOrder);
+                m_orderId++;
+            }
+            started = false;
+            m_sequenceId++;
+        }
 	}
 
 	private void ExecuteOrder (LevelOrder order)

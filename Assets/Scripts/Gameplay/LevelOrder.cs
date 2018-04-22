@@ -85,7 +85,6 @@ public class SpawnLevelOrder : LevelOrder
 				prefab = things [0];
 			}
 			GameObject entity = RessourceManager.instance.LoadPrefab (prefab);
-			entity = (GameObject)entity;
 			entities.Add (entity);
 			entitiesQuantity.Add (num);
 		}

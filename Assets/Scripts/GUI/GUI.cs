@@ -11,7 +11,7 @@ public class GUI : MonoBehaviour
 	}
 
 	private HealthBar healthBar;
-	private KeyPanel keyPanel;
+    public KeyPanel keyPanel { get; private set;}
 	private CommandBar commandBar;
 
 	void Awake ()
@@ -44,21 +44,11 @@ public class GUI : MonoBehaviour
 
 	void Start ()
 	{
-		SetCommand ("plz go right");
+        healthBar.SetHealth(GameObject.FindGameObjectWithTag("Player").GetComponent<Health>());
 	}
 
 	public void SetCommand (string command)
 	{
 		commandBar.SetText (command);
-	}
-
-	public void AddKey (char key)
-	{
-		keyPanel.Add (key);
-	}
-
-	public void RemoveKey (char key)
-	{
-		keyPanel.Remove (key);
 	}
 }
