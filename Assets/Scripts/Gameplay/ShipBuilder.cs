@@ -139,14 +139,18 @@ public class ShipBuilder : MonoBehaviour
 		}
 		if (sprite) {
 			SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer> ();
+			Animator animator = GetComponentInChildren<Animator> ();
 			if (!renderer) {
 				GameObject temp = new GameObject ();
 				GameObject child = Instantiate (temp, transform);
 				DestroyImmediate (temp);
 				child.name = name + "_Sprite";
 				renderer = child.AddComponent<SpriteRenderer> ();
+				if (!animator)
+					animator = child.AddComponent<Animator> ();
 			}
 			renderer.sprite = sprite;
+			animator.runtimeAnimatorController = Resources.Load ("Animator/Ship") as RuntimeAnimatorController;
 		}
 
 		if (!GetComponentInChildren<EnemyGUI> ()) {

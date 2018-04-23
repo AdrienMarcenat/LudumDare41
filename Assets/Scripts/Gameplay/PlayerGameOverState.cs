@@ -11,7 +11,7 @@ public class PlayerGameOverState : FSMState
 
 	public override void Enter ()
 	{
-		
+		gameObject.GetComponentInChildren<Animator> ().SetBool ("IsDead", true);
 	}
 
 	public override void Exit ()

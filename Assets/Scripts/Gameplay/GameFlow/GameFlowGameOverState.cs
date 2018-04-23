@@ -24,7 +24,7 @@ public class GameFlowGameOverState : FSMState
 	public override void Enter ()
 	{
 		SoundManager.PlayMusic (m_GameOverMusic);
-		Time.timeScale = 0f;
+		StartCoroutine (FreezeTime ());
 		if (GameOver != null)
 			GameOver (true);
 		EventManager.Register (PlayerEventManager.Menu, m_Menu);
@@ -38,6 +38,12 @@ public class GameFlowGameOverState : FSMState
 		Time.timeScale = 1f;
 		if (GameOver != null)
 			GameOver (false);
+	}
+
+	IEnumerator FreezeTime ()
+	{
+		yield return new WaitForSecondsRealtime (1.5f);
+		Time.timeScale = 0f;
 	}
 
 	public void RetryLevel (CommandModifier cm)

@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 		if (builder) {
 			builder.Build ();
 		}
-		m_Animator = GetComponent<Animator> ();
+		m_Animator = GetComponentInChildren<Animator> ();
 		m_Health = GetComponent<Health> ();
 		m_Sprite = GetComponentInChildren<SpriteRenderer> ();
 		m_InitialColor = m_Sprite.color;
@@ -54,7 +54,9 @@ public class Enemy : MonoBehaviour
 
 	private void GameOver ()
 	{
-		//m_Animator.SetTrigger ("isDying");
+		StopAllCoroutines ();
+		m_Sprite.color = m_InitialColor;
+		m_Animator.SetBool ("IsDead", true);
 		GetComponent<BoxCollider2D> ().enabled = false;
 		Destroy (gameObject, 1);
 	}
