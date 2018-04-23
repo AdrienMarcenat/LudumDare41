@@ -3675,9 +3675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2957d697565825a4b9a13fad7de5f7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DialogeText: {fileID: 0}
-  m_NameText: {fileID: 0}
-  m_Animator: {fileID: 0}
 --- !u!4 &312299908
 Transform:
   m_ObjectHideFlags: 0
@@ -3884,11 +3881,20 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-
-    - target: {fileID: 114160148646442096, guid: fc82c014489dd0346bbfbef6473529c7,
+    - target: {fileID: 114328248522114346, guid: fc82c014489dd0346bbfbef6473529c7,
         type: 2}
-      propertyPath: m_FontData.m_LineSpacing
-      value: 0.76
+      propertyPath: m_LetterInventory
+      value: 
+      objectReference: {fileID: 1652791202}
+    - target: {fileID: 114328248522114346, guid: fc82c014489dd0346bbfbef6473529c7,
+        type: 2}
+      propertyPath: m_CommandModifierManager
+      value: 
+      objectReference: {fileID: 1501559511}
+    - target: {fileID: 114560478764790622, guid: fc82c014489dd0346bbfbef6473529c7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc82c014489dd0346bbfbef6473529c7, type: 2}
@@ -8460,6 +8466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341b3c81ecd221e4e8af8e273fbe25c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 1
+  nextState: 0
 --- !u!4 &2055405411
 Transform:
   m_ObjectHideFlags: 0
