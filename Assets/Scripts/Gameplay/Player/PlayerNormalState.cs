@@ -88,7 +88,13 @@ public class PlayerNormalState : FSMState
 
 	private void Laser (CommandModifier modifier)
 	{
-		m_WeaponManager.Fire (1, modifier.numberModifier, modifier.sizeModifier, Vector3.up);
+		Energy energy = GetComponent<Energy> ();
+		if (energy != null) {
+			if (energy.GetCurrentEnergy () > 0) {
+				m_WeaponManager.Fire (1, 1, modifier.sizeModifier, Vector3.up);
+				energy.LoseEnergy (30 * modifier.sizeModifier);
+			}
+		}
 	}
 
 	private void Autodestruction (CommandModifier cm)
@@ -118,7 +124,7 @@ public class PlayerNormalState : FSMState
 
 	private void Shield (CommandModifier cm)
 	{
-		print ("shield");
+		requestStackPush ((int)PlayerStates.ID.Shield);
 	}
 }
 

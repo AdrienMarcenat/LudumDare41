@@ -8,7 +8,8 @@ namespace PlayerStates
 		Normal = 0,
 		Invincible = 1,
 		GameOver = 2,
-		God = 3
+		God = 3,
+		Shield = 4
 	}
 }
 
@@ -31,6 +32,7 @@ public class PlayerFSM : FSM
 		GetComponent<MovingObject> ().Reset ();
 		GetComponent<WeaponManager> ().Reset ();
 		GetComponent<LetterInventory> ().Reset ();
+		GetComponent<Energy> ().Reset ();
 		if (m_SpawningPosition == null)
 			m_SpawningPosition = GameObject.Find ("PlayerSpawningPosition").transform;
 		if (m_SpawningPosition != null)

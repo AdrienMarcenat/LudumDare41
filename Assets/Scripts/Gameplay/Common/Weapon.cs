@@ -70,7 +70,7 @@ public class Weapon : MonoBehaviour
 		}
 
 		m_FireDelay = 0;
-		SetAmmo (-1);
+		//SetAmmo (-1);
 		SoundManager.PlayMultiple (fireSound);
 
 		FireCommand command = m_FireCommands [0];
