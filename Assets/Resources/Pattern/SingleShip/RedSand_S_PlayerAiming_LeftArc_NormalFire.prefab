@@ -56,7 +56,7 @@ MonoBehaviour:
   health: 100
   dommageOnCollision: 20
   playerAim: 1
-  fireRate: 3
+  fireRate: 8
   target: {fileID: 0}
   precision: 0
   salveNumber: 1

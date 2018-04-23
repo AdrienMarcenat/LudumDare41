@@ -23,7 +23,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 	protected override void Awake ()
 	{
 		base.Awake ();
-		level = 1;
+		level = 2;
 		m_orderSequences = new List<LevelSequence> ();
 		m_SpawnedObjects = new List<GameObject> ();
 	}

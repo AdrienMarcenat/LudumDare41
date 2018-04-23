@@ -20,16 +20,15 @@ public class Bullet : MonoBehaviour
 
 	private void OnTriggerEnter2D (Collider2D other)
 	{
-		if (other.tag == targetTag)
-		{
+		if (other.tag == targetTag) {
 			Health targetHealth = other.GetComponent<Health> ();
-			if (targetHealth)
-			{
+			if (targetHealth) {
 				targetHealth.LoseHealth (damage);
 			}
 
 			Destroy (gameObject, penetration);
-		}
+		} else if (other.tag == "Wall" && targetTag != "Player")
+			Destroy (gameObject);
 	}
 
 	void OnDisable ()

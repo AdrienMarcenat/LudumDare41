@@ -33,7 +33,7 @@ public class GameFlowMenuState : FSMState
 			StopAllCoroutines ();
 			requestStateClear ();
 			GameManager.instance.currentScene = 1;
-			LevelGenerator.level = 1;
+			LevelGenerator.level = 2;
 			GameManager.instance.nextState = (int)GameFlowStates.ID.Level;
 			requestStackPush ((int)GameFlowStates.ID.Loading);
 		}

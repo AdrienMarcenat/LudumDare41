@@ -68,6 +68,23 @@ Tutorial10
 	Linda:"We are awaiting your orders, Commander !"
 ]
 
+IntroLevel2
+[
+	Linda:"Let's find the remaining letters, but beware the RedSand ships !"
+]
+
+BossDialogueLevel2
+[
+	Cindy:"I detect a RedSand Super Destroyer ! It must be the evil general Glortark !"
+	Glortark:"This time I will crush you ! I'm invicible with my shield ! And don't even think of destroying the generators !"
+	Tom:"Of course we will not target those defenseless generators..."
+]
+
+EndLevel2
+[
+	Linda:"Another great victory, Commander. Let's go home now."
+]
+
 WrongCommandLinda1
 [
 	Linda:"Commander, could you repeat your... command... or whatever it was?"

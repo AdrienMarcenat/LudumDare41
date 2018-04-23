@@ -2,14 +2,25 @@
 "Right":MoveRight
 "stop":MoveStop
 "fire":Fire
+"missile":Fire
+"shoot":Fire
+"boum":Fire
+"piou piou":Fire
 "laser":Laser
+"raygun":Laser
 "pause":Pause
 "resume":Resume
 "menu":Menu
+"exit":Menu
 "next level":NextLevel
+"next world":NextLevel
+"next system":NextLevel
+"anywhere":NextLevel
+"somewhere":NextLevel
 "retry":Retry
 "try again":Retry
 "autodestruction":Autodestruction
 "shield":Shield
+"protection":Shield
 "stop music":StopMusic
 "Time":Time
