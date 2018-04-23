@@ -46,5 +46,19 @@ public class GameFlowPauseState : FSMState
 	{
 		requestStackPop ();
 	}
+
+	public void RetryLevel ()
+	{
+		requestStateClear ();
+		GameManager.instance.nextState = (int)GameFlowStates.ID.Level;
+		requestStackPush ((int)GameFlowStates.ID.Loading);
+	}
+
+	public void GoToMenu ()
+	{
+		requestStateClear ();
+		GameManager.instance.nextState = (int)GameFlowStates.ID.Menu;
+		requestStackPush ((int)GameFlowStates.ID.Loading);
+	}
 }
 

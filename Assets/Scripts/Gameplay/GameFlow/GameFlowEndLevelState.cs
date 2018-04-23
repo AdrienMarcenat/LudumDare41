@@ -7,6 +7,8 @@ public class GameFlowEndLevelState : FSMState
 
 	public static event EndLevelEvent EndLevel;
 
+	[SerializeField] private AudioClip m_SucessMusic;
+
 	protected override void Awake ()
 	{
 		ID = (int)GameFlowStates.ID.EndLevel;
@@ -15,6 +17,8 @@ public class GameFlowEndLevelState : FSMState
 
 	public override void Enter ()
 	{
+		SoundManager.StopMusic ();
+		SoundManager.PlaySingle (m_SucessMusic);
 		Time.timeScale = 0f;
 		if (EndLevel != null)
 			EndLevel (true);
@@ -27,11 +31,25 @@ public class GameFlowEndLevelState : FSMState
 			EndLevel (false);
 	}
 
+	public void RetryLevel ()
+	{
+		requestStateClear ();
+		GameManager.instance.nextState = (int)GameFlowStates.ID.Level;
+		requestStackPush ((int)GameFlowStates.ID.Loading);
+	}
+
 	public void NextLevel ()
 	{
 		requestStateClear ();
 		GameManager.instance.currentLevel++;
 		GameManager.instance.nextState = (int)GameFlowStates.ID.Level;
+		requestStackPush ((int)GameFlowStates.ID.Loading);
+	}
+
+	public void GoToMenu ()
+	{
+		requestStateClear ();
+		GameManager.instance.nextState = (int)GameFlowStates.ID.Menu;
 		requestStackPush ((int)GameFlowStates.ID.Loading);
 	}
 }

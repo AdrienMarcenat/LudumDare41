@@ -4,6 +4,8 @@ using UnityEngine.Analytics;
 
 public class GameFlowLevelState : FSMState
 {
+	[SerializeField] private AudioClip m_LevelMusic;
+
 	protected override void Awake ()
 	{
 		ID = (int)GameFlowStates.ID.Level;
@@ -12,6 +14,7 @@ public class GameFlowLevelState : FSMState
 
 	public override void Enter ()
 	{
+		SoundManager.PlayMusic (m_LevelMusic);
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver += GameOver;
 	}
 

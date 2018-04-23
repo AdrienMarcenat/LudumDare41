@@ -7,6 +7,8 @@ public class GameFlowGameOverState : FSMState
 
 	public static event GameOverEvent GameOver;
 
+	[SerializeField] private AudioClip m_GameOverMusic;
+
 	protected override void Awake ()
 	{
 		ID = (int)GameFlowStates.ID.GameOver;
@@ -15,6 +17,7 @@ public class GameFlowGameOverState : FSMState
 
 	public override void Enter ()
 	{
+		SoundManager.PlayMusic (m_GameOverMusic);
 		Time.timeScale = 0f;
 		if (GameOver != null)
 			GameOver (true);
@@ -31,6 +34,13 @@ public class GameFlowGameOverState : FSMState
 	{
 		requestStateClear ();
 		GameManager.instance.nextState = (int)GameFlowStates.ID.Level;
+		requestStackPush ((int)GameFlowStates.ID.Loading);
+	}
+
+	public void GoToMenu ()
+	{
+		requestStateClear ();
+		GameManager.instance.nextState = (int)GameFlowStates.ID.Menu;
 		requestStackPush ((int)GameFlowStates.ID.Loading);
 	}
 }

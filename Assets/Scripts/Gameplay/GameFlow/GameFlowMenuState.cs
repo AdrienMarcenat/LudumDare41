@@ -5,6 +5,7 @@ public class GameFlowMenuState : FSMState
 {
 	[SerializeField] GameObject blinkingText;
 	[SerializeField] float blinkingRate;
+	[SerializeField] private AudioClip m_MenuMusic;
 
 	protected override void Awake ()
 	{
@@ -14,6 +15,7 @@ public class GameFlowMenuState : FSMState
 
 	public override void Enter ()
 	{
+		SoundManager.PlayMusic (m_MenuMusic);
 		StartCoroutine (BlinkRoutine ());
 	}
 
@@ -34,6 +36,9 @@ public class GameFlowMenuState : FSMState
 			requestStackPush ((int)GameFlowStates.ID.Loading);
 		}
 
+		if (blinkingText == null) {
+			blinkingText = GameObject.Find ("BlinkingText");
+		}
 		return true;
 	}
 
@@ -52,7 +57,9 @@ public class GameFlowMenuState : FSMState
 
 	private void BlinkText ()
 	{
-		blinkingText.SetActive (!blinkingText.activeSelf);
+		if (blinkingText != null) {
+			blinkingText.SetActive (!blinkingText.activeSelf);
+		}
 	}
 }
 

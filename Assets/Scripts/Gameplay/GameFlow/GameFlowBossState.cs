@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GameFlowBossState : FSMState
 {
+	[SerializeField] private AudioClip m_BossMusic;
 	public bool IsBossDead;
 
 	protected override void Awake ()
@@ -13,6 +14,7 @@ public class GameFlowBossState : FSMState
 
 	public override void Enter ()
 	{
+		SoundManager.PlayMusic (m_BossMusic);
 		IsBossDead = false;
 	}
 
