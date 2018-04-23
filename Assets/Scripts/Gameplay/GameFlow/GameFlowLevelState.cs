@@ -9,8 +9,6 @@ public class GameFlowLevelState : FSMState
 
 	public static event EnterLevelEvent EnterLevel;
 
-	[SerializeField] private AudioClip m_LevelMusic;
-
 	private UnityAction<CommandModifier> m_ActionPause;
 	private UnityAction<CommandModifier> m_ActionWaitDialogue;
 	private UnityAction<CommandModifier> m_ActionEndLevel;
@@ -32,7 +30,6 @@ public class GameFlowLevelState : FSMState
 		EventManager.Register (PlayerEventManager.Pause, m_ActionPause);
 		EventManager.Register ("WaitDialogue", m_ActionWaitDialogue);
 		EventManager.Register ("EndLevel", m_ActionEndLevel);
-		SoundManager.PlayMusic (m_LevelMusic);
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerFSM> ().Reset ();
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver += GameOver;
 		LevelGenerator.Load ();

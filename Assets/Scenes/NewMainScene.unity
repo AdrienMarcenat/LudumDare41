@@ -4179,6 +4179,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9355cf8c146d16f4abf1cc4fdbb2d4d1, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1056727572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1056727573}
+  m_Layer: 0
+  m_Name: PlayerSpawningPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1056727573
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1056727572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -200, y: -514, z: 102.55959}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1093612238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,6 +4238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   done: 1
+  isWaiting: 0
 --- !u!4 &1093612240
 Transform:
   m_ObjectHideFlags: 0
@@ -8466,8 +8495,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341b3c81ecd221e4e8af8e273fbe25c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
+  currentScene: 1
   nextState: 0
+  currentState: 0
 --- !u!4 &2055405411
 Transform:
   m_ObjectHideFlags: 0

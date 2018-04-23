@@ -8,12 +8,14 @@ public class WaitingTrigger : MonoBehaviour
 	void Start ()
 	{
 		m_LevelManager = GameObject.Find ("LevelManager").GetComponent<LevelGenerator> ();
+		m_LevelManager.IncreaseWaitingCounter ();
 	}
 
 	void OnDisable ()
 	{
-		if (m_LevelManager)
-			m_LevelManager.isWaiting = false;
+		if (m_LevelManager) {
+			m_LevelManager.DecreaseWaitingCounter ();
+		}
 	}
 }
 

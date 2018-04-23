@@ -42,8 +42,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100718690541604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,8 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341b3c81ecd221e4e8af8e273fbe25c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 0
+  currentScene: 1
   nextState: 0
+  currentState: 0
 --- !u!114 &114399560827893512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a98a85b998eec0843a70501809bba69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BossMusic: {fileID: 8300000, guid: 624ad2f8356e69a4a98646c6df422b36, type: 3}
+  m_BossMusic: {fileID: 8300000, guid: f0f7b3c127425b8438955bae7ec10ab3, type: 3}
   IsBossDead: 0
 --- !u!114 &114565029544994566
 MonoBehaviour:
@@ -145,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blinkingText: {fileID: 0}
   blinkingRate: 0.5
-  m_MenuMusic: {fileID: 8300000, guid: dcf680a9521ea5c4b859096393279d95, type: 3}
+  m_MenuMusic: {fileID: 8300000, guid: e415d208803cbc9429fa4ba5c9be4d6f, type: 3}
 --- !u!114 &114671234077574590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,7 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5657a61a3857e3044a24e844c302aab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelMusic: {fileID: 8300000, guid: 6f7f8d6f76714144fb7f7374fc812e2a, type: 3}
 --- !u!114 &114803015393201176
 MonoBehaviour:
   m_ObjectHideFlags: 1

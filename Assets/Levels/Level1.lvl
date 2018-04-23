@@ -1,29 +1,25 @@
 [now]
-00:01.000 music Theme 17 34
+00:01.000 music Tuto_loop1 17 34
 00:02.000 waitdialogue Tutorial1
 00:02.500 spawn Letters/SpecialR
-00:03.000 waitdialogue Tutorial2
-00:03.500 wait
-00:04.000 waitdialogue Tutorial3
-00:05.000 spawn SingleShip/RedSand_L_Tutorial
-00:05.000 music Theme 34 52
-00:05.000 waitdialogue Tutorial4
-00:05.500 wait
-00:06.000 waitdialogue Tutorial5
-00:07.000 spawn Squadron/Squadron_Middle_L_Tutorial
-00:07.000 music Theme 17 198
-00:07.000 waitdialogue Tutorial6
-00:07.500 wait
-00:08.000 waitdialogue Tutorial7
-00:08.500 spawn SingleShip/RedSand_L_Tutorial
-00:08.500 wait
-00:09.000 waitdialogue Tutorial8
-00:09.500 spawn SingleShip/RedSand_L_Tutorial
-00:10.000 wait
-00:10.500 music Boss_Intro 0 81
-00:10.500 waitdialogue Tutorial9
-00:11.000 spawn SingleShip/Boss_Tutorial
-00:11.000 music Boss 10 81
-00:11.500 wait
-00:12.000 waitdialogue Tutorial10
-00:12.500 endgame
+00:02.500 waitdialogue Tutorial2
+00:03.000 waitdialogue Tutorial3
+00:04.000 spawn SingleShip/RedSand_L_Tutorial
+00:04.000 music Tuto_loop2 34 52
+00:04.000 waitdialogue Tutorial4
+00:05.000 waitdialogue Tutorial5
+00:06.000 spawn Squadron/Squadron_Middle_L_Tutorial
+00:06.000 music Theme 17 198
+00:06.000 waitdialogue Tutorial6
+00:07.000 waitdialogue Tutorial7
+00:08.000 spawn Squadron/Squadron_Horizontal_S_Mix_waiting
+00:08.500 waitdialogue Tutorial8
+00:09.000 spawn Squadron/Squadron_S_UpArc_Tutorial
+00:09.000 spawn SingleShip/RedSand_L_Tutorial_letter4
+00:10.000 spawn SingleShip/RedSand_L_PlayerAiming_BottomRight_Missile_letterO
+00:28.000 music Boss_Intro 0 81
+00:28.000 waitdialogue Tutorial9
+00:29.000 spawn SingleShip/Boss_Tutorial
+00:29.000 music Boss 10 81
+00:30.000 waitdialogue Tutorial10
+00:30.500 endgame

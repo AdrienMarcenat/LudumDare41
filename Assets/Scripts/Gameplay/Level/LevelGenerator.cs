@@ -18,6 +18,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
 	private DialogManager m_DialogueManager;
 	private List<GameObject> m_SpawnedObjects;
+	private int m_WaitingCounter = 0;
 
 	protected override void Awake ()
 	{
@@ -53,6 +54,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 		started = false;
 		isWaiting = false;
 		done = true;
+		m_WaitingCounter = 0;
 	}
 
 	protected float latestTime;
@@ -118,10 +120,10 @@ public class LevelGenerator : Singleton<LevelGenerator>
 			EventManager.TriggerEvent ("EndLevel", new CommandModifier (1, 1, 1));
 			break;
 		case(LevelOrderType.WAIT_TRIGGER):
-			isWaiting = true;
+			IncreaseWaitingCounter ();
 			break;
 		case(LevelOrderType.WAIT_DIALOGUE):
-			isWaiting = true;
+			IncreaseWaitingCounter ();
 			EventManager.TriggerEvent ("WaitDialogue", new CommandModifier (1, 1, 1));
 			WaitDialogueLevelOrder waitDialogueLevelOrder = (WaitDialogueLevelOrder)order;
 			m_DialogueManager.TriggerDialogue (waitDialogueLevelOrder.tag);
@@ -134,5 +136,17 @@ public class LevelGenerator : Singleton<LevelGenerator>
 		GameObject spawnedObject = Instantiate (prefab);
 		m_SpawnedObjects.Add (spawnedObject);
 		return spawnedObject;
+	}
+
+	public void IncreaseWaitingCounter ()
+	{
+		m_WaitingCounter++;
+		isWaiting = m_WaitingCounter > 0;
+	}
+
+	public void DecreaseWaitingCounter ()
+	{
+		m_WaitingCounter--;
+		isWaiting = m_WaitingCounter > 0;
 	}
 }

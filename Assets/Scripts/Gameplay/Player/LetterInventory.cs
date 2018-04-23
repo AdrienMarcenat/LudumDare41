@@ -54,8 +54,8 @@ public class LetterInventory : MonoBehaviour
 	void Start ()
 	{
 		m_Gui = GameObject.Find ("GUI").GetComponent<GUI> ();
-		//m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'i', 'g', 'h', '2', 's', 'a', 'y' };
-		m_Letters = ms_AllLetters;
+		m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'i', 'g', 'h', '2', '3', 's', 'a', 'y', 'x', 'n', 'v', 'p' };
+		//m_Letters = ms_AllLetters;
 		m_LettersTemp = new List<char> (m_Letters);
 		m_InitialLetters = new List<char> (m_Letters);
 		m_Gui.keyPanel.SetKeysAvailable (m_Letters);
@@ -85,8 +85,10 @@ public class LetterInventory : MonoBehaviour
 
 	public void AddLetter (char letter)
 	{
-		m_Letters.Add (letter);
-		m_Gui.keyPanel.SetAvailable (letter, true);
+		if (!m_Letters.Contains (letter)) {
+			m_Letters.Add (letter);
+			m_Gui.keyPanel.SetAvailable (letter, true);
+		}
 	}
 
 	public void RemoveLetter (char letter)

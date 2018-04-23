@@ -29,7 +29,7 @@ public class GameFlowDialogueState : FSMState
 	public override void Exit ()
 	{
 		GameManager.instance.currentState = 0;
-		GameObject.Find ("LevelManager").GetComponent<LevelGenerator> ().isWaiting = false;
+		GameObject.Find ("LevelManager").GetComponent<LevelGenerator> ().DecreaseWaitingCounter ();
 	}
 
 	void NextSentence ()
