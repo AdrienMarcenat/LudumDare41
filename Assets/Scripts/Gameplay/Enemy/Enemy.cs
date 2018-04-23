@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
 	[SerializeField] protected int m_Type;
 	[SerializeField] protected float m_PlayerDamageOnCollision;
-	[SerializeField] protected AudioClip m_Sound;
+	[SerializeField] protected AudioClip m_DeathSound;
 	[SerializeField] protected float m_HitColorTime;
 
 	protected Transform m_Target;
@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
 		StopAllCoroutines ();
 		m_Sprite.color = m_InitialColor;
 		m_Animator.SetBool ("IsDead", true);
+		SoundManager.PlayMultiple (m_DeathSound);
 		GetComponent<BoxCollider2D> ().enabled = false;
 		SpawnLetter spawnLetter = GetComponent<SpawnLetter> ();
 		if (spawnLetter != null)
@@ -84,7 +85,7 @@ public class Enemy : MonoBehaviour
 
 	public void SetHitSound (AudioClip sound)
 	{
-		m_Sound = sound;
+		m_DeathSound = sound;
 	}
 
 	public void SetTarget (Transform target)

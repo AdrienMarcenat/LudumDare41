@@ -63,7 +63,8 @@ MonoBehaviour:
   sizeModifier: 1
   pathPrefab: {fileID: 1977227985141680, guid: 46b68bcddeeaff1478db41f746059ee6, type: 2}
   duration: 15
+  loop: 0
   weapons:
   - {fileID: 1320771062688852, guid: d1dfc97f50b1ee442914d94588c21057, type: 2}
   onHitColorTime: 2
-  onHitSound: {fileID: 0}
+  onHitSound: {fileID: 8300000, guid: 3e77b586fd311744382583ac77261b38, type: 3}

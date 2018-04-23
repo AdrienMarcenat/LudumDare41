@@ -8,6 +8,7 @@ public class PlayerSoundManager : MonoBehaviour
 
 	[SerializeField] AudioClip damageSound;
 	[SerializeField] AudioClip healSound;
+	[SerializeField] AudioClip gameOverSound;
 
 	void Awake ()
 	{
@@ -18,15 +19,17 @@ public class PlayerSoundManager : MonoBehaviour
 	void OnEnable ()
 	{
 		playerHealth.SimpleDamage += Damage;
-		PlayerEventManager.Heal += Heal;
-		PlayerEventManager.LetterPicked += Heal;
+		playerHealth.GameOver += GameOver;
+		playerEventManager.Heal += Heal;
+		playerEventManager.LetterPicked += Heal;
 	}
 
 	void OnDisable ()
 	{
 		playerHealth.SimpleDamage -= Damage;
-		PlayerEventManager.Heal -= Heal;
-		PlayerEventManager.LetterPicked -= Heal;
+		playerHealth.GameOver -= GameOver;
+		playerEventManager.Heal -= Heal;
+		playerEventManager.LetterPicked -= Heal;
 	}
 
 	private void Heal ()
@@ -37,6 +40,11 @@ public class PlayerSoundManager : MonoBehaviour
 	private void Damage ()
 	{
 		SoundManager.PlayMultiple (damageSound);
+	}
+
+	private void GameOver ()
+	{
+		SoundManager.PlayMultiple (gameOverSound);
 	}
 }
 

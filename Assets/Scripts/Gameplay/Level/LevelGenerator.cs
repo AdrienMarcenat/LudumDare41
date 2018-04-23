@@ -111,6 +111,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 		case(LevelOrderType.TALK):
 			TalkLevelOrder talkLevelOrder = (TalkLevelOrder)order;
 			m_DialogueManager.TriggerDialogue (talkLevelOrder.tag);
+			m_DialogueManager.CloseDialogueGuiAfterSeconds (2);
 			break;
 		case(LevelOrderType.END_LEVEL):
 			EventManager.TriggerEvent ("EndLevel", new CommandModifier (1, 1, 1));

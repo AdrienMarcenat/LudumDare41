@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageSound: {fileID: 8300000, guid: c8fd9abc46e36c4419d7db06975f83cc, type: 3}
   healSound: {fileID: 8300000, guid: 46e6001cf4c6b9e47835ef96b64b40fb, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 3e77b586fd311744382583ac77261b38, type: 3}
 --- !u!114 &114090707198995030
 MonoBehaviour:
   m_ObjectHideFlags: 1

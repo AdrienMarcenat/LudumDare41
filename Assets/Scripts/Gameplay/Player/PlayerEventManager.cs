@@ -21,8 +21,8 @@ public class PlayerEventManager : MonoBehaviour
 
 	public delegate void SimpleEvent ();
 
-	public static event SimpleEvent Heal;
-	public static event SimpleEvent LetterPicked;
+	public event SimpleEvent Heal;
+	public event SimpleEvent LetterPicked;
 
 	private LetterInventory m_LetterInventory;
 
@@ -40,11 +40,11 @@ public class PlayerEventManager : MonoBehaviour
 		if (other.tag == "Letter") {
 			m_LetterInventory.AddLetter (other.gameObject.GetComponent<LetterItem> ().letter);
 			Destroy (other.gameObject);
-			if (PlayerEventManager.LetterPicked != null)
-				PlayerEventManager.LetterPicked ();
+			if (LetterPicked != null)
+				LetterPicked ();
 		} else if (other.tag == "HealItem") {
-			if (PlayerEventManager.Heal != null)
-				PlayerEventManager.Heal ();
+			if (Heal != null)
+				Heal ();
 		}
 	}
 }

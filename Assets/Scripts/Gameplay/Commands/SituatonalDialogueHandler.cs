@@ -14,6 +14,7 @@ public class SituatonalDialogueHandler : MonoBehaviour
 	private static string[] names = { "Bob", "Linda", "Tom", "Carl", "Cindy" };
 
 	[SerializeField] private int m_WrongCommandNumberBeforeDialogue;
+	[SerializeField] private float m_SecondsBeforeClosing = 3;
 
 	void Start ()
 	{
@@ -46,25 +47,31 @@ public class SituatonalDialogueHandler : MonoBehaviour
 			m_WrongCommandNumber = 0;
 			int name = Random.Range (0, 5);
 			int index = Random.Range (1, 6);
-			m_DialogManager.TriggerDialogue ("WrongCommand" + names [name] + index);
+			TriggerSitualtionalDialogue ("WrongCommand" + names [name] + index);
 		}
 	}
 
 	void Hit (CommandModifier cm)
 	{
 		int index = Random.Range (1, 10);
-		m_DialogManager.TriggerDialogue ("Hit" + index);
+		TriggerSitualtionalDialogue ("Hit" + index);
 	}
 
 	void LowHealth (CommandModifier cm)
 	{
 		int index = Random.Range (1, 6);
-		m_DialogManager.TriggerDialogue ("LowHealth" + index);
+		TriggerSitualtionalDialogue ("LowHealth" + index);
 	}
 
 	void NextSentence (CommandModifier cm)
 	{
 		m_DialogManager.DisplayNextSentence ();
+	}
+
+	private void TriggerSitualtionalDialogue (string tag)
+	{
+		m_DialogManager.TriggerDialogue (tag);
+		m_DialogManager.CloseDialogueGuiAfterSeconds (m_SecondsBeforeClosing);
 	}
 }
 

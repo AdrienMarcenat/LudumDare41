@@ -31,7 +31,10 @@ public class PlayerFSM : FSM
 		GetComponent<MovingObject> ().Reset ();
 		GetComponent<WeaponManager> ().Reset ();
 		GetComponent<LetterInventory> ().Reset ();
-		transform.position = m_SpawningPosition.position;
+		if (m_SpawningPosition == null)
+			m_SpawningPosition = GameObject.Find ("PlayerSpawningPosition").transform;
+		if (m_SpawningPosition != null)
+			transform.position = m_SpawningPosition.position;
 	}
 }
 

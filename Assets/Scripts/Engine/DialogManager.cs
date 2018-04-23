@@ -12,6 +12,7 @@ public class DialogManager : MonoBehaviour
 
 	private Queue<Dialog.Sentence> m_Sentences;
 	private static string dialogueFileName = "Datas/Dialogues.txt";
+	private Coroutine m_CloseDialogueGuiAfterSecondsRoutine;
 
 	void Start ()
 	{
@@ -101,6 +102,20 @@ public class DialogManager : MonoBehaviour
 		}
 
 		StartDialogue (dialogue);
+	}
+
+	public void CloseDialogueGuiAfterSeconds (float seconds)
+	{
+		if (m_CloseDialogueGuiAfterSecondsRoutine != null)
+			StopCoroutine (m_CloseDialogueGuiAfterSecondsRoutine);
+		m_CloseDialogueGuiAfterSecondsRoutine = StartCoroutine (CloseDialogueGuiAfterSecondsRoutine (seconds));
+	}
+
+	IEnumerator CloseDialogueGuiAfterSecondsRoutine (float seconds)
+	{
+		yield return new WaitForSecondsRealtime (seconds);
+		if (m_DialogGUI != null)
+			m_DialogGUI.Close ();
 	}
 }
 
