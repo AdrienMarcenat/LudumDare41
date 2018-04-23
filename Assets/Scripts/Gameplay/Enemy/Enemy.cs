@@ -58,6 +58,9 @@ public class Enemy : MonoBehaviour
 		m_Sprite.color = m_InitialColor;
 		m_Animator.SetBool ("IsDead", true);
 		GetComponent<BoxCollider2D> ().enabled = false;
+		SpawnLetter spawnLetter = GetComponent<SpawnLetter> ();
+		if (spawnLetter != null)
+			spawnLetter.Spawn ();
 		Destroy (gameObject, 1);
 	}
 

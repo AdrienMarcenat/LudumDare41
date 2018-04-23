@@ -76,7 +76,7 @@ public class Weapon : MonoBehaviour
 		FireCommand command = m_FireCommands [0];
 		Vector3 fireDirection = command.target.normalized;
 
-		GameObject bullet = Instantiate (bulletPrefab);
+		GameObject bullet = LevelGenerator.instance.SpawnObject (bulletPrefab);
 		if (bullet.GetComponent<Bullet> ().IsFollowingShooter ()) {
 			bullet.transform.SetParent (transform, false);
 		} else {

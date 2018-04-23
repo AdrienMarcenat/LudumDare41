@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4735181785702810}
   - component: {fileID: 212127309681945422}
+  - component: {fileID: 95852655416509918}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -77,6 +78,7 @@ GameObject:
   - component: {fileID: 114090707198995030}
   - component: {fileID: 114703772340307196}
   - component: {fileID: 114096855553660594}
+  - component: {fileID: 114062105068337374}
   - component: {fileID: 61922186220343684}
   - component: {fileID: 50490962621733206}
   m_Layer: 9
@@ -119,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549700548836664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -200, y: -500, z: 0}
+  m_LocalPosition: {x: -250, y: -500, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4735181785702810}
@@ -186,6 +188,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 96, y: 96}
   m_EdgeRadius: 0
+--- !u!95 &95852655416509918
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049571745324112}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 10f0c27f66b90f24c9856382e05824eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114062105068337374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1549700548836664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2872d00cc275e4fb5e8049e77c795b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSound: {fileID: 8300000, guid: c8fd9abc46e36c4419d7db06975f83cc, type: 3}
+  healSound: {fileID: 8300000, guid: 46e6001cf4c6b9e47835ef96b64b40fb, type: 3}
 --- !u!114 &114090707198995030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,7 +247,7 @@ MonoBehaviour:
   m_FireRate: 5
   bulletPrefab: {fileID: 1919523498528984, guid: d1d60143d3f835943803770675d965d4,
     type: 2}
-  fireSound: {fileID: 8300000, guid: e495b6802e3f59946a1e0fb3d4653d0b, type: 3}
+  fireSound: {fileID: 8300000, guid: f522162ec5964ef4baf6022634126c01, type: 3}
 --- !u!114 &114096855553660594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,7 +326,7 @@ MonoBehaviour:
   m_FireRate: 1
   bulletPrefab: {fileID: 1352929734649334, guid: c34287e04d132d14eb4fb2c9e247f8bf,
     type: 2}
-  fireSound: {fileID: 8300000, guid: e495b6802e3f59946a1e0fb3d4653d0b, type: 3}
+  fireSound: {fileID: 8300000, guid: 2c798dd633b9a6340aba300ed7de7948, type: 3}
 --- !u!114 &114602757838954014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1639faff02993e24583a2476a4ea4480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SpawningPosition: {fileID: 0}
 --- !u!114 &114838311274985312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -378,7 +411,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 96, y: 96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

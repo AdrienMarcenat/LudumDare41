@@ -58,4 +58,4 @@ MonoBehaviour:
   m_FireRate: 5
   bulletPrefab: {fileID: 1400459704888406, guid: 734977f8bebf774469e21445c6de11e6,
     type: 2}
-  fireSound: {fileID: 8300000, guid: e495b6802e3f59946a1e0fb3d4653d0b, type: 3}
+  fireSound: {fileID: 8300000, guid: f522162ec5964ef4baf6022634126c01, type: 3}

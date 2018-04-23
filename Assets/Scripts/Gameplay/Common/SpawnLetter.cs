@@ -5,9 +5,9 @@ public class SpawnLetter : MonoBehaviour
 {
 	[SerializeField] GameObject m_LetterPrefab;
 
-	void OnDisable ()
+	public void Spawn ()
 	{
-		Instantiate (m_LetterPrefab);
+		LevelGenerator.instance.SpawnObject (m_LetterPrefab);
 	}
 }
 

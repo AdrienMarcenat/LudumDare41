@@ -6,10 +6,8 @@ public class PlayerSoundManager : MonoBehaviour
 	private PlayerEventManager playerEventManager;
 	private Health playerHealth;
 
-	[SerializeField] AudioClip reloadSound;
 	[SerializeField] AudioClip damageSound;
 	[SerializeField] AudioClip healSound;
-	[SerializeField] AudioClip switchGunSound;
 
 	void Awake ()
 	{
@@ -19,25 +17,16 @@ public class PlayerSoundManager : MonoBehaviour
 
 	void OnEnable ()
 	{
+		playerHealth.SimpleDamage += Damage;
+		PlayerEventManager.Heal += Heal;
+		PlayerEventManager.LetterPicked += Heal;
 	}
 
 	void OnDisable ()
 	{
-	}
-
-	private void Reload ()
-	{
-		SoundManager.PlayMultiple (reloadSound);
-	}
-
-	private void SwitchGun ()
-	{
-		SoundManager.PlayMultiple (switchGunSound);
-	}
-
-	private void SwitchGun (GameObject newWeapon)
-	{
-		SoundManager.PlayMultiple (switchGunSound);
+		playerHealth.SimpleDamage -= Damage;
+		PlayerEventManager.Heal -= Heal;
+		PlayerEventManager.LetterPicked -= Heal;
 	}
 
 	private void Heal ()

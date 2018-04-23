@@ -19,6 +19,11 @@ public class PlayerEventManager : MonoBehaviour
 	public static string StopMusic = "stop music";
 	public static string Time = "Time";
 
+	public delegate void SimpleEvent ();
+
+	public static event SimpleEvent Heal;
+	public static event SimpleEvent LetterPicked;
+
 	private LetterInventory m_LetterInventory;
 
 	void Start ()
@@ -35,6 +40,11 @@ public class PlayerEventManager : MonoBehaviour
 		if (other.tag == "Letter") {
 			m_LetterInventory.AddLetter (other.gameObject.GetComponent<LetterItem> ().letter);
 			Destroy (other.gameObject);
+			if (PlayerEventManager.LetterPicked != null)
+				PlayerEventManager.LetterPicked ();
+		} else if (other.tag == "HealItem") {
+			if (PlayerEventManager.Heal != null)
+				PlayerEventManager.Heal ();
 		}
 	}
 }

@@ -101,7 +101,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 			SpawnLevelOrder spawnOrder = (SpawnLevelOrder)order;
 			for (int i = 0; i < spawnOrder.entities.Count; i++) {
 				for (int k = 0; k < spawnOrder.entitiesQuantity [i]; k++) {
-					m_SpawnedObjects.Add (Instantiate ((spawnOrder.entities [i])));
+					SpawnObject (spawnOrder.entities [i]);
 				}
 			}
 			break;
@@ -117,7 +117,6 @@ public class LevelGenerator : Singleton<LevelGenerator>
 			break;
 		case(LevelOrderType.WAIT_TRIGGER):
 			isWaiting = true;
-			Debug.Log ("WAITING TRIGGER");
 			break;
 		case(LevelOrderType.WAIT_DIALOGUE):
 			isWaiting = true;
@@ -126,5 +125,12 @@ public class LevelGenerator : Singleton<LevelGenerator>
 			m_DialogueManager.TriggerDialogue (waitDialogueLevelOrder.tag);
 			break;
 		}
+	}
+
+	public GameObject SpawnObject (GameObject prefab)
+	{
+		GameObject spawnedObject = Instantiate (prefab);
+		m_SpawnedObjects.Add (spawnedObject);
+		return spawnedObject;
 	}
 }

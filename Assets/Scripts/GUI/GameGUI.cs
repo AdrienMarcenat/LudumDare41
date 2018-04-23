@@ -77,8 +77,6 @@ public class GameGUI : MonoBehaviour
 	{
 		if (enter)
 			StartCoroutine (FadeIn ());
-		else
-			StartCoroutine (FadeOut ());
 	}
 }
 
