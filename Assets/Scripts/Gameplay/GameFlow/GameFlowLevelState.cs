@@ -8,17 +8,20 @@ public class GameFlowLevelState : FSMState
 	[SerializeField] private AudioClip m_LevelMusic;
 
 	private UnityAction<CommandModifier> m_ActionPause;
+	private UnityAction<CommandModifier> m_ActionWaitDialogue;
 
 	protected override void Awake ()
 	{
 		ID = (int)GameFlowStates.ID.Level;
 		base.Awake ();
 		m_ActionPause = new UnityAction<CommandModifier> (Pause);
+		m_ActionWaitDialogue = new UnityAction<CommandModifier> (WaitDialogue);
 	}
 
 	public override void Enter ()
 	{
 		EventManager.Register (PlayerEventManager.Pause, m_ActionPause);
+		EventManager.Register ("WaitDialogue", m_ActionWaitDialogue);
 		SoundManager.PlayMusic (m_LevelMusic);
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver += GameOver;
 	}
@@ -36,6 +39,7 @@ public class GameFlowLevelState : FSMState
 	{
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver -= GameOver;
 		EventManager.Unregister (PlayerEventManager.Pause, m_ActionPause);
+		EventManager.Unregister ("WaitDialogue", m_ActionWaitDialogue);
 	}
 
 	private void Pause (CommandModifier cm)
@@ -53,6 +57,11 @@ public class GameFlowLevelState : FSMState
 	{
 		requestStackPop ();
 		requestStackPush ((int)GameFlowStates.ID.GameOver);
+	}
+
+	public void WaitDialogue (CommandModifier cm)
+	{
+		requestStackPush ((int)GameFlowStates.ID.Dialogue);
 	}
 }
 

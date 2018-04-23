@@ -17,8 +17,7 @@ public class LevelSequence
 
 	static public LevelSequenceStart Parse (string type)
 	{
-		switch (type.ToLower ())
-		{
+		switch (type.ToLower ()) {
 		case("[now]"):
 			return LevelSequenceStart.NOW;
 		case("[done]"):
@@ -33,13 +32,14 @@ public enum LevelOrderType
 	SPAWN,
 	MUSIC,
 	TALK,
-	END_LEVEL
+	END_LEVEL,
+	WAIT_TRIGGER,
+	WAIT_DIALOGUE
 }
 
 public abstract class LevelOrder
 {
-	public LevelOrderType orderType
-	{
+	public LevelOrderType orderType {
 		get;
 		protected set;
 	}
@@ -70,18 +70,14 @@ public class SpawnLevelOrder : LevelOrder
 	public SpawnLevelOrder (string[] args, float time) : base (time)
 	{
 		orderType = LevelOrderType.SPAWN;
-		for (int k = 0; k < args.Length; k++)
-		{
+		for (int k = 0; k < args.Length; k++) {
 			string[] things = args [k].Split ('*');
 			string prefab;
 			int num = 1;
-			if (things.Length > 1)
-			{
+			if (things.Length > 1) {
 				num = int.Parse (things [0]);
 				prefab = things [1];
-			}
-			else
-			{
+			} else {
 				prefab = things [0];
 			}
 			GameObject entity = RessourceManager.instance.LoadPrefab (prefab);
@@ -95,7 +91,7 @@ public class MusicLevelOrder : LevelOrder
 {
 	public string music;
 	//TODO
-    public MusicLevelOrder (string music, float time) : base (time)
+	public MusicLevelOrder (string music, float time) : base (time)
 	{
 		orderType = LevelOrderType.MUSIC;
 	}
@@ -114,8 +110,27 @@ public class TalkLevelOrder : LevelOrder
 
 public class EndLevelOrder : LevelOrder
 {
-    public EndLevelOrder (float time) : base (time)
+	public EndLevelOrder (float time) : base (time)
 	{
 		orderType = LevelOrderType.END_LEVEL;
+	}
+}
+
+public class WaitTriggerLevelOrder : LevelOrder
+{
+	public WaitTriggerLevelOrder (float time) : base (time)
+	{
+		orderType = LevelOrderType.WAIT_TRIGGER;
+	}
+}
+
+public class WaitDialogueLevelOrder : LevelOrder
+{
+	public string tag;
+
+	public WaitDialogueLevelOrder (string tag, float time) : base (time)
+	{
+		this.tag = tag;
+		orderType = LevelOrderType.WAIT_DIALOGUE;
 	}
 }

@@ -5,6 +5,40 @@ Bob
 	Linda:"Hello, Bob !"
 ]
 
+Tutorial1
+[
+	Linda:"Commander ?..."
+	Linda:"Commander!
+	Linda:"We have been severely injured... our precious letters have been scattered around the universe..."
+	Linda:"Only a few remains, it is barely enough to move..."
+]
+
+Tutorial2
+[
+	Linda:"Look, one of our letters is here ! If only we could go left to catch it..."
+	Linda:"We are awaiting your orders, Commander !"
+]
+
+Tutorial3
+[
+	Linda:"Hourray ! Hum.. I mean well done Commander".
+	Tom:"Should we stop going left ?"
+]
+
+Tutorial4
+[
+	Cindy:"Enemy detected, Leader !"
+	Linda:"The Red Sand clan, those filthy creatures want our letters".
+	Linda:"Let show us who we are Commander, we can fire at your command !".
+]
+
+Tutorial5
+[
+	Linda:"Ah, I knew they have stolen a letter ! "
+	Linda:"Now we can wander the system to find the missing letters !"
+	Linda:"We are awaiting your orders, Commander !"
+]
+
 WrongCommandLinda1
 [
 	Linda:"Commander, could you repeat your... command... or whatever it was?"

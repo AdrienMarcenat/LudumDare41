@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
 
 	public int currentLevel = 1;
 	public int nextState = 0;
+	public int currentState = (int)GameFlowStates.ID.Menu;
 
 	public static void LoadScene (int index)
 	{

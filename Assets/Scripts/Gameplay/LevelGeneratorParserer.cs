@@ -12,21 +12,16 @@ public static class LevelGeneratorParserer
 		string[] lines = File.ReadAllLines (file);
 		List<LevelSequence> sequences = levelGenerator.m_orderSequences = new List<LevelSequence> ();
 		LevelSequence currentSequence = new LevelSequence ();
-		foreach (string line in lines)
-		{
-			try
-			{
+		foreach (string line in lines) {
+			try {
 				string[] words = line.Split (' ');
-				if (words.Length == 0)
-				{
+				if (words.Length == 0) {
 					continue;
 				}
 				LevelSequence.LevelSequenceStart type = LevelSequence.Parse (words [0]);
 				//New sequence
-				if (type != LevelSequence.LevelSequenceStart.ERROR)
-				{
-					if (currentSequence.orders.Count > 0 && currentSequence.start != LevelSequence.LevelSequenceStart.ERROR)
-					{
+				if (type != LevelSequence.LevelSequenceStart.ERROR) {
+					if (currentSequence.orders.Count > 0 && currentSequence.start != LevelSequence.LevelSequenceStart.ERROR) {
 						sequences.Add (currentSequence);
 					}
 					currentSequence = new LevelSequence ();
@@ -37,23 +32,19 @@ public static class LevelGeneratorParserer
 				LevelOrder order = MakeLevelOrder (words);
 				currentSequence.orders.Add (order);
 
-			}
-			catch (Exception e)
-			{
+			} catch (Exception e) {
 				Debug.LogWarning ("Couldn't read line \"" + line + "\" of file \"" + file + "\"");
 				Debug.LogWarning (e.Message);
 			}
 		}
-		if (currentSequence.orders.Count > 0 && currentSequence.start != LevelSequence.LevelSequenceStart.ERROR)
-		{
+		if (currentSequence.orders.Count > 0 && currentSequence.start != LevelSequence.LevelSequenceStart.ERROR) {
 			sequences.Add (currentSequence);
 		}
 	}
 
 	public static T[] SubArray<T> (this T[] data, int index, int length = -1)
 	{
-		if (length == -1)
-		{
+		if (length == -1) {
 			length = data.Length - index;
 		}
 		T[] result = new T[length];
@@ -65,8 +56,7 @@ public static class LevelGeneratorParserer
 	{
 		System.DateTime time = System.DateTime.ParseExact (args [0], "mm:ss.fff", null);
 		float floatTime = time.Minute * 60 + time.Second + 0.001f * time.Millisecond;
-		switch (args [1].ToLower ())
-		{
+		switch (args [1].ToLower ()) {
 		case("spawn"):
 			return new SpawnLevelOrder (args.SubArray (2), floatTime);
 
@@ -78,8 +68,15 @@ public static class LevelGeneratorParserer
 			break;
 
 		case("endgame"):
-            return new EndLevelOrder (floatTime);
+			return new EndLevelOrder (floatTime);
+
+		case("wait"):
+			return new WaitTriggerLevelOrder (floatTime);
+
+		case("waitdialogue"):
+			return new WaitDialogueLevelOrder (args [2], floatTime);
 		}
+
 		return null;
 	}
 }

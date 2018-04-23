@@ -46,15 +46,15 @@ public class LetterInventory : MonoBehaviour
 		'6',
 		'7',
 		'8',
-		'9'
-		//'0'
+		'9',
+		'0'
 	};
 
 	void Start ()
 	{
 		m_Gui = GameObject.Find ("GUI").GetComponent<GUI> ();
-		//m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'r', 'i', 'g', 'h' };
-		m_Letters = ms_AllLetters;
+		m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'i', 'g', 'h' };
+		//m_Letters = ms_AllLetters;
 		m_LettersTemp = m_Letters;
 		m_Gui.keyPanel.SetKeysAvailable (m_Letters);
 	}

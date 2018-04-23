@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
 	public bool done = true;
+	public bool isWaiting = false;
 	protected bool started = false;
 	protected float m_startTime;
 	protected float m_currentTime;
@@ -35,6 +36,9 @@ public class LevelGenerator : MonoBehaviour
 
 	void Update ()
 	{
+		if (isWaiting)
+			return;
+		
 		m_currentTime += Time.deltaTime;
 		while (m_sequenceId < m_orderSequences.Count) {
 			LevelSequence currentSequence = m_orderSequences [m_sequenceId];
@@ -85,6 +89,16 @@ public class LevelGenerator : MonoBehaviour
 			break;
 		case(LevelOrderType.END_LEVEL):
 			Debug.Log ("END LEVEL!!!");
+			break;
+		case(LevelOrderType.WAIT_TRIGGER):
+			isWaiting = true;
+			Debug.Log ("WAITING TRIGGER");
+			break;
+		case(LevelOrderType.WAIT_DIALOGUE):
+			isWaiting = true;
+			EventManager.TriggerEvent ("WaitDialogue", new CommandModifier (1, 1, 1));
+			WaitDialogueLevelOrder waitDialogueLevelOrder = (WaitDialogueLevelOrder)order;
+			m_DialogueManager.TriggerDialogue (waitDialogueLevelOrder.tag);
 			break;
 		}
 	}

@@ -31,16 +31,18 @@ public class DialogManager : MonoBehaviour
 		DisplayNextSentence ();
 	}
 
-	public void DisplayNextSentence ()
+	public bool DisplayNextSentence ()
 	{
 		if (m_Sentences.Count == 0) {
 			EndDialogue ();
-			return;
+			return true;
 		}
 		StopAllCoroutines ();
 		Dialog.Sentence sentence = m_Sentences.Dequeue ();
 		m_NameText.text = sentence.name;
 		StartCoroutine (TypeSentence (sentence.sentence));
+
+		return false;
 	}
 
 	IEnumerator TypeSentence (string sentence)
@@ -54,7 +56,8 @@ public class DialogManager : MonoBehaviour
 
 	public void EndDialogue ()
 	{
-		m_DialogGUI.Close ();
+		if (m_DialogGUI.isActiveAndEnabled)
+			m_DialogGUI.Close ();
 	}
 
 	public void TriggerDialogue (string tag)

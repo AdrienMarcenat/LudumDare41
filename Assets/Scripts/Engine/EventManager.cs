@@ -14,11 +14,10 @@ public class EventManager : Singleton<EventManager>
 {
 	private Dictionary <string, Command> m_EventDictionary;
 
-    override protected void Awake ()
+	override protected void Awake ()
 	{
 		base.Awake ();
-		if (m_EventDictionary == null)
-		{
+		if (m_EventDictionary == null) {
 			m_EventDictionary = new Dictionary<string, Command> ();
 		}
 	}
@@ -27,12 +26,9 @@ public class EventManager : Singleton<EventManager>
 	{
 		Command e = null;
 		eventName = eventName.ToLower ();
-		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
-		{
+		if (instance.m_EventDictionary.TryGetValue (eventName, out e)) {
 			e.AddListener (listener);
-		}
-		else
-		{
+		} else {
 			e = new Command ();
 			e.AddListener (listener);
 			instance.m_EventDictionary.Add (eventName, e);
@@ -41,15 +37,13 @@ public class EventManager : Singleton<EventManager>
 
 	public static void Unregister (string eventName, Listener listener)
 	{
-		if (instance.m_EventDictionary == null)
-		{
+		if (instance.m_EventDictionary == null) {
 			return;
 		}
 			
 		Command e = null;
 		eventName = eventName.ToLower ();
-		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
-		{
+		if (instance.m_EventDictionary.TryGetValue (eventName, out e)) {
 			e.RemoveListener (listener);
 		}
 	}
@@ -58,8 +52,7 @@ public class EventManager : Singleton<EventManager>
 	{
 		Command e = null;
 		eventName = eventName.ToLower ();
-		if (instance.m_EventDictionary.TryGetValue (eventName, out e))
-		{
+		if (instance.m_EventDictionary.TryGetValue (eventName, out e)) {
 			e.Invoke (modifier);
 		}
 	}
