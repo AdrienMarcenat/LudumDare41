@@ -24,11 +24,18 @@ public class Health : MonoBehaviour
 		m_DamageModifier = 1.0f;
 	}
 
-    public void SetHealth(float value)
-    {
-        m_TotalHealth = value;
-        m_CurrentHealth = value;
-    }
+	public void SetHealth (float value)
+	{
+		m_TotalHealth = value;
+		m_CurrentHealth = value;
+	}
+
+	public void Reset ()
+	{
+		m_CurrentHealth = m_TotalHealth;
+		m_Enable = true;
+		m_DamageModifier = 1.0f;
+	}
 
 	public void LoseHealth (float damage)
 	{
@@ -63,8 +70,7 @@ public class Health : MonoBehaviour
 
 	private void CheckIfGameOver ()
 	{
-		if (m_CurrentHealth <= 0 && GameOver != null)
-		{
+		if (m_CurrentHealth <= 0 && GameOver != null) {
 			GameOver ();
 		}
 	}

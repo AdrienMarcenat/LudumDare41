@@ -17,12 +17,14 @@ public class LevelGenerator : Singleton<LevelGenerator>
 	protected int m_orderId;
 
 	private DialogManager m_DialogueManager;
+	private List<GameObject> m_SpawnedObjects;
 
 	protected override void Awake ()
 	{
 		base.Awake ();
 		level = 1;
 		m_orderSequences = new List<LevelSequence> ();
+		m_SpawnedObjects = new List<GameObject> ();
 	}
 
 	public static void Load ()
@@ -38,6 +40,11 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
 	public void Reset ()
 	{
+		foreach (GameObject g in m_SpawnedObjects) {
+			if (g != null)
+				Destroy (g);
+		}
+		m_SpawnedObjects.Clear ();
 		m_orderSequences.Clear ();
 		m_sequenceId = 0;
 		m_orderId = 0;
@@ -94,7 +101,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 			SpawnLevelOrder spawnOrder = (SpawnLevelOrder)order;
 			for (int i = 0; i < spawnOrder.entities.Count; i++) {
 				for (int k = 0; k < spawnOrder.entitiesQuantity [i]; k++) {
-					Instantiate ((spawnOrder.entities [i]));
+					m_SpawnedObjects.Add (Instantiate ((spawnOrder.entities [i])));
 				}
 			}
 			break;

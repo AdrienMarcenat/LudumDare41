@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class GameFlowLevelState : FSMState
 {
+	public delegate void EnterLevelEvent (bool enter);
+
+	public static event EnterLevelEvent EnterLevel;
+
 	[SerializeField] private AudioClip m_LevelMusic;
 
 	private UnityAction<CommandModifier> m_ActionPause;
@@ -22,11 +26,14 @@ public class GameFlowLevelState : FSMState
 
 	public override void Enter ()
 	{
+		if (EnterLevel != null)
+			EnterLevel (true);
+		
 		EventManager.Register (PlayerEventManager.Pause, m_ActionPause);
 		EventManager.Register ("WaitDialogue", m_ActionWaitDialogue);
 		EventManager.Register ("EndLevel", m_ActionEndLevel);
 		SoundManager.PlayMusic (m_LevelMusic);
-		Debug.Log ("enter level " + LevelGenerator.level);
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerFSM> ().Reset ();
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver += GameOver;
 		LevelGenerator.Load ();
 	}
@@ -46,6 +53,9 @@ public class GameFlowLevelState : FSMState
 		EventManager.Unregister (PlayerEventManager.Pause, m_ActionPause);
 		EventManager.Unregister ("WaitDialogue", m_ActionWaitDialogue);
 		EventManager.Unregister ("EndLevel", m_ActionEndLevel);
+
+		if (EnterLevel != null)
+			EnterLevel (false);
 	}
 
 	private void Pause (CommandModifier cm)

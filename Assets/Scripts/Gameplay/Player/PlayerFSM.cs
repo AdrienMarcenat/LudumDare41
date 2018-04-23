@@ -14,10 +14,24 @@ namespace PlayerStates
 
 public class PlayerFSM : FSM
 {
+	[SerializeField] Transform m_SpawningPosition;
+
 	protected override void Awake ()
 	{
 		base.Awake ();
+		Reset ();
+	}
+
+	// Reset all components
+	public void Reset ()
+	{
+		ClearStates ();
 		PushState ((int)PlayerStates.ID.Normal);
+		GetComponent<Health> ().Reset ();
+		GetComponent<MovingObject> ().Reset ();
+		GetComponent<WeaponManager> ().Reset ();
+		GetComponent<LetterInventory> ().Reset ();
+		transform.position = m_SpawningPosition.position;
 	}
 }
 

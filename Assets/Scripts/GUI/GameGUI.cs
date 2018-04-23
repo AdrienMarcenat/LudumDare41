@@ -8,69 +8,77 @@ public class GameGUI : MonoBehaviour
 	private Image fadeInOutImage;
 	[SerializeField] float fadeSpeed;
 
-	void Awake()
+	void Awake ()
 	{
 		fadeInOutImage = GetComponent<Image> ();
 	}
 
-	void OnEnable()
+	void OnEnable ()
 	{
-		GameManager.ChangeScene  += ChangeScene;
+		GameManager.ChangeScene += ChangeScene;
 		SceneManager.sceneLoaded += OnSceneLoaded;
+		GameFlowLevelState.EnterLevel += ChangeLevel;
 	}
 
-	void OnDisable()
+	void OnDisable ()
 	{
-		GameManager.ChangeScene  -= ChangeScene;
+		GameManager.ChangeScene -= ChangeScene;
 		SceneManager.sceneLoaded -= OnSceneLoaded;
+		GameFlowLevelState.EnterLevel -= ChangeLevel;
 	}
 
-	IEnumerator FadeIn()
+	IEnumerator FadeIn ()
 	{
 		SetFadeInOutImageAlpha (1);
 		yield return null;
 
-		while (fadeInOutImage.color.a > 0)
-		{
+		while (fadeInOutImage.color.a > 0) {
 			AddToFadeInOutImageAlpha (-fadeSpeed);
 			yield return null;
 		}
 	}
 
-	IEnumerator FadeOut()
+	IEnumerator FadeOut ()
 	{
 		SetFadeInOutImageAlpha (0);
 		yield return null;
 
-		while (fadeInOutImage.color.a < 1)
-		{
+		while (fadeInOutImage.color.a < 1) {
 			AddToFadeInOutImageAlpha (fadeSpeed);
 			yield return null;
 		}
 	}
 
-	private void AddToFadeInOutImageAlpha(float a)
+	private void AddToFadeInOutImageAlpha (float a)
 	{
 		Color c = fadeInOutImage.color;
 		c.a += a;
 		fadeInOutImage.color = c;
 	}
 
-	private void SetFadeInOutImageAlpha(float a)
+	private void SetFadeInOutImageAlpha (float a)
 	{
 		Color c = fadeInOutImage.color;
 		c.a = a;
 		fadeInOutImage.color = c;
 	}
 
-	private void ChangeScene()
+	private void ChangeScene ()
 	{
 		StartCoroutine (FadeOut ());
 	}
 
-	private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	private void OnSceneLoaded (Scene scene, LoadSceneMode mode)
 	{
 		StartCoroutine (FadeIn ());
+	}
+
+	private void ChangeLevel (bool enter)
+	{
+		if (enter)
+			StartCoroutine (FadeIn ());
+		else
+			StartCoroutine (FadeOut ());
 	}
 }
 

@@ -18,6 +18,11 @@ public class DialogGUI : MonoBehaviour
 		
 	}
 
+	void OnDisable ()
+	{
+		StopAllCoroutines ();
+	}
+
 	public void Close (float time = 0.3f)
 	{
 		ChangeHeight (-20);

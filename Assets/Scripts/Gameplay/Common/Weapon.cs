@@ -106,4 +106,11 @@ public class Weapon : MonoBehaviour
 	{
 		return currentAmmo;
 	}
+
+	public void Reset ()
+	{
+		m_FireCommands.Clear ();
+		currentAmmo = totalAmmo;
+		m_FireDelay = m_FireRate;
+	}
 }

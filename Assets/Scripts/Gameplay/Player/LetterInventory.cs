@@ -10,6 +10,7 @@ public class LetterInventory : MonoBehaviour
 	private GUI m_Gui;
 	private List<char> m_Letters;
 	private List<char> m_LettersTemp;
+	private List<char> m_InitialLetters;
 	public static List<char> ms_AllLetters = new List<char> () {
 		'a',
 		'b',
@@ -53,10 +54,28 @@ public class LetterInventory : MonoBehaviour
 	void Start ()
 	{
 		m_Gui = GameObject.Find ("GUI").GetComponent<GUI> ();
-		//m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'i', 'g', 'h', '2', 's', 'a' };
-		m_Letters = ms_AllLetters;
-		m_LettersTemp = m_Letters;
+		m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'i', 'g', 'h', '2', 's', 'a', 'y' };
+		//m_Letters = ms_AllLetters;
+		m_LettersTemp = new List<char> (m_Letters);
+		m_InitialLetters = new List<char> (m_Letters);
 		m_Gui.keyPanel.SetKeysAvailable (m_Letters);
+	}
+
+	void OnEnable ()
+	{
+		GameFlowEndLevelState.EndLevel += EndLevel;
+	}
+
+	void OnDisnable ()
+	{
+		GameFlowEndLevelState.EndLevel -= EndLevel;
+	}
+
+	void EndLevel (bool enter)
+	{
+		if (enter) {
+			m_InitialLetters = new List<char> (m_Letters);
+		} 
 	}
 
 	public bool IsLetterOwned (char letter)
@@ -78,22 +97,33 @@ public class LetterInventory : MonoBehaviour
 
 	public void GodMode ()
 	{
-		m_LettersTemp = m_Letters;
-		m_Letters = ms_AllLetters;
+		m_LettersTemp = new List<char> (m_Letters);
+		m_Letters = new List<char> (ms_AllLetters);
 		UpdatePanel ();
 	}
 
 	public void NormalMode ()
 	{
-		m_Letters = m_LettersTemp;
+		m_Letters = new List<char> (m_LettersTemp);
 		UpdatePanel ();
 	}
 
 	private void UpdatePanel ()
 	{
-		foreach (char letter in ms_AllLetters) {
-			m_Gui.keyPanel.SetAvailable (letter, IsLetterOwned (letter));
+		if (m_Gui != null) {
+			foreach (char letter in ms_AllLetters) {
+				m_Gui.keyPanel.SetAvailable (letter, IsLetterOwned (letter));
+			}
 		}
+	}
+
+	public void Reset ()
+	{
+		if (m_InitialLetters != null) {
+			m_Letters = new List<char> (m_InitialLetters);
+			m_LettersTemp = new List<char> (m_InitialLetters);
+		}
+		UpdatePanel ();
 	}
 }
 

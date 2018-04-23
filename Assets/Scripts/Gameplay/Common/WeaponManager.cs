@@ -22,5 +22,14 @@ public class WeaponManager : MonoBehaviour
 			Debug.Log ("Wrong weapon Type " + weaponType);
 		}
 	}
+
+	public void Reset ()
+	{
+		if (m_Weapons != null) {
+			foreach (Weapon w in m_Weapons.Values) {
+				w.Reset ();
+			}
+		}
+	}
 }
 
