@@ -89,11 +89,16 @@ public class SpawnLevelOrder : LevelOrder
 
 public class MusicLevelOrder : LevelOrder
 {
-	public string music;
-	//TODO
-	public MusicLevelOrder (string music, float time) : base (time)
+	public float beginTime;
+	public float endTime;
+	public string name;
+
+	public MusicLevelOrder (string name, float beginTime, float endTime, float time) : base (time)
 	{
 		orderType = LevelOrderType.MUSIC;
+		this.name = name;
+		this.beginTime = beginTime;
+		this.endTime = endTime;
 	}
 }
 

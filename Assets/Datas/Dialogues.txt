@@ -34,7 +34,36 @@ Tutorial4
 
 Tutorial5
 [
-	Linda:"Ah, I knew they have stolen a letter ! "
+	Linda:"Ah, I knew they had stolen a letter ! "
+]
+
+Tutorial6
+[
+	Linda:"There are more of them ! How many missile should we fire ? "
+]
+
+Tutorial7
+[
+	Cindy:"May I remind you, Leader, that we can use the ship energy to defend ourselves ? ""
+	Cindy:"Just give the order and we will raise our shield."
+	Tom:"Yeah but this will drain energy from the laser canon..."
+]
+
+Tutorial8
+[
+	Bob:"Maybe you can give us more precise order ? We can alter our speed you know..."
+]
+
+Tutorial9
+[
+	Cindy:"I detect a RedSand destroyer ! It must have one of our letter!"
+	Glortark:"Humans... so annoying. I shall destroy you with my huge laser !"
+	Tom:"Ah ! Just saying it is huge doesn't make it huge... I guess..."
+]
+
+Tutorial10
+[
+	Linda:"It is a great victory, Commander."
 	Linda:"Now we can wander the system to find the missing letters !"
 	Linda:"We are awaiting your orders, Commander !"
 ]

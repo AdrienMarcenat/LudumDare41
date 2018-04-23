@@ -64,8 +64,11 @@ public static class LevelGeneratorParserer
 			return new TalkLevelOrder (args [2], floatTime);
 
 		case("music"):
-                //TODO
-			break;
+			float beginTime = 0;
+			float.TryParse (args [3], out beginTime);
+			float endTime = 0;
+			float.TryParse (args [4], out endTime);
+			return new MusicLevelOrder (args [2], beginTime, endTime, floatTime);
 
 		case("endgame"):
 			return new EndLevelOrder (floatTime);

@@ -13,6 +13,7 @@ public class PlayerNormalState : FSMState
 	private UnityAction<CommandModifier> m_ActionMoveStopt;
 	private UnityAction<CommandModifier> m_ActionFire;
 	private UnityAction<CommandModifier> m_ActionLaser;
+	private UnityAction<CommandModifier> m_ActionShield;
 	private UnityAction<CommandModifier> m_ActionGodState;
 	private UnityAction<CommandModifier> m_ActionAutodestruction;
 
@@ -30,6 +31,7 @@ public class PlayerNormalState : FSMState
 		m_ActionMoveStopt = new UnityAction<CommandModifier> (MoveStop);
 		m_ActionFire = new UnityAction<CommandModifier> (Fire);
 		m_ActionLaser = new UnityAction<CommandModifier> (Laser);
+		m_ActionShield = new UnityAction<CommandModifier> (Shield);
 		m_ActionGodState = new UnityAction<CommandModifier> (GodState);
 		m_ActionAutodestruction = new UnityAction<CommandModifier> (Autodestruction);
 	}
@@ -41,6 +43,7 @@ public class PlayerNormalState : FSMState
 		EventManager.Register (PlayerEventManager.MoveStop, m_ActionMoveStopt);
 		EventManager.Register (PlayerEventManager.Fire, m_ActionFire);
 		EventManager.Register (PlayerEventManager.Laser, m_ActionLaser);
+		EventManager.Register (PlayerEventManager.Shield, m_ActionShield);
 		EventManager.Register (PlayerEventManager.Pause, m_ActionGodState);
 		EventManager.Register (PlayerEventManager.Autodestruction, m_ActionAutodestruction);
 
@@ -55,6 +58,7 @@ public class PlayerNormalState : FSMState
 		EventManager.Unregister (PlayerEventManager.MoveStop, m_ActionMoveStopt);
 		EventManager.Unregister (PlayerEventManager.Fire, m_ActionFire);
 		EventManager.Unregister (PlayerEventManager.Laser, m_ActionLaser);
+		EventManager.Unregister (PlayerEventManager.Shield, m_ActionShield);
 		EventManager.Unregister (PlayerEventManager.Pause, m_ActionGodState);
 		EventManager.Unregister (PlayerEventManager.Autodestruction, m_ActionAutodestruction);
 
@@ -110,6 +114,11 @@ public class PlayerNormalState : FSMState
 	{
 		requestStackPop ();
 		requestStackPush ((int)PlayerStates.ID.God);
+	}
+
+	private void Shield (CommandModifier cm)
+	{
+		print ("shield");
 	}
 }
 

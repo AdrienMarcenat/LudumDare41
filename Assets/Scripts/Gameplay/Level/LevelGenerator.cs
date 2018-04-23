@@ -106,7 +106,8 @@ public class LevelGenerator : Singleton<LevelGenerator>
 			}
 			break;
 		case(LevelOrderType.MUSIC):
-			Debug.Log ("MUSIC!!!");
+			MusicLevelOrder musicLevelOrder = (MusicLevelOrder)order;
+			SoundManager.instance.PlayMusicFromName (musicLevelOrder.name);
 			break;
 		case(LevelOrderType.TALK):
 			TalkLevelOrder talkLevelOrder = (TalkLevelOrder)order;
