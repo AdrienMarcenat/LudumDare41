@@ -54,7 +54,26 @@ public class LetterInventory : MonoBehaviour
 	void Start ()
 	{
 		m_Gui = GameObject.Find ("GUI").GetComponent<GUI> ();
-		m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'i', 'g', 'h', '2', '3', 's', 'a', 'y', 'x', 'n', 'v', 'p', 'd' };
+		m_Letters = new List<char> () {
+			'l',
+			'e',
+			'f',
+			't',
+			'i',
+			'g',
+			'h',
+			'2',
+			'3',
+			's',
+			'a',
+			'y',
+			'x',
+			'n',
+			'v',
+			'p',
+			'd',
+			'w'
+		};
 		//m_Letters = ms_AllLetters;
 		m_LettersTemp = new List<char> (m_Letters);
 		m_InitialLetters = new List<char> (m_Letters);

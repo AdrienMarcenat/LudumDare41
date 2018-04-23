@@ -13,6 +13,8 @@ public class GameManager : Singleton<GameManager>
 	public int nextState = 0;
 	public int currentState = (int)GameFlowStates.ID.Menu;
 
+	public static int score = 0;
+
 	public static void LoadScene (int index)
 	{
 		LevelGenerator.instance.Reset ();

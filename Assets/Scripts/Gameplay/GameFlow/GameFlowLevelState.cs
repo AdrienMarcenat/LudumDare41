@@ -33,6 +33,7 @@ public class GameFlowLevelState : FSMState
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerFSM> ().Reset ();
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver += GameOver;
 		LevelGenerator.Load ();
+		GameManager.score = 0;
 	}
 
 	public override bool StateUpdate ()

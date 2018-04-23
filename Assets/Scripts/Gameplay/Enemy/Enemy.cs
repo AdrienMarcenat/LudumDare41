@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
 		if (spawnLetter != null)
 			spawnLetter.Spawn ();
 		Destroy (gameObject, 1);
+		GameManager.score += 10;
 	}
 
 	private void OnTriggerStay2D (Collider2D other)
