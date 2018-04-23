@@ -60,7 +60,11 @@ public class EventManager : Singleton<EventManager>
 	public static Command RegisterEvent (string eventName)
 	{
 		Command e = new Command ();
-		instance.m_EventDictionary.Add (eventName, e);
+		if (!instance.m_EventDictionary.TryGetValue (eventName, out e)) {
+			Command c = new Command ();
+			instance.m_EventDictionary.Add (eventName, c);
+			return c;
+		}
 		return e;
 	}
 }

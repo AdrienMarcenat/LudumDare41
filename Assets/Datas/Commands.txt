@@ -8,6 +8,7 @@
 "menu":Menu
 "next level":NextLevel
 "retry":Retry
+"try again":Retry
 "autodestruction":Autodestruction
 "shield":Shield
 "stop music":StopMusic

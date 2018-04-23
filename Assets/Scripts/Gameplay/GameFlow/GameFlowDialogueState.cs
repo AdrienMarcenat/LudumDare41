@@ -23,7 +23,7 @@ public class GameFlowDialogueState : FSMState
 		if (Input.GetButtonDown ("Submit"))
 			NextSentence ();
 
-		return false;
+		return true;
 	}
 
 	public override void Exit ()

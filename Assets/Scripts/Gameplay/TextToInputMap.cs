@@ -45,13 +45,15 @@ public class TextToInputMap : Singleton<TextToInputMap>
 		m_TextToInputMap.Add (command, e);
 	}
 
-	public void FireCommand (string command, CommandModifier modifier)
+	public bool FireCommand (string command, CommandModifier modifier)
 	{
 		Command e = null;
 		if (m_TextToInputMap.TryGetValue ('"' + command + '"', out e)) {
 			e.Invoke (modifier);
+			return true;
 		} else {
 			EventManager.TriggerEvent ("WrongCommand", modifier);	
+			return false;
 		}
 	}
 }

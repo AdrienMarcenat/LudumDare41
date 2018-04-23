@@ -36,8 +36,15 @@ public class TextInputParser : MonoBehaviour
 		userInput = userInput.ToLower ();
 
 		string[] words = userInput.Split (m_Separators);
+		string command = "";
 		if (userInput != "" && GameManager.instance.currentState != (int)GameFlowStates.ID.Dialogue) {
-			TextToInputMap.instance.FireCommand (words [words.Length - 1], m_CommandModifierManager.GetModifiers (words));
+			for (int i = 0; i < words.Length; i++) {
+				if (i > 0)
+					command += " ";
+				command += words [i];
+				if (TextToInputMap.instance.FireCommand (command, m_CommandModifierManager.GetModifiers (words, i + 1)))
+					break;
+			}
 		}
 
 		ResetInput ();
