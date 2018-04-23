@@ -53,7 +53,7 @@ public class LetterInventory : MonoBehaviour
 	void Start ()
 	{
 		m_Gui = GameObject.Find ("GUI").GetComponent<GUI> ();
-		m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'i', 'g', 'h' };
+		m_Letters = new List<char> () { 'l', 'e', 'f', 't', 'i', 'g', 'h', '2', 's', 'a' };
 		//m_Letters = ms_AllLetters;
 		m_LettersTemp = m_Letters;
 		m_Gui.keyPanel.SetKeysAvailable (m_Letters);

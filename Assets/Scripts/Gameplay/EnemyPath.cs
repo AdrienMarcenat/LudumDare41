@@ -9,15 +9,19 @@ public class EnemyPath : Enemy
 {
 	[SerializeField] private BezierCurve m_Path;
 	[SerializeField] private float m_Duration;
+	[SerializeField] private bool m_Loop;
 
 	private float m_Progress;
 
 	private void Update ()
 	{
 		m_Progress += Time.deltaTime / m_Duration;
-		if (m_Progress > 1f)
-		{
-			Destroy (gameObject);
+		if (m_Progress > 1f) {
+			if (m_Loop) {
+				m_Progress = 0f;
+			} else {
+				Destroy (gameObject);
+			}
 		}
 		Vector2 position = m_Path.GetPoint (m_Progress);
 		transform.localPosition = position;
@@ -28,9 +32,14 @@ public class EnemyPath : Enemy
 		m_Path = path;
 	}
 
-    public void SetDuration(float duration)
-    {
-        m_Duration = duration;
-    }
+	public void SetLoop (bool loop)
+	{
+		m_Loop = loop;
+	}
+
+	public void SetDuration (float duration)
+	{
+		m_Duration = duration;
+	}
 }
 

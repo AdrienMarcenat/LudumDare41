@@ -49,7 +49,8 @@ public class ShipBuilder : MonoBehaviour
 	[Header ("Movement (Optional)")]
 	public GameObject pathPrefab;
 	public float duration;
-	[Space (2)]
+	public bool loop;
+	[Space (3)]
 	[Header ("Weapons (Optional)")]
 	public GameObject[] weapons;
 	[Space (2)]
@@ -124,6 +125,7 @@ public class ShipBuilder : MonoBehaviour
 		if (onHitSound) {
 			pathScript.SetHitSound (onHitSound);
 		}
+		pathScript.SetLoop (loop);
 		pathScript.SetHitColorTime (onHitColorTime > 0 ? onHitColorTime : 1);
 	}
 

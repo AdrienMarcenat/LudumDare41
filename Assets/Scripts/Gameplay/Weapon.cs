@@ -45,13 +45,9 @@ public class Weapon : MonoBehaviour
 
 	void Update ()
 	{
-		if (m_FireDelay < m_FireRate)
-		{
+		if (m_FireDelay < m_FireRate) {
 			m_FireDelay += Time.deltaTime;
-		}
-		else
-		if (m_FireCommands.Count > 0)
-		{
+		} else if (m_FireCommands.Count > 0) {
 			FireInternal ();
 		}
 	}
@@ -69,8 +65,7 @@ public class Weapon : MonoBehaviour
 
 	private void FireInternal ()
 	{
-		if (currentAmmo == 0)
-		{
+		if (currentAmmo == 0) {
 			return;
 		}
 
@@ -82,12 +77,9 @@ public class Weapon : MonoBehaviour
 		Vector3 fireDirection = command.target.normalized;
 
 		GameObject bullet = Instantiate (bulletPrefab);
-		if (bullet.GetComponent<Bullet> ().IsFollowingShooter ())
-		{
+		if (bullet.GetComponent<Bullet> ().IsFollowingShooter ()) {
 			bullet.transform.SetParent (transform, false);
-		}
-		else
-		{
+		} else {
 			bullet.transform.position = transform.position;
 		}
 		bullet.transform.localScale *= command.sizeModifier;
@@ -95,8 +87,7 @@ public class Weapon : MonoBehaviour
 		bullet.GetComponentInChildren<SpriteRenderer> ().transform.rotation = new Quaternion (0, 0, Vector2.SignedAngle (Vector2.up, fireDirection), 0);
 
 		command.Decrease ();
-		if (command.number == 0)
-		{
+		if (command.number == 0) {
 			m_FireCommands.RemoveAt (0);
 		}
 	}

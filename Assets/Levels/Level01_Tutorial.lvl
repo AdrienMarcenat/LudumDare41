@@ -4,7 +4,7 @@
 00:03.000 waitdialogue Tutorial2
 00:03.500 wait
 00:04.000 waitdialogue Tutorial3
-00:05.000 spawn SingleShip/RedSand_S_PlayerAiming_StraighLine_NormalFire
+00:05.000 spawn SingleShip/RedSand_L_Tutorial
 00:05.000 waitdialogue Tutorial4
 00:05.500 wait
 00:06.000 waitdialogue Tutorial5
