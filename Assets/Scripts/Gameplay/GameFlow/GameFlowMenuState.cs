@@ -32,6 +32,7 @@ public class GameFlowMenuState : FSMState
 		if (Input.GetButtonDown ("Space")) {
 			StopAllCoroutines ();
 			requestStateClear ();
+			GameManager.instance.currentLevel = 1;
 			GameManager.instance.nextState = (int)GameFlowStates.ID.Level;
 			requestStackPush ((int)GameFlowStates.ID.Loading);
 		}

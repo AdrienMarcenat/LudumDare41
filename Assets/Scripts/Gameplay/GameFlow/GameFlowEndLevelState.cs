@@ -49,6 +49,7 @@ public class GameFlowEndLevelState : FSMState
 	public void GoToMenu ()
 	{
 		requestStateClear ();
+		GameManager.instance.currentLevel = 0;
 		GameManager.instance.nextState = (int)GameFlowStates.ID.Menu;
 		requestStackPush ((int)GameFlowStates.ID.Loading);
 	}

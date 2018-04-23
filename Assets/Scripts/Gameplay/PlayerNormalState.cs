@@ -13,6 +13,8 @@ public class PlayerNormalState : FSMState
 	private UnityAction<CommandModifier> m_ActionMoveStopt;
 	private UnityAction<CommandModifier> m_ActionFire;
 	private UnityAction<CommandModifier> m_ActionLaser;
+	private UnityAction<CommandModifier> m_ActionGodState;
+	private UnityAction<CommandModifier> m_ActionAutodestruction;
 
 	protected override void Awake ()
 	{
@@ -28,6 +30,8 @@ public class PlayerNormalState : FSMState
 		m_ActionMoveStopt = new UnityAction<CommandModifier> (MoveStop);
 		m_ActionFire = new UnityAction<CommandModifier> (Fire);
 		m_ActionLaser = new UnityAction<CommandModifier> (Laser);
+		m_ActionGodState = new UnityAction<CommandModifier> (GodState);
+		m_ActionAutodestruction = new UnityAction<CommandModifier> (Autodestruction);
 	}
 
 	public override void Enter ()
@@ -37,6 +41,8 @@ public class PlayerNormalState : FSMState
 		EventManager.Register (PlayerEventManager.MoveStop, m_ActionMoveStopt);
 		EventManager.Register (PlayerEventManager.Fire, m_ActionFire);
 		EventManager.Register (PlayerEventManager.Laser, m_ActionLaser);
+		EventManager.Register (PlayerEventManager.Pause, m_ActionGodState);
+		EventManager.Register (PlayerEventManager.Autodestruction, m_ActionAutodestruction);
 
 		m_Health.SimpleDamage += Damage;
 		m_Health.GameOver += GameOver;
@@ -49,6 +55,8 @@ public class PlayerNormalState : FSMState
 		EventManager.Unregister (PlayerEventManager.MoveStop, m_ActionMoveStopt);
 		EventManager.Unregister (PlayerEventManager.Fire, m_ActionFire);
 		EventManager.Unregister (PlayerEventManager.Laser, m_ActionLaser);
+		EventManager.Unregister (PlayerEventManager.Pause, m_ActionGodState);
+		EventManager.Unregister (PlayerEventManager.Autodestruction, m_ActionAutodestruction);
 
 		m_Health.SimpleDamage -= Damage;
 		m_Health.GameOver -= GameOver;
@@ -79,15 +87,27 @@ public class PlayerNormalState : FSMState
 		m_WeaponManager.Fire (1, modifier.numberModifier, modifier.sizeModifier, Vector3.up);
 	}
 
+	private void Autodestruction (CommandModifier cm)
+	{
+		m_Health.LoseHealth (1000);
+	}
+
 	private void GameOver ()
 	{
 		requestStackPop ();
 		requestStackPush ((int)PlayerStates.ID.GameOver);
+		requestStackPush ((int)PlayerStates.ID.God);
 	}
 
 	private void Damage ()
 	{
 		requestStackPush ((int)PlayerStates.ID.Invincible);
+	}
+
+	private void GodState (CommandModifier cm)
+	{
+		requestStackPop ();
+		requestStackPush ((int)PlayerStates.ID.God);
 	}
 }
 

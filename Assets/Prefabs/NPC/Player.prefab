@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 114714692886812616}
   - component: {fileID: 114602757838954014}
   - component: {fileID: 114486046066013196}
+  - component: {fileID: 114186577865570154}
   - component: {fileID: 114838311274985312}
   - component: {fileID: 114361023322153372}
   - component: {fileID: 114110611248616694}
@@ -118,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549700548836664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -217, y: -612, z: 0}
+  m_LocalPosition: {x: -200, y: -500, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4735181785702810}
@@ -238,6 +239,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothSpeed: 100
+--- !u!114 &114186577865570154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1549700548836664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d209971622eaf469cddef8677b4b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114361023322153372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1183ab1586f2f2e4bad0cff6bb471616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TotalHealth: 100
+  m_TotalHealth: 1000
 --- !u!114 &114486046066013196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6755f548435dae4c917d570e3e3226e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 212127309681945422}
   m_InvulnerabilitySeconds: 1
   m_BlinkingRate: 0.1
 --- !u!114 &114547384810141812

@@ -8,15 +8,16 @@ namespace PlayerStates
 		Normal = 0,
 		Invincible = 1,
 		GameOver = 2,
+		God = 3
 	}
 }
 
 public class PlayerFSM : FSM
 {
-	protected override void Awake()
+	protected override void Awake ()
 	{
 		base.Awake ();
-		PushState ((int) PlayerStates.ID.Normal);
+		PushState ((int)PlayerStates.ID.Normal);
 	}
 }
 

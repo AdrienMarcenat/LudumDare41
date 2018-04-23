@@ -18,9 +18,10 @@ namespace GameFlowStates
 
 public class GameFlowFSM : FSM
 {
-	protected override void Awake ()
+	void Start ()
 	{
-		base.Awake ();
-		PushState ((int)GameFlowStates.ID.Menu);
+		GameManager.instance.currentLevel = 0;
+		GameManager.instance.nextState = (int)GameFlowStates.ID.Menu;
+		PushState ((int)GameFlowStates.ID.Loading);
 	}
 }

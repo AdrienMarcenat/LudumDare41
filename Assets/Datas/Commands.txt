@@ -3,3 +3,12 @@
 "stop":MoveStop
 "fire":Fire
 "laser":Laser
+"pause":Pause
+"resume":Resume
+"menu":Menu
+"next level":NextLevel
+"retry":Retry
+"autodestruction":Autodestruction
+"shield":Shield
+"stop music":StopMusic
+"Time":Time

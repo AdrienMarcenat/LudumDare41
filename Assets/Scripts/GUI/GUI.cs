@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GUI : Singleton<GUI>
+public class GUI : MonoBehaviour
 {
 	private HealthBar healthBar;
 
 	public KeyPanel keyPanel { get; private set; }
 
 	private CommandBar commandBar;
-    public DialogGUI dialog;
+	public DialogGUI dialog;
 
-	override protected void Awake ()
+	void Awake ()
 	{	
-		base.Awake ();
+		//base.Awake ();
 		healthBar = GetComponentInChildren<HealthBar> ();
 		if (!healthBar) {
 			Debug.LogWarning ("HealthBar not found in GUI");

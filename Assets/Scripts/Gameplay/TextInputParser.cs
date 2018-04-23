@@ -25,7 +25,7 @@ public class TextInputParser : MonoBehaviour
 
 	private char FilterChar (char inputChar)
 	{
-		if (!m_LetterInventory.IsLetterOwned (inputChar) || GameFlowPauseState.pause) {
+		if (!m_LetterInventory.IsLetterOwned (inputChar)) {
 			inputChar = '\0';
 		}
 		return inputChar;

@@ -23,7 +23,7 @@ public class PatternEnemySpawner : MonoBehaviour
 			m_Delay += Time.deltaTime;
 		} else if (currentIndex < m_EnemyPrefabs.Count) {
 			m_Delay = 0;
-			GameObject enemy = Instantiate (m_EnemyPrefabs [currentIndex]);
+			Instantiate (m_EnemyPrefabs [currentIndex]);
 			currentIndex++;
 		} else {
 			Destroy (this);
