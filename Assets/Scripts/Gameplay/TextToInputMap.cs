@@ -25,13 +25,11 @@ public class TextToInputMap : Singleton<TextToInputMap>
 
 		string[] lines = File.ReadAllLines (m_FileName);
 
-		for (int i = 0; i < lines.Length; i++)
-		{
+		for (int i = 0; i < lines.Length; i++) {
 			string[] datas = lines [i].Split (separators);
 
 			// If there is an error in print a debug message
-			if (datas.Length != 2)
-			{
+			if (datas.Length != 2) {
 				Debug.Log ("Invalid number of data line " + i + " expecting 2, got " + datas.Length);
 				return;
 			}
@@ -50,9 +48,10 @@ public class TextToInputMap : Singleton<TextToInputMap>
 	public void FireCommand (string command, CommandModifier modifier)
 	{
 		Command e = null;
-		if (m_TextToInputMap.TryGetValue ('"' + command + '"', out e))
-		{
+		if (m_TextToInputMap.TryGetValue ('"' + command + '"', out e)) {
 			e.Invoke (modifier);
+		} else {
+			EventManager.TriggerEvent ("WrongCommand", modifier);	
 		}
 	}
 }
