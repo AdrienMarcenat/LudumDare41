@@ -101,7 +101,9 @@ public class PlayerNormalState : FSMState
 
 	private void Damage ()
 	{
-		requestStackPush ((int)PlayerStates.ID.Invincible);
+		if (!PlayerInvicibleState.IsInvicible) {
+			requestStackPush ((int)PlayerStates.ID.Invincible);
+		}
 	}
 
 	private void GodState (CommandModifier cm)

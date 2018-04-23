@@ -9,6 +9,8 @@ public class PlayerInvicibleState : FSMState
 	[SerializeField] private float m_BlinkingRate;
 	private float m_InvulnerabilitySecondsDelay;
 
+	public static bool IsInvicible = false;
+
 	protected override void Awake ()
 	{
 		ID = (int)PlayerStates.ID.Invincible;
@@ -19,13 +21,8 @@ public class PlayerInvicibleState : FSMState
 
 	public override void Enter ()
 	{
-		// If we already are in invicible state, pop this state
-		if (!m_Sprite.enabled) {
-			requestStackPop ();
-		} else {
-			m_Health.Enable (false);
-			StartCoroutine (InvulnerabilityRoutine ());
-		}
+		m_Health.Enable (false);
+		StartCoroutine (InvulnerabilityRoutine ());
 	}
 
 	public override void Exit ()
@@ -36,11 +33,23 @@ public class PlayerInvicibleState : FSMState
 
 	IEnumerator InvulnerabilityRoutine ()
 	{
-		m_InvulnerabilitySecondsDelay = m_InvulnerabilitySeconds;
-		while (m_InvulnerabilitySecondsDelay > 0) {
-			m_InvulnerabilitySecondsDelay -= Time.deltaTime + m_BlinkingRate;
-			m_Sprite.enabled = !m_Sprite.enabled;
-			yield return new WaitForSeconds (m_BlinkingRate);
+		yield return null;
+
+		if (!IsInvicible) {
+			IsInvicible = true;
+			if (m_Health.GetCurrentHealth () / m_Health.GetTotalHealth () < 0.2f) {
+				EventManager.TriggerEvent ("LowHealth", new CommandModifier (1, 1, 1));	
+			} else {
+				EventManager.TriggerEvent ("Hit", new CommandModifier (1, 1, 1));
+			}
+
+			m_InvulnerabilitySecondsDelay = m_InvulnerabilitySeconds;
+			while (m_InvulnerabilitySecondsDelay > 0) {
+				m_InvulnerabilitySecondsDelay -= Time.deltaTime + m_BlinkingRate;
+				m_Sprite.enabled = !m_Sprite.enabled;
+				yield return new WaitForSeconds (m_BlinkingRate);
+			}
+			IsInvicible = false;
 		}
 		requestStackPop ();
 	}

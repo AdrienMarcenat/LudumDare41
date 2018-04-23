@@ -80,12 +80,10 @@ public class FSM : MonoBehaviour
 	private void ApplyPendingChanges ()
 	{
 		foreach (PendingChange change in pendingList) {
-			Debug.Log (change.action);
 			switch (change.action) {
 			case Action.Push:
 				FSMState pushState = FindState (change.stateID);
 				pushState.Enter ();
-				Debug.Log (change.stateID);
 				stateStack.Push (pushState);
 				break;
 			case Action.Pop:
