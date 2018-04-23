@@ -38,11 +38,12 @@ public class TextInputParser : MonoBehaviour
 		string[] words = userInput.Split (m_Separators);
 		string command = "";
 		if (userInput != "" && GameManager.instance.currentState != (int)GameFlowStates.ID.Dialogue) {
-			for (int i = 0; i < words.Length; i++) {
-				if (i > 0)
-					command += " ";
-				command += words [i];
-				if (TextToInputMap.instance.FireCommand (command, m_CommandModifierManager.GetModifiers (words, i + 1)))
+			for (int i = words.Length; i > 0; i--) {
+				string word = words [i - 1];
+				if (i < words.Length)
+					word += " ";
+				command = word + command;
+				if (TextToInputMap.instance.FireCommand (command, m_CommandModifierManager.GetModifiers (words, i - 1)))
 					break;
 			}
 		}

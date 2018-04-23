@@ -9,6 +9,7 @@ public class GameFlowLevelState : FSMState
 
 	private UnityAction<CommandModifier> m_ActionPause;
 	private UnityAction<CommandModifier> m_ActionWaitDialogue;
+	private UnityAction<CommandModifier> m_ActionEndLevel;
 
 	protected override void Awake ()
 	{
@@ -16,14 +17,18 @@ public class GameFlowLevelState : FSMState
 		base.Awake ();
 		m_ActionPause = new UnityAction<CommandModifier> (Pause);
 		m_ActionWaitDialogue = new UnityAction<CommandModifier> (WaitDialogue);
+		m_ActionEndLevel = new UnityAction<CommandModifier> (EndLevel);
 	}
 
 	public override void Enter ()
 	{
 		EventManager.Register (PlayerEventManager.Pause, m_ActionPause);
 		EventManager.Register ("WaitDialogue", m_ActionWaitDialogue);
+		EventManager.Register ("EndLevel", m_ActionEndLevel);
 		SoundManager.PlayMusic (m_LevelMusic);
+		Debug.Log ("enter level " + LevelGenerator.level);
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver += GameOver;
+		LevelGenerator.Load ();
 	}
 
 	public override bool StateUpdate ()
@@ -40,6 +45,7 @@ public class GameFlowLevelState : FSMState
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver -= GameOver;
 		EventManager.Unregister (PlayerEventManager.Pause, m_ActionPause);
 		EventManager.Unregister ("WaitDialogue", m_ActionWaitDialogue);
+		EventManager.Unregister ("EndLevel", m_ActionEndLevel);
 	}
 
 	private void Pause (CommandModifier cm)
@@ -62,6 +68,12 @@ public class GameFlowLevelState : FSMState
 	public void WaitDialogue (CommandModifier cm)
 	{
 		requestStackPush ((int)GameFlowStates.ID.Dialogue);
+	}
+
+	public void EndLevel (CommandModifier cm)
+	{
+		requestStackPop ();
+		requestStackPush ((int)GameFlowStates.ID.EndLevel);
 	}
 }
 

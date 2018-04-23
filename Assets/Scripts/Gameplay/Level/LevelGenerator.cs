@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGenerator : MonoBehaviour
+public class LevelGenerator : Singleton<LevelGenerator>
 {
+	public static int level;
+
 	public bool done = true;
 	public bool isWaiting = false;
 	protected bool started = false;
@@ -14,22 +16,36 @@ public class LevelGenerator : MonoBehaviour
 	protected int m_sequenceId;
 	protected int m_orderId;
 
-	[SerializeField] private DialogManager m_DialogueManager;
+	private DialogManager m_DialogueManager;
 
-	void Awake ()
+	protected override void Awake ()
 	{
-		Reset ();
+		base.Awake ();
+		level = 1;
+		m_orderSequences = new List<LevelSequence> ();
 	}
 
-	void Start ()
+	public static void Load ()
 	{
-		this.ParseFile ("Assets/Levels/Level01_Tutorial.lvl");
+		LevelGenerator.instance.LoadLevel ();
+	}
+
+	private void LoadLevel ()
+	{
+		Reset ();
+		this.ParseFile ("Assets/Levels/Level" + level + ".lvl");
 	}
 
 	public void Reset ()
 	{
+		m_orderSequences.Clear ();
 		m_sequenceId = 0;
 		m_orderId = 0;
+		m_currentTime = 0;
+		m_startTime = 0;
+		started = false;
+		isWaiting = false;
+		done = true;
 	}
 
 	protected float latestTime;
@@ -70,7 +86,9 @@ public class LevelGenerator : MonoBehaviour
 
 	private void ExecuteOrder (LevelOrder order)
 	{
-		//Debug.Log(order);
+		if (m_DialogueManager == null)
+			m_DialogueManager = GameObject.Find ("DialogueManager").GetComponent<DialogManager> ();
+		
 		switch (order.orderType) {
 		case(LevelOrderType.SPAWN):
 			SpawnLevelOrder spawnOrder = (SpawnLevelOrder)order;
@@ -88,7 +106,7 @@ public class LevelGenerator : MonoBehaviour
 			m_DialogueManager.TriggerDialogue (talkLevelOrder.tag);
 			break;
 		case(LevelOrderType.END_LEVEL):
-			Debug.Log ("END LEVEL!!!");
+			EventManager.TriggerEvent ("EndLevel", new CommandModifier (1, 1, 1));
 			break;
 		case(LevelOrderType.WAIT_TRIGGER):
 			isWaiting = true;

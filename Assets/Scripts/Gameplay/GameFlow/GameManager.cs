@@ -9,12 +9,13 @@ public class GameManager : Singleton<GameManager>
 
 	public static event SimpleEvent ChangeScene;
 
-	public int currentLevel = 1;
+	public int currentScene = 1;
 	public int nextState = 0;
 	public int currentState = (int)GameFlowStates.ID.Menu;
 
 	public static void LoadScene (int index)
 	{
+		LevelGenerator.instance.Reset ();
 		if (ChangeScene != null)
 			ChangeScene ();
 		SceneManager.LoadScene (index);
@@ -22,6 +23,6 @@ public class GameManager : Singleton<GameManager>
 
 	public static void LoadLevel ()
 	{
-		LoadScene (instance.currentLevel);
+		LoadScene (instance.currentScene);
 	}
 }

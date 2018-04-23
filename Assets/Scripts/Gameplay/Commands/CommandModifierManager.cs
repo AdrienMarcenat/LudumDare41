@@ -51,10 +51,10 @@ public class CommandModifierManager : Singleton<CommandModifierManager>
 		m_SpeedModifiers.FillModifier (m_SpeedModifiersFilename);
 	}
 
-	public CommandModifier GetModifiers (string[] words, int beginIndex)
+	public CommandModifier GetModifiers (string[] words, int endIndex)
 	{
 		CommandModifier result = new CommandModifier (1, 1, 1);
-		for (int i = beginIndex; i < words.Length; i++) {
+		for (int i = 0; i < endIndex; i++) {
 			string word = words [i];
 			result += new CommandModifier (m_SizeModifiers.GetModifier (word),
 				m_NumberModifiers.GetModifier (word),

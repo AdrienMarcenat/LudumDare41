@@ -20,7 +20,7 @@ public class GameFlowFSM : FSM
 {
 	void Start ()
 	{
-		GameManager.instance.currentLevel = 0;
+		GameManager.instance.currentScene = 0;
 		GameManager.instance.nextState = (int)GameFlowStates.ID.Menu;
 		PushState ((int)GameFlowStates.ID.Loading);
 	}

@@ -12,7 +12,7 @@ public class PlayerEventManager : MonoBehaviour
 	public static string Pause = "pause";
 	public static string Resume = "resume";
 	public static string Menu = "menu";
-	public static string NextLevel = "next level";
+	public static string NextLevel = "NextLevel";
 	public static string Retry = "retry";
 	public static string Autodestruction = "autodestruction";
 	public static string Shield = "shield";

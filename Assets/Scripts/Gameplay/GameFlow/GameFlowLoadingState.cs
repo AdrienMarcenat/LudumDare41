@@ -14,7 +14,7 @@ public class GameFlowLoadingState : FSMState
 	{
 		Time.timeScale = 0f;
 		SceneManager.sceneLoaded += OnSceneLoaded;
-		GameManager.LoadScene (GameManager.instance.currentLevel);
+		GameManager.LoadScene (GameManager.instance.currentScene);
 	}
 
 	public override void Exit ()

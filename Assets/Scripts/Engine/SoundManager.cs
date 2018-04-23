@@ -19,7 +19,7 @@ public class SoundManager : Singleton<SoundManager>
 
 	static public void PlayMusic (AudioClip clip)
 	{
-		if (instance.musicSource.clip != clip) {
+		if (instance.musicSource.clip != clip || !instance.musicSource.isPlaying) {
 			instance.musicSource.clip = clip;
 			instance.musicSource.Play ();
 			instance.musicSource.loop = true;

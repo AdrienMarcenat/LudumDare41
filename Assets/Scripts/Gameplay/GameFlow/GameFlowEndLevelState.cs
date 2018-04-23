@@ -9,48 +9,66 @@ public class GameFlowEndLevelState : FSMState
 	public static event EndLevelEvent EndLevel;
 
 	[SerializeField] private AudioClip m_SucessMusic;
+	private UnityAction<CommandModifier> m_Retry;
+	private UnityAction<CommandModifier> m_Nextlevel;
+	private UnityAction<CommandModifier> m_Menu;
 
 	protected override void Awake ()
 	{
 		ID = (int)GameFlowStates.ID.EndLevel;
 		base.Awake ();
+		m_Retry = new UnityAction<CommandModifier> (RetryLevel);
+		m_Nextlevel = new UnityAction<CommandModifier> (NextLevel);
+		m_Menu = new UnityAction<CommandModifier> (GoToMenu);
 	}
 
 	public override void Enter ()
 	{
 		SoundManager.StopMusic ();
 		SoundManager.PlaySingle (m_SucessMusic);
-		Time.timeScale = 0f;
+
+		EventManager.Register (PlayerEventManager.Retry, m_Retry);
+		EventManager.Register (PlayerEventManager.NextLevel, m_Nextlevel);
+		EventManager.Register (PlayerEventManager.Menu, m_Menu);
+
+		StartCoroutine (FreezeTime ());
 		if (EndLevel != null)
 			EndLevel (true);
 	}
 
 	public override void Exit ()
 	{
+		EventManager.Unregister (PlayerEventManager.Retry, m_Retry);
+		EventManager.Unregister (PlayerEventManager.NextLevel, m_Nextlevel);
+		EventManager.Unregister (PlayerEventManager.Menu, m_Menu);
 		Time.timeScale = 1f;
 		if (EndLevel != null)
 			EndLevel (false);
 	}
 
-	public void RetryLevel ()
+	IEnumerator FreezeTime ()
 	{
-		requestStateClear ();
-		GameManager.instance.nextState = (int)GameFlowStates.ID.Level;
-		requestStackPush ((int)GameFlowStates.ID.Loading);
+		yield return new WaitForSecondsRealtime (1.5f);
+		Time.timeScale = 0f;
 	}
 
-	public void NextLevel ()
+	public void RetryLevel (CommandModifier cm)
 	{
 		requestStateClear ();
-		GameManager.instance.currentLevel++;
-		GameManager.instance.nextState = (int)GameFlowStates.ID.Level;
-		requestStackPush ((int)GameFlowStates.ID.Loading);
+		requestStackPush ((int)GameFlowStates.ID.Level);
 	}
 
-	public void GoToMenu ()
+	public void NextLevel (CommandModifier cm)
 	{
 		requestStateClear ();
-		GameManager.instance.currentLevel = 0;
+		LevelGenerator.level++;
+		requestStackPush ((int)GameFlowStates.ID.Level);
+	}
+
+	public void GoToMenu (CommandModifier cm)
+	{
+		requestStateClear ();
+		GameManager.instance.currentScene = 0;
 		GameManager.instance.nextState = (int)GameFlowStates.ID.Menu;
 		requestStackPush ((int)GameFlowStates.ID.Loading);
 	}
