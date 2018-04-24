@@ -55,6 +55,7 @@ MonoBehaviour:
   m_DialogText: {fileID: 0}
   m_NameText: {fileID: 0}
   m_DialogGUI: {fileID: 0}
+  m_Renderer: {fileID: 0}
 --- !u!114 &114383933011062670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,3 +68,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_WrongCommandNumberBeforeDialogue: 1
+  m_SecondsBeforeClosing: 3

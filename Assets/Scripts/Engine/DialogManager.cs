@@ -9,6 +9,7 @@ public class DialogManager : MonoBehaviour
 	[SerializeField] private Text m_DialogText;
 	[SerializeField] private Text m_NameText;
 	[SerializeField] private DialogGUI m_DialogGUI;
+    [SerializeField] private SpriteRenderer m_Renderer;
 
 	private Queue<Dialog.Sentence> m_Sentences;
 	private static string dialogueFileName = "Datas/Dialogues.txt";
@@ -38,12 +39,24 @@ public class DialogManager : MonoBehaviour
 
 	public bool DisplayNextSentence ()
 	{
+        //HACK AND DIRTY AND TODO
+        Dictionary<string,int> faces = new Dictionary<string,int>();
+        faces.Add("linda",1);
+        faces.Add("cindy",2);
+        faces.Add("carl",3);
+        faces.Add("tom",4);
+        faces.Add("bob",5);
+        faces.Add("ship",5);
+
 		if (m_Sentences.Count == 0) {
 			EndDialogue ();
 			return true;
 		}
 		StopAllCoroutines ();
 		Dialog.Sentence sentence = m_Sentences.Dequeue ();
+        string name = sentence.name.ToLower().Substring(1);
+        int faceId = faces.ContainsKey(name) ? faces[name] : 0;
+        m_Renderer.sprite = RessourceManager.instance.LoadSprite("Game/faces", faceId);
 		m_NameText.text = sentence.name;
 		StartCoroutine (TypeSentence (sentence.sentence));
 

@@ -24,7 +24,7 @@ public class KeyPanel : MonoBehaviour
 		return new Vector2 (x * 34, -44 - y * 34);
 	}
 
-	void Start ()
+	void Awake ()
 	{
 		int i = 0;
 		foreach (char c in ALL_LETTERS) {
@@ -61,6 +61,11 @@ public class KeyPanel : MonoBehaviour
 
 	public void SetAvailable (char c, bool b = true)
 	{
+        if (!m_keyHolders.ContainsKey(c))
+        {
+            Debug.LogWarning("KeyPanel doesn't have char " + c);
+            return;
+        }
 		bool currently = m_keysAvailable [c];
 		if (b != currently) {
 			m_keysAvailable [c] = b;
