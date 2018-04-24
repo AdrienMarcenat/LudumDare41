@@ -14,6 +14,9 @@ public class DialogManager : MonoBehaviour
 	private static string dialogueFileName = "Datas/Dialogues.txt";
 	private Coroutine m_CloseDialogueGuiAfterSecondsRoutine;
 
+    //HACK
+    private Dialog m_Dialog;
+
 	void Start ()
 	{
 		m_Sentences = new Queue<Dialog.Sentence> ();
@@ -21,6 +24,7 @@ public class DialogManager : MonoBehaviour
 
 	public void StartDialogue (Dialog dialogue)
 	{
+        m_Dialog = dialogue;
 		m_DialogGUI.Open (2);
 
 		m_Sentences.Clear ();
@@ -49,10 +53,34 @@ public class DialogManager : MonoBehaviour
 	IEnumerator TypeSentence (string sentence)
 	{
 		m_DialogText.text = "";
-		foreach (char letter in sentence.ToCharArray()) {
-			m_DialogText.text += letter;
-			yield return null;
+        sentence.ToCharArray();
+        string extra = "";
+        for(int i = 0; i < sentence.Length; i++) {
+            char letter = sentence[i];
+            if (letter == '<')
+            {
+                bool opening = true;
+                extra = "</";
+                i++;
+                while (sentence[i] != '>')
+                {
+                    if (sentence[i] == '/')
+                    {
+                        opening = false;
+                    }
+                    extra += sentence[i];
+                    i++;
+                }
+                extra+=">";
+                if (!opening)
+                {
+                    extra = "";
+                }
+            }
+            m_DialogText.text = sentence.Substring(0,i+1)+extra;
+            yield return null;
 		}
+        m_DialogText.text = sentence;
 	}
 
 	public void EndDialogue ()
@@ -103,6 +131,15 @@ public class DialogManager : MonoBehaviour
 
 		StartDialogue (dialogue);
 	}
+
+    public void CloseDialogueAutomaticaly()
+    {
+        int number = 0;
+        foreach (Dialog.Sentence sentence in m_Dialog.sentences) {
+            number+=m_Sentences.Count;
+        }
+        CloseDialogueGuiAfterSeconds(1.5f + number * 0.08f);
+    }
 
 	public void CloseDialogueGuiAfterSeconds (float seconds)
 	{

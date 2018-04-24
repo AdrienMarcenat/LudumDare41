@@ -71,7 +71,7 @@ public class SituatonalDialogueHandler : MonoBehaviour
 	private void TriggerSitualtionalDialogue (string tag)
 	{
 		m_DialogManager.TriggerDialogue (tag);
-		m_DialogManager.CloseDialogueGuiAfterSeconds (m_SecondsBeforeClosing);
+		m_DialogManager.CloseDialogueAutomaticaly ();
 	}
 }
 
