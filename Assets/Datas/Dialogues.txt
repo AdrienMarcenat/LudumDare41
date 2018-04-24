@@ -1,13 +1,13 @@
 
 Bob
 [
-	Bob:"Hello, world !"
-	Linda:"Hello, Bob !"
+	Bob:"Hello, world!"
+	Linda:"Hello, Bob!"
 ]
 
 Tutorial1
 [
-	Linda:"Commander ?..."
+	Linda:"Commander?..."
 	Linda:"Commander!
 	Linda:"We have been severely injured... our precious letters have been scattered around the universe..."
 	Linda:"Only a few remains, it is barely enough to move..."
@@ -15,68 +15,68 @@ Tutorial1
 
 Tutorial2
 [
-	Linda:"Look, one of our letters is here ! If only we could go left to catch it..."
-	Linda:"We are awaiting your orders, Commander !"
+	Linda:"Look, one of our letters is here! If only we could go left to catch it..."
+	Linda:"We are awaiting your orders, Commander!"
 ]
 
 Tutorial3
 [
-	Linda:"Hourray ! Hum.. I mean well done Commander".
-	Tom:"Should we stop going left ?"
+	Linda:"Hourray! Hum.. I mean well done Commander".
+	Tom:"Should we stop going left?"
 ]
 
 Tutorial4
 [
-	Cindy:"Enemy detected, Leader !"
+	Cindy:"Enemy detected, Leader!"
 	Linda:"The Red Sand clan, those filthy creatures want our letters".
-	Linda:"Let show us who we are Commander, we can fire at your command !".
+	Linda:"Let show us who we are Commander, we can fire at your command!".
 ]
 
 Tutorial5
 [
-	Linda:"Ah, I knew they had stolen a letter ! "
+	Linda:"Ah, I knew they had stolen a letter! "
 ]
 
 Tutorial6
 [
-	Linda:"There are more of them ! How many missile should we fire ? "
+	Linda:"There are more of them! How many missile should we fire? "
 ]
 
 Tutorial7
 [
-	Cindy:"May I remind you, Leader, that we can use the ship energy to defend ourselves ? ""
+	Cindy:"May I remind you, Leader, that we can use the ship energy to defend ourselves? ""
 	Cindy:"Just give the order and we will raise our shield."
 	Tom:"Yeah but this will drain energy from the laser canon..."
 ]
 
 Tutorial8
 [
-	Bob:"Maybe you can give us more precise order ? We can alter our speed you know..."
+	Bob:"Maybe you can give us more precise order? We can alter our speed you know..."
 ]
 
 Tutorial9
 [
-	Cindy:"I detect a RedSand destroyer ! It must have one of our letter!"
-	Glortark:"Humans... so annoying. I shall destroy you with my huge laser !"
-	Tom:"Ah ! Just saying it is huge doesn't make it huge... I guess..."
+	Cindy:"I detect a RedSand destroyer! It must have one of our letter!"
+	Glortark:"Humans... so annoying. I shall destroy you with my huge laser!"
+	Tom:"Ah! Just saying it is huge doesn't make it huge... I guess..."
 ]
 
 Tutorial10
 [
 	Linda:"It is a great victory, Commander."
-	Linda:"Now we can wander the system to find the missing letters !"
-	Linda:"We are awaiting your orders, Commander !"
+	Linda:"Now we can wander the system to find the missing letters!"
+	Linda:"We are awaiting your orders, Commander!"
 ]
 
 IntroLevel2
 [
-	Linda:"Let's find the remaining letters, but beware the RedSand ships !"
+	Linda:"Let's find the remaining letters, but beware the RedSand ships!"
 ]
 
 BossDialogueLevel2
 [
-	Cindy:"I detect a RedSand Super Destroyer ! It must be the evil general Glortark !"
-	Glortark:"This time I will crush you ! I'm invicible with my shield ! And don't even think of destroying the generators !"
+	Cindy:"I detect a RedSand Super Destroyer! It must be the evil general Glortark!"
+	Glortark:"This time I will crush you! I'm invicible with my shield! And don't even think of destroying the generators!"
 	Tom:"Of course we will not target those defenseless generators..."
 ]
 
