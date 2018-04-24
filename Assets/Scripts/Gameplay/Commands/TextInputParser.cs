@@ -37,7 +37,7 @@ public class TextInputParser : MonoBehaviour
 
 		string[] words = userInput.Split (m_Separators);
 		string command = "";
-		if (userInput != "" && GameManager.instance.currentState != (int)GameFlowStates.ID.Dialogue) {
+		if (userInput != "") {
 			for (int i = words.Length; i > 0; i--) {
 				string word = words [i - 1];
 				if (i < words.Length)

@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 200
-  range: 10
+  range: 50
   penetration: 0
   weaponType: 0
   targetTag: Enemy

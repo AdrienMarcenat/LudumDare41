@@ -90,9 +90,10 @@ public class PlayerNormalState : FSMState
 	{
 		Energy energy = GetComponent<Energy> ();
 		if (energy != null) {
-			if (energy.GetCurrentEnergy () > 0) {
+			float energyRequired = 30 * modifier.sizeModifier;
+			if (energy.GetCurrentEnergy () > energyRequired) {
 				m_WeaponManager.Fire (1, 1, modifier.sizeModifier, Vector3.up);
-				energy.LoseEnergy (30 * modifier.sizeModifier);
+				energy.LoseEnergy (energyRequired);
 			}
 		}
 	}

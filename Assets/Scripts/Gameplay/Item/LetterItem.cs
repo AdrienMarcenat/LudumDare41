@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Analytics;
-using UnityEditor;
 
 public class LetterItem : MonoBehaviour
 {
