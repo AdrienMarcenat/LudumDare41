@@ -3887,61 +3887,6 @@ Prefab:
       propertyPath: m_CommandModifierManager
       value: 
       objectReference: {fileID: 1501559511}
-    - target: {fileID: 1009651938489122, guid: fc82c014489dd0346bbfbef6473529c7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1792785505909872, guid: fc82c014489dd0346bbfbef6473529c7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224264309501912482, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224264309501912482, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114664069876168806, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_Text
-      value: 'Score :'
-      objectReference: {fileID: 0}
-    - target: {fileID: 224264309501912482, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 224264309501912482, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 224276416151368826, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114157756140151082, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3b15b2a4907bb42459e4bedd83e4f92a,
-        type: 3}
-    - target: {fileID: 114157756140151082, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114832905817786448, guid: fc82c014489dd0346bbfbef6473529c7,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300002, guid: f0e6111ecfb88d24aa4d4cc0fa2062fb,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc82c014489dd0346bbfbef6473529c7, type: 2}
   m_IsPrefabParent: 0
@@ -4263,6 +4208,11 @@ Prefab:
       propertyPath: m_DialogGUI
       value: 
       objectReference: {fileID: 494995192}
+    - target: {fileID: 114193398211954334, guid: 3d69a78248cbc7b408ab569c8e38a7f7,
+        type: 2}
+      propertyPath: m_Renderer
+      value: 
+      objectReference: {fileID: 1289599492}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d69a78248cbc7b408ab569c8e38a7f7, type: 2}
   m_IsPrefabParent: 0
@@ -4352,6 +4302,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1289599492 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212247649104053578, guid: fc82c014489dd0346bbfbef6473529c7,
+    type: 2}
+  m_PrefabInternal: {fileID: 683846847}
 --- !u!1 &1417456119
 GameObject:
   m_ObjectHideFlags: 0

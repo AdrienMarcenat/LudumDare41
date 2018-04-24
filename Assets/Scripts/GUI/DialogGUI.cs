@@ -25,7 +25,7 @@ public class DialogGUI : MonoBehaviour
 
 	public void Close (float time = 0.3f)
 	{
-		ChangeHeight (-20);
+		ChangeHeight (-48);
 	}
 
 	public void ChangeHeight (float destination, float time = 0.4f)
