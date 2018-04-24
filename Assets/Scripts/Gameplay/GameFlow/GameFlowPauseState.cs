@@ -25,6 +25,8 @@ public class GameFlowPauseState : FSMState
 
 	public override void Enter ()
 	{
+
+		print ("enter pause");
 		TogglePause ();
 		EventManager.Register (PlayerEventManager.Menu, m_Menu);
 		EventManager.Register (PlayerEventManager.Resume, m_Resume);
@@ -45,6 +47,7 @@ public class GameFlowPauseState : FSMState
 		EventManager.Unregister (PlayerEventManager.Menu, m_Menu);
 		EventManager.Unregister (PlayerEventManager.Resume, m_Resume);
 		EventManager.Unregister (PlayerEventManager.Retry, m_Retry);
+		print ("exit pause");
 		TogglePause ();
 	}
 

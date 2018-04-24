@@ -36,11 +36,15 @@ public class LevelGenerator : Singleton<LevelGenerator>
 	private void LoadLevel ()
 	{
 		Reset ();
+		print ("Load " + level);
+		if (isWaiting)
+			print ("is wiating");
 		string path = "";
 		#if UNITY_EDITOR
 		path = "Assets/";
 		#endif
 		this.ParseFile (path + "Levels/Level" + level + ".lvl");
+		print ("orders " + m_orderSequences.Count);
 	}
 
 	public void Reset ()
@@ -78,13 +82,14 @@ public class LevelGenerator : Singleton<LevelGenerator>
 					}
 					m_currentTime = Time.deltaTime;
 				} else {
-					m_currentTime -= latestTime;
+					//m_currentTime -= latestTime;
 					latestTime = 0;
 				}
 				started = true;
 			}
 			while (m_orderId < currentSequence.orders.Count) {
 				LevelOrder currentOrder = currentSequence.orders [m_orderId];
+				print (currentOrder.when + " " + m_currentTime);
 				if (currentOrder.when > m_currentTime) {
 					return;
 				}

@@ -41,6 +41,7 @@ public class GameFlowEndLevelState : FSMState
 		EventManager.Unregister (PlayerEventManager.Retry, m_Retry);
 		EventManager.Unregister (PlayerEventManager.NextLevel, m_Nextlevel);
 		EventManager.Unregister (PlayerEventManager.Menu, m_Menu);
+		print ("enter end level");
 		Time.timeScale = 1f;
 		if (EndLevel != null)
 			EndLevel (false);
@@ -61,7 +62,8 @@ public class GameFlowEndLevelState : FSMState
 	public void NextLevel (CommandModifier cm)
 	{
 		requestStateClear ();
-		LevelGenerator.level++;
+		LevelGenerator.level = 2;
+		print ("exit end level");
 		requestStackPush ((int)GameFlowStates.ID.Level);
 	}
 

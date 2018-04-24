@@ -24,6 +24,8 @@ public class GameFlowLevelState : FSMState
 
 	public override void Enter ()
 	{
+		print ("enter level");
+		print (LevelGenerator.level);
 		if (EnterLevel != null)
 			EnterLevel (true);
 		
@@ -47,6 +49,7 @@ public class GameFlowLevelState : FSMState
 
 	public override void Exit ()
 	{
+		print ("exit level");
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<Health> ().GameOver -= GameOver;
 		EventManager.Unregister (PlayerEventManager.Pause, m_ActionPause);
 		EventManager.Unregister ("WaitDialogue", m_ActionWaitDialogue);
