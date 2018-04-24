@@ -32,7 +32,8 @@ public class PlayerFSM : FSM
 		GetComponent<MovingObject> ().Reset ();
 		GetComponent<WeaponManager> ().Reset ();
 		GetComponent<LetterInventory> ().Reset ();
-		GetComponentInChildren<SpriteRenderer> ().enabled = true;
+		GetComponent<SpriteRenderer> ().enabled = false;
+		GameObject.Find ("PlayerSprite").GetComponent<SpriteRenderer> ().enabled = true;
 		GetComponent<Energy> ().Reset ();
 		if (m_SpawningPosition == null)
 			m_SpawningPosition = GameObject.Find ("PlayerSpawningPosition").transform;

@@ -157,6 +157,11 @@ Prefab:
       propertyPath: m_SpawningPosition
       value: 
       objectReference: {fileID: 1417456120}
+    - target: {fileID: 114361023322153372, guid: f5e68e2d5b3c3f349ab982ee2af9aee2,
+        type: 2}
+      propertyPath: m_TotalHealth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5e68e2d5b3c3f349ab982ee2af9aee2, type: 2}
   m_IsPrefabParent: 0
