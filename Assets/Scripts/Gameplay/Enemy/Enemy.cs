@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
-using UnityEditorInternal;
 
 public class Enemy : MonoBehaviour
 {

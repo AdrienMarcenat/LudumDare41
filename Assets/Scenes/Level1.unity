@@ -157,27 +157,6 @@ Prefab:
       propertyPath: m_SpawningPosition
       value: 
       objectReference: {fileID: 1417456120}
-    - target: {fileID: 114502312705617650, guid: f5e68e2d5b3c3f349ab982ee2af9aee2,
-        type: 2}
-      propertyPath: m_EnergyDrainedPerSecond
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 212433114819720344, guid: f5e68e2d5b3c3f349ab982ee2af9aee2,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 73fbd1a9a0d72b44f8081a6ae240028f,
-        type: 3}
-    - target: {fileID: 61922186220343684, guid: f5e68e2d5b3c3f349ab982ee2af9aee2,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 54
-      objectReference: {fileID: 0}
-    - target: {fileID: 61922186220343684, guid: f5e68e2d5b3c3f349ab982ee2af9aee2,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 54
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5e68e2d5b3c3f349ab982ee2af9aee2, type: 2}
   m_IsPrefabParent: 0

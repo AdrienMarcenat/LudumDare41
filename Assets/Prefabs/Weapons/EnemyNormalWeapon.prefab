@@ -54,7 +54,7 @@ MonoBehaviour:
   type: 0
   totalAmmo: 50
   currentAmmo: 50
-  ammoVelocity: 200
+  ammoVelocity: 100
   m_FireRate: 1
   bulletPrefab: {fileID: 1491140377286774, guid: 921cf30850297fa4ab229dfe8a841208,
     type: 2}

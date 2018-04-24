@@ -36,7 +36,11 @@ public class LevelGenerator : Singleton<LevelGenerator>
 	private void LoadLevel ()
 	{
 		Reset ();
-		this.ParseFile ("Assets/Levels/Level" + level + ".lvl");
+		string path = "";
+		#if UNITY_EDITOR
+		path = "Assets/";
+		#endif
+		this.ParseFile (path + "Levels/Level" + level + ".lvl");
 	}
 
 	public void Reset ()
